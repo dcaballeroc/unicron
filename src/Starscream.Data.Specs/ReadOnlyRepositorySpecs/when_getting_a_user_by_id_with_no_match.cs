@@ -24,6 +24,6 @@ namespace Starscream.Data.Specs.ReadOnlyRepositorySpecs
             () => _exception = Catch.Exception(() => _readOnlyRepository.GetById<UserEmailLogin>(Guid.NewGuid()));
 
         It should_throw_the_expected_exception =
-            () => _exception.ShouldBeOfType<ItemNotFoundException<UserEmailLogin>>();
+            () => _exception.ShouldBeAssignableTo<ItemNotFoundException<UserEmailLogin>>();
     }
 }
