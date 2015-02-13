@@ -38,6 +38,8 @@ namespace Starscream.Web.Api.Infrastructure.Configuration
               errorMessage += "2) " + propertiesMessage + "\n";
                 errorMessage += "3) " + e.Message; 
               _logger.Error(errorMessage);
+              
+              throw;
 
             }
         }
