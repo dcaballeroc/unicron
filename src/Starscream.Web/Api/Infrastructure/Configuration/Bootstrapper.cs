@@ -94,6 +94,8 @@ namespace Starscream.Web.Api.Infrastructure.Configuration
 
             RestExceptionRepackager.Configure(x => x.WithResponse(CorsResponse)).Register(pipelines);
 
+            DataBaseErrorHandling.Enable(pipelines, container);
+
             pipelines.AfterRequest.AddItemToEndOfPipeline(x => CorsResponse(x.Response));
 
             base.RequestStartup(container, pipelines, context);
