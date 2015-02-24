@@ -1,29 +1,21 @@
-/// <reference path="../../../typings/angularjs/angular-route.d.ts" />
+/// <reference path="../../../typings/angularjs/angular-resource.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
-'use strict';
-var app = angular.module('app_users');
-// Collect the routes
-app.constant('userRoutes', getRoutes());
-// Configure the routes and route resolvers
-app.config(['$routeProvider', 'userRoutes', function ($routeProvider, routes) {
-    routes.forEach(function (r) {
-        $routeProvider.when(r.url, r.config);
-    });
-    $routeProvider.otherwise({ redirectTo: '/' });
-}]);
-function getRoutes() {
-    return [
-        {
-            url: '/',
-            config: {
-                templateUrl: 'app/users/users.html',
-                title: 'Users',
-                settings: {
-                    nav: 1,
-                    content: '<i></i> Dashboard'
-                }
-            }
-        }
-    ];
-}
+/// <reference path="users.module.ts" />
+var users = (function () {
+    function users($scope, $http, $resource) {
+        this.$scope = $scope;
+        this.$http = $http;
+        this.$resource = $resource;
+        this.greeting = "Hello";
+    }
+    users.prototype.changeGreeting = function () {
+        this.greeting = "Bye";
+    };
+    users.controllerId = function () {
+        return 'users';
+    };
+    return users;
+})();
+// Update the app1 variable name to be that of your module variable
+app_users.controller(users.controllerId(), ['$scope', '$http', '$resource', function ($scope, $http, $resource) { return new users($scope, $http, $resource); }]);
 //# sourceMappingURL=users.js.map

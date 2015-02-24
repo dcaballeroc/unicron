@@ -5,7 +5,7 @@
 interface IApp_users extends ng.IModule { }
 
 // Create the module and define its dependencies.
-var users: IApp_users = angular.module('app_users', [
+var app_users: IApp_users = angular.module('app_users', [
     // Angular modules 
     'ngResource',       // $resource for REST queries
     'ngAnimate',        // animations
@@ -17,6 +17,6 @@ var users: IApp_users = angular.module('app_users', [
 ]);
 
 // Execute bootstrapping code and any dependencies.
-users.run(['$q', '$rootScope', ($q, $rootScope) => {
+app_users.run(['$q', '$rootScope', ($q, $rootScope) => {
 
 }]);
