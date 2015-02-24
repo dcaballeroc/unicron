@@ -235,6 +235,23 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Client\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="Client\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="Client\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="Client\typings\angularjs\angular-resource.d.ts" />
+    <TypeScriptCompile Include="Client\typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="Client\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Client\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Client\typings\gulp-typescript\gulp-typescript.d.ts" />
+    <TypeScriptCompile Include="Client\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Client\typings\node\node-0.10.d.ts" />
+    <TypeScriptCompile Include="Client\typings\node\node-0.11.d.ts" />
+    <TypeScriptCompile Include="Client\typings\node\node-0.8.8.d.ts" />
+    <TypeScriptCompile Include="Client\typings\node\node.d.ts" />
+    <TypeScriptCompile Include="Client\typings\typescript-services\typescriptServices.d.ts" />
+    <TypeScriptCompile Include="Client\typings\typescript\typescript.d.ts" />
+  </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
