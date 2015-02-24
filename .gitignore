@@ -8,6 +8,13 @@ codekit-config.json
 connectionStrings.config
 mailSettings.config
 thumbs.db
+# Ignore Node & Bower
+###################
+node_modules
+bower_components
+build
+typings
+#.tmp
 
 #OS junk files
 [Tt]humbs.db
