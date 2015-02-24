@@ -45,8 +45,10 @@ namespace Starscream.Web.Api.Infrastructure.Configuration
         {
             base.ConfigureConventions(conventions);
 
-            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("App"));
-            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("Assets"));
+            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("Client"));
+            conventions.ViewLocationConventions.Add((viewName,model,context)=> "Client/src/"+viewName);
+
+          
         }
 
         protected override void ConfigureApplicationContainer(ILifetimeScope existingContainer)

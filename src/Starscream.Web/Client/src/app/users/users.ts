@@ -8,25 +8,31 @@ interface IusersScope extends ng.IScope {
 }
 
 interface Iusers {
-    greeting: string;
-  
-    changeGreeting: () => void;
+
+    firstNumber: number;
+    secondNumber: number;
+    result: number;
+    sum():  number;
  
 }
 
 class users implements Iusers {
-   
-    greeting = "Hello";
+ 
     
     constructor(private $scope: IusersScope, private $http: ng.IHttpService, private $resource: ng.resource.IResourceService) {
     }
 
-    changeGreeting() {
-        this.greeting = "Bye";
-    }
-
+  
+    firstNumber: number;
+    secondNumber: number;
+    result: number;
     static controllerId() {
         return 'users';
+    }
+
+    sum() {
+        this.result = this.firstNumber + this.secondNumber;
+        return this.result;
     }
 }
 

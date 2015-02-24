@@ -6,13 +6,13 @@ var users = (function () {
         this.$scope = $scope;
         this.$http = $http;
         this.$resource = $resource;
-        this.greeting = "Hello";
     }
-    users.prototype.changeGreeting = function () {
-        this.greeting = "Bye";
-    };
     users.controllerId = function () {
         return 'users';
+    };
+    users.prototype.sum = function () {
+        this.result = this.firstNumber + this.secondNumber;
+        return this.result;
     };
     return users;
 })();
