@@ -121,8 +121,15 @@
     </Content>
     <Content Include="Client\bower_components\angular-animate\angular-animate.min.js" />
     <Content Include="Client\bower_components\angular-mocks\angular-mocks.js" />
-    <Content Include="Client\bower_components\angular-resource\angular-resource.js" />
+    <Content Include="Client\bower_components\angular-resource\angular-resource.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\angular-resource\angular-resource.min.js" />
+    <Content Include="Client\bower_components\angular-route\angular-route.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\bower_components\angular-route\angular-route.min.js" />
+    <Content Include="Client\bower_components\angular-route\index.js" />
     <Content Include="Client\bower_components\angular-sanitize\angular-sanitize.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -641,6 +648,11 @@
     <Content Include="Client\bower_components\toastr\bower.json" />
     <Content Include="Client\bower_components\toastr\toastr.less" />
     <Content Include="Client\bower_components\toastr\toastr.scss" />
+    <Content Include="Client\bower_components\angular-route\.bower.json" />
+    <Content Include="Client\bower_components\angular-route\angular-route.min.js.map" />
+    <Content Include="Client\bower_components\angular-route\bower.json" />
+    <Content Include="Client\bower_components\angular-route\package.json" />
+    <Content Include="Client\bower_components\angular-route\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
