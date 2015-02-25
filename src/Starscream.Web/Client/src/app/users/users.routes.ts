@@ -5,13 +5,13 @@
 
 'use strict';
 
-var app = angular.module('app_users');
+var app_users = angular.module('app_users');
 
 // Collect the routes
-app.constant('userRoutes', getRoutes());
+app_users.constant('userRoutes', getRoutes());
 
 // Configure the routes and route resolvers
-app.config(['$routeProvider', 'userRoutes', ($routeProvider: ng.route.IRouteProvider, routes: RouteSettings.IAcklenAvenueRoute[]) => {
+app_users.config(['$routeProvider', 'userRoutes', ($routeProvider: ng.route.IRouteProvider, routes: RouteSettings.IAcklenAvenueRoute[]) => {
 
     routes.forEach(r=> {
         $routeProvider.when(r.url, r.config);
@@ -27,6 +27,8 @@ function getRoutes(): RouteSettings.IAcklenAvenueRoute[] {
             config: {
                 templateUrl: 'app/users/users.html',
                 title: 'Users',
+                controller: 'users',
+                controllerAs: 'vm',
                 settings: {
                     nav: 1,
                     content: '<i></i> Dashboard'

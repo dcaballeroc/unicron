@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/angularjs/angular-resource.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../typings/angularjs/angular-route.d.ts" />
 // Create the module and define its dependencies.
 var app_users = angular.module('app_users', [
     'ngResource',
@@ -7,6 +8,6 @@ var app_users = angular.module('app_users', [
     'ngRoute'
 ]);
 // Execute bootstrapping code and any dependencies.
-app_users.run(['$q', '$rootScope', function ($q, $rootScope) {
+app_users.run(['$q', '$rootScope', '$route', function ($q, $rootScope, $route) {
 }]);
 //# sourceMappingURL=users.module.js.map

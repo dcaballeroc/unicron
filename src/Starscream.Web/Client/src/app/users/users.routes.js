@@ -1,11 +1,11 @@
 /// <reference path="../../../typings/angularjs/angular-route.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 'use strict';
-var app = angular.module('app_users');
+var app_users = angular.module('app_users');
 // Collect the routes
-app.constant('userRoutes', getRoutes());
+app_users.constant('userRoutes', getRoutes());
 // Configure the routes and route resolvers
-app.config(['$routeProvider', 'userRoutes', function ($routeProvider, routes) {
+app_users.config(['$routeProvider', 'userRoutes', function ($routeProvider, routes) {
     routes.forEach(function (r) {
         $routeProvider.when(r.url, r.config);
     });
@@ -18,6 +18,8 @@ function getRoutes() {
             config: {
                 templateUrl: 'app/users/users.html',
                 title: 'Users',
+                controller: 'users',
+                controllerAs: 'vm',
                 settings: {
                     nav: 1,
                     content: '<i></i> Dashboard'

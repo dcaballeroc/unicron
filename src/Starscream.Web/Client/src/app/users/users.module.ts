@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/angularjs/angular-resource.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../typings/angularjs/angular-route.d.ts" />
 
 
 interface IApp_users extends ng.IModule { }
@@ -17,6 +18,6 @@ var app_users: IApp_users = angular.module('app_users', [
 ]);
 
 // Execute bootstrapping code and any dependencies.
-app_users.run(['$q', '$rootScope', ($q, $rootScope) => {
+app_users.run(['$q', '$rootScope', '$route', ($q, $rootScope, $route: ng.route.IRoute) => {
 
 }]);
