@@ -23,7 +23,7 @@ app.config(['$routeProvider', 'userRoutes', ($routeProvider: ng.route.IRouteProv
 function getRoutes(): RouteSettings.IAcklenAvenueRoute[] {
     return [
         {
-            url: '/',
+            url: '/users',
             config: {
                 templateUrl: 'app/users/users.html',
                 title: 'Users',

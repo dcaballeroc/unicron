@@ -14,7 +14,7 @@ app.config(['$routeProvider', 'userRoutes', function ($routeProvider, routes) {
 function getRoutes() {
     return [
         {
-            url: '/',
+            url: '/users',
             config: {
                 templateUrl: 'app/users/users.html',
                 title: 'Users',

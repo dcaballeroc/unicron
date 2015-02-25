@@ -8,6 +8,8 @@ var app = angular.module('app', [
     'ngRoute',
     'ngResource',
     'ngSanitize',
+    'app',
+    'app_users'
 ]);
 // Handle routing errors and success events
 app.run(['$route', function ($route) {
