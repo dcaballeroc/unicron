@@ -116,14 +116,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Api\Infrastructure\Authentication\RolesFeatures.json" />
-    <Content Include="Client\bower_components\angular-animate\angular-animate.js" />
+    <Content Include="Client\bower_components\angular-animate\angular-animate.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\angular-animate\angular-animate.min.js" />
     <Content Include="Client\bower_components\angular-mocks\angular-mocks.js" />
     <Content Include="Client\bower_components\angular-resource\angular-resource.js" />
     <Content Include="Client\bower_components\angular-resource\angular-resource.min.js" />
-    <Content Include="Client\bower_components\angular-sanitize\angular-sanitize.js" />
+    <Content Include="Client\bower_components\angular-sanitize\angular-sanitize.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\angular-sanitize\angular-sanitize.min.js" />
-    <Content Include="Client\bower_components\angular-ui-router\release\angular-ui-router.js" />
+    <Content Include="Client\bower_components\angular-ui-router\release\angular-ui-router.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\angular-ui-router\release\angular-ui-router.min.js" />
     <Content Include="Client\bower_components\angular-ui-router\src\common.js" />
     <Content Include="Client\bower_components\angular-ui-router\src\resolve.js" />
@@ -137,16 +143,22 @@
     <Content Include="Client\bower_components\angular-ui-router\src\viewDirective.js" />
     <Content Include="Client\bower_components\angular-ui-router\src\viewScroll.js" />
     <Content Include="Client\bower_components\angular\angular-csp.css" />
-    <Content Include="Client\bower_components\angular\angular.js" />
+    <Content Include="Client\bower_components\angular\angular.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\angular\angular.min.js" />
     <Content Include="Client\bower_components\bardjs\dist\bard-ngRouteTester.js" />
     <Content Include="Client\bower_components\bardjs\dist\bard.js" />
     <Content Include="Client\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="Client\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
-    <Content Include="Client\bower_components\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Client\bower_components\bootstrap\dist\css\bootstrap.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\bootstrap\dist\css\bootstrap.min.css" />
     <Content Include="Client\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Client\bower_components\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Client\bower_components\bootstrap\dist\js\bootstrap.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\bootstrap\dist\js\bootstrap.min.js" />
     <Content Include="Client\bower_components\bootstrap\dist\js\npm.js" />
     <Content Include="Client\bower_components\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -167,12 +179,18 @@
     <Content Include="Client\bower_components\bootstrap\js\tab.js" />
     <Content Include="Client\bower_components\bootstrap\js\tooltip.js" />
     <Content Include="Client\bower_components\bootstrap\js\transition.js" />
-    <Content Include="Client\bower_components\extras.angular.plus\ngplus-overlay.js" />
+    <Content Include="Client\bower_components\extras.angular.plus\ngplus-overlay.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\font-awesome\.gitignore" />
-    <Content Include="Client\bower_components\font-awesome\css\font-awesome.css" />
+    <Content Include="Client\bower_components\font-awesome\css\font-awesome.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\font-awesome\css\font-awesome.min.css" />
     <Content Include="Client\bower_components\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Client\bower_components\jquery\dist\jquery.js" />
+    <Content Include="Client\bower_components\jquery\dist\jquery.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\jquery\dist\jquery.min.js" />
     <Content Include="Client\bower_components\jquery\MIT-LICENSE.txt" />
     <Content Include="Client\bower_components\jquery\src\ajax.js" />
@@ -342,10 +360,16 @@
     <Content Include="Client\bower_components\moment\min\moment-with-locales.js" />
     <Content Include="Client\bower_components\moment\min\moment-with-locales.min.js" />
     <Content Include="Client\bower_components\moment\min\moment.min.js" />
-    <Content Include="Client\bower_components\moment\moment.js" />
+    <Content Include="Client\bower_components\moment\moment.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\sinon\index.js" />
-    <Content Include="Client\bower_components\toastr\toastr.css" />
-    <Content Include="Client\bower_components\toastr\toastr.js" />
+    <Content Include="Client\bower_components\toastr\toastr.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\bower_components\toastr\toastr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Client\bower_components\toastr\toastr.min.css" />
     <Content Include="Client\bower_components\toastr\toastr.min.js" />
     <Content Include="Client\src\app\users\users.html" />
