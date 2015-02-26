@@ -655,6 +655,7 @@
     <Content Include="Client\bower_components\angular-route\bower.json" />
     <Content Include="Client\bower_components\angular-route\package.json" />
     <Content Include="Client\bower_components\angular-route\README.md" />
+    <Content Include="Client\tslint.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

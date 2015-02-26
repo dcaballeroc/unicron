@@ -22,4 +22,5 @@ var app: Iapp = angular.module('app', [
 // Handle routing errors and success events
 app.run(['$route', ($route: ng.route.IRoute) => {
     // Include $route to kick start the router.
+    
 }]);
