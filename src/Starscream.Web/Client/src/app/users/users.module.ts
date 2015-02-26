@@ -18,6 +18,6 @@ var app_users: IApp_users = angular.module('app_users', [
 ]);
 
 // Execute bootstrapping code and any dependencies.
-app_users.run(['$q', '$rootScope', '$route', ($q, $rootScope, $route: ng.route.IRoute) => {
+app_users.run([ '$rootScope', '$route', ( $rootScope, $route: ng.route.IRoute) => {
 
 }]);

@@ -8,6 +8,6 @@ var app_users = angular.module('app_users', [
     'ngRoute'
 ]);
 // Execute bootstrapping code and any dependencies.
-app_users.run(['$q', '$rootScope', '$route', function ($q, $rootScope, $route) {
+app_users.run(['$rootScope', '$route', function ($rootScope, $route) {
 }]);
 //# sourceMappingURL=users.module.js.map

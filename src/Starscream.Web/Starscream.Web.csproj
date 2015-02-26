@@ -727,7 +727,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52136</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:5952/</IISUrl>
+          <IISUrl>http://localhost:5966/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
