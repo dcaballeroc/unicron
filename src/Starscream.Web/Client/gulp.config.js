@@ -1,9 +1,12 @@
 module.exports = function() {
     var config = {
-         allts:[
+         sourceTs:[
             './src/**/*.ts'
         ],
-        build: './build/'
+        build: './build/',
+        configTs:[
+           './*.ts'
+        ]
     };
     return config;
 };
