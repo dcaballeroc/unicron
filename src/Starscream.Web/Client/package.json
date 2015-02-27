@@ -1,15 +1,15 @@
 {
-  "name": "Pluralsight-Gulp",
+  "name": "Starscream Darth Vader Edition",
   "version": "0.2.0",
-  "description": "Starter Code for Pluralsight Course JavaScript Build Automation with Gulp.js",
+  "description": "Starter Code for Acklen Avenue Projects Course",
   "authors": [
     "John Papa"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/johnpapa/pluralsight-gulp",
+  "homepage": "https://github.com/AcklenAvenue/Starscream",
   "repository": {
     "type": "git",
-    "url": "https://github.com/johnpapa/pluralsight-gulp.git"
+    "url": "https://github.com/AcklenAvenue/Starscream.git"
   },
   "scripts": {
     "init": "npm install",
@@ -70,6 +70,7 @@
     "phantomjs": "^1.9.15",
     "sinon": "^1.12.2",
     "sinon-chai": "^2.7.0",
+    "typescript-require": "^0.2.8",
     "wiredep": "^2.2.2",
     "yargs": "^3.0.4"
   }

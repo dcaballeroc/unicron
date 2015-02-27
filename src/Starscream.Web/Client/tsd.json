@@ -28,6 +28,12 @@
     },
     "angularjs/angular-sanitize.d.ts": {
       "commit": "5c59a734fdee76e135fe8eb63299d27244499031"
+    },
+    "gulp/gulp.d.ts": {
+      "commit": "5c59a734fdee76e135fe8eb63299d27244499031"
+    },
+    "node/node.d.ts": {
+      "commit": "5c59a734fdee76e135fe8eb63299d27244499031"
     }
   }
 }
