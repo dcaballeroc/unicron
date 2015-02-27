@@ -3,10 +3,10 @@
 /// <reference path="../../../typings/angularjs/angular-route.d.ts" />
 
 
-interface IApp_users extends ng.IModule { }
+interface IAppUsers extends ng.IModule { }
 
 // Create the module and define its dependencies.
-var app_users: IApp_users = angular.module('app_users', [
+var app_users: IAppUsers = angular.module('app_users', [
     // Angular modules 
     'ngResource',       // $resource for REST queries
     'ngAnimate',        // animations
@@ -18,6 +18,6 @@ var app_users: IApp_users = angular.module('app_users', [
 ]);
 
 // Execute bootstrapping code and any dependencies.
-app_users.run([ '$rootScope', '$route', ( $rootScope, $route: ng.route.IRoute) => {
-
+app_users.run([ '$rootScope', '$route', ( $rootScope: ng.IRootScopeService, $route: ng.route.IRoute) => {
+    
 }]);

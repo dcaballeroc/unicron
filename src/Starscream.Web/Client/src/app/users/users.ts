@@ -3,11 +3,11 @@
 /// <reference path="users.module.ts" />
 
 
-interface IusersScope extends ng.IScope {
-    vm: users;
+interface IUsersScope extends ng.IScope {
+    vm: Users;
 }
 
-interface Iusers {
+interface IUsers {
 
     firstNumber: number;
     secondNumber: number;
@@ -16,10 +16,10 @@ interface Iusers {
  
 }
 
-class users implements Iusers {
+class Users implements IUsers {
  
     
-    constructor(private $scope: IusersScope, private $http: ng.IHttpService, private $resource: ng.resource.IResourceService) {
+    constructor(private $scope: IUsersScope) {
     }
 
   
@@ -37,6 +37,6 @@ class users implements Iusers {
 }
 
 // Update the app1 variable name to be that of your module variable
-app_users.controller(users.controllerId(), ['$scope', '$http', '$resource', ($scope, $http, $resource) =>
-    new users($scope, $http, $resource)
+app_users.controller(Users.controllerId(), ['$scope', ($scope: IUsersScope) =>
+    new Users($scope)
 ]);

@@ -12,6 +12,7 @@ app_users.config(['$routeProvider', 'userRoutes', function ($routeProvider, rout
     $routeProvider.otherwise({ redirectTo: '/' });
 }]);
 function getRoutes() {
+    'use strict';
     return [
         {
             url: '/users',

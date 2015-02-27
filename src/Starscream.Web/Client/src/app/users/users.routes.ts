@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../typings/angularjs/angular-route.d.ts" />
+/// <reference path="../../../typings/angularjs/angular-route.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 
  
@@ -13,7 +13,7 @@ app_users.constant('userRoutes', getRoutes());
 // Configure the routes and route resolvers
 app_users.config(['$routeProvider', 'userRoutes', ($routeProvider: ng.route.IRouteProvider, routes: RouteSettings.IAcklenAvenueRoute[]) => {
 
-    routes.forEach(r=> {
+    routes.forEach(r => {
         $routeProvider.when(r.url, r.config);
     });
 
@@ -21,6 +21,7 @@ app_users.config(['$routeProvider', 'userRoutes', ($routeProvider: ng.route.IRou
 }]);
 
 function getRoutes(): RouteSettings.IAcklenAvenueRoute[] {
+    'use strict';
     return [
         {
             url: '/users',

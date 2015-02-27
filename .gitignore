@@ -13,8 +13,11 @@ thumbs.db
 node_modules
 bower_components
 build
-typings
+typings/
 #.tmp
+*.map.*
+*.js.map
+Client/src/app/*/*.js
 
 #OS junk files
 [Tt]humbs.db
