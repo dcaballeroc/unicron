@@ -1,6 +1,6 @@
 ///<reference path='typings/node/node.d.ts'/>
 var gulp = require('gulp');
-var tsc = require('gulp-tsc');
+var tsc = require('gulp-typescript');
 var config = require('./gulp.config')();
 var args = require('yargs').argv;
 var plugins = require('gulp-load-plugins')({ lazy: true });

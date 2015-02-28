@@ -37,9 +37,6 @@
     },
     "yargs/yargs.d.ts": {
       "commit": "5c59a734fdee76e135fe8eb63299d27244499031"
-    },
-    "gulp-typescript/gulp-typescript.d.ts": {
-      "commit": "3882d337bb0808cde9fe4c08012508a48c135482"
     }
   }
 }

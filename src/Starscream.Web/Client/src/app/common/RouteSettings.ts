@@ -1,4 +1,5 @@
-﻿module RouteSettings {
+module RouteSettings {
+    'use strict';
     export interface IAcklenAvenueRouteSettings {
         nav: number;
         content: string;
@@ -14,5 +15,4 @@
         url: string;
         config: IAcklenAvenueRouteConfig;
     }
-    
 }
