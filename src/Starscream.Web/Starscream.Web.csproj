@@ -379,6 +379,15 @@
     </Content>
     <Content Include="Client\bower_components\toastr\toastr.min.css" />
     <Content Include="Client\bower_components\toastr\toastr.min.js" />
+    <Content Include="Client\build\app\app.module.js" />
+    <Content Include="Client\build\app\common\RouteSettings.js" />
+    <Content Include="Client\build\app\users\users.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\build\app\users\users.js" />
+    <Content Include="Client\build\app\users\users.module.js" />
+    <Content Include="Client\build\app\users\users.routes.js" />
+    <Content Include="Client\build\index.html" />
     <Content Include="Client\src\app\users\users.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -749,6 +758,9 @@ IF NOT EXIST "$(ProjectDir)smtp.config" copy "$(ProjectDir)smtp.config.default" 
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)\Client\build\*.*" "$(TargetDir)\Client" /Y /I /E</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
