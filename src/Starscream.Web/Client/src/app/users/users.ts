@@ -13,24 +13,22 @@ interface IUsers {
     secondNumber: number;
     result: number;
     sum():  number;
- 
 }
 
 class Users implements IUsers {
- 
-    
-    constructor(private $scope: IUsersScope) {
-    }
 
-  
     firstNumber: number;
     secondNumber: number;
     result: number;
-    static controllerId() {
+    private $scope: IUsersScope;
+    static controllerId(): string {
         return 'users';
     }
 
-    sum() {
+    constructor( $scope: IUsersScope) {
+        this.$scope = $scope;
+    }
+    sum(): number {
         this.result = this.firstNumber + this.secondNumber;
         return this.result;
     }

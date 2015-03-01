@@ -20,6 +20,6 @@ gulp.task('compile:typescript', function () {
 });
 gulp.task('vet', function () {
     console.log('Analyzing sources with TSLint, JSHint and JSCS');
-    var allTs = config.sourceTs.concat(config.configTs);
+    var allTs = config.sourceTs;
     return gulp.src(allTs).pipe(plugins.if(args.verbose, plugins.print())).pipe(plugins.tslint()).pipe(plugins.tslint.report('verbose'));
 });

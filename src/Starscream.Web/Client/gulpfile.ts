@@ -30,7 +30,7 @@ gulp.task('compile:typescript', function() {
 
 gulp.task('vet', function() {
     console.log('Analyzing sources with TSLint, JSHint and JSCS');
-    var allTs: string[] = config.sourceTs.concat(config.configTs);
+    var allTs: string[] = config.sourceTs;
     return gulp
             .src(allTs)
             .pipe(plugins.if(args.verbose, plugins.print()))
