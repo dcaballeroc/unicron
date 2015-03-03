@@ -43,6 +43,9 @@
     },
     "gulp-sourcemaps/gulp-sourcemaps.d.ts": {
       "commit": "3882d337bb0808cde9fe4c08012508a48c135482"
+    },
+    "del/del.d.ts": {
+      "commit": "bb465f2cc799a41a7ccb688c6d1a8f5583dda12d"
     }
   }
 }

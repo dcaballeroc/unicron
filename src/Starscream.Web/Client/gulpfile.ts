@@ -1,16 +1,16 @@
 ///<reference path='typings/node/node.d.ts'/>
-
+'use strict';
 var gulp = require('gulp');
+var del = require('del');
 var tsc  = require('gulp-typescript');
 var config = require('./gulp.config')();
 var args = require('yargs').argv;
 var plugins = require('gulp-load-plugins')({lazy: true});
 
-gulp.task('build', ['compile:typescript']);
 
-gulp.task('compile:typescript', ['copingTs'] , function() {
+gulp.task('build-dev', ['vet', 'clean-code', 'copingTs'] , function() {
     
-    console.log('Compiling Typescript files');
+     console.log('Compiling Typescript files for Dev');
       var maps: boolean = false;
        if (args.dev) {
            maps = true;
@@ -19,15 +19,12 @@ gulp.task('compile:typescript', ['copingTs'] , function() {
         var tsResults = gulp
                         .src(config.buildTs)
                         .pipe(plugins.sourcemaps.init())
-                        .pipe( tsc({
-                            module: 'commonjs',
-                            declarationFiles: true,
-                            emitError: false
-                        }));
+                        .pipe(tsc(config.tsc));
         
         return tsResults
-            .pipe(plugins.sourcemaps.write('../build',
-                {includeContent: false, sourceRoot: '/app'}
+            .pipe(plugins.sourcemaps.write(
+                config.sourceMaps.pathToWrite,
+                config.sourceMaps.configMaps
             ))
             .pipe(
             gulp.dest(config.build)
@@ -35,8 +32,17 @@ gulp.task('compile:typescript', ['copingTs'] , function() {
     }
 );
 
+gulp.task('build-release', ['vet', 'clean-code'], function() {
+    console.log('Compiling Typescript files for Release');
+    return gulp
+        .src(config.sourceTs)
+        .pipe(tsc(config.tsc))
+        .pipe(gulp.dest(config.build));
+    }
+);
+
 gulp.task('copingTs', function() {
-    console.log('copying typescript files');
+    console.log('Copying typescript files');
     return gulp
             .src(config.sourceTs)
             .pipe(gulp.dest(config.build));
@@ -54,4 +60,15 @@ gulp.task('vet', function() {
     
     }
 );
+gulp.task('clean-code', function(done: () => any) {
+    var files = [].concat(config.buildTs, config.buildJs, config.buildMaps);
+    clean(files, done);
+    }
+);
+
+function clean(path: string[], done: () => any ): void {
+    'use strict';
+    console.log('Cleaning: ' + plugins.util.colors.blue(path));
+    del(path, done);
+}
 
