@@ -49,6 +49,8 @@ namespace Starscream.Web.Api.Infrastructure.Configuration
             conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("bower_components", "Client/bower_components"));
             conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("app",
                 "Client/build/app"));
+            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("build/app",
+                  "Client/build/app"));
          
             conventions.ViewLocationConventions.Add((viewName, model, context) => "Client/build/"+ viewName);
 

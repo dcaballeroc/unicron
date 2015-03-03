@@ -5,18 +5,23 @@ var config = require('./gulp.config')();
 var args = require('yargs').argv;
 var plugins = require('gulp-load-plugins')({ lazy: true });
 gulp.task('build', ['compile:typescript']);
-gulp.task('compile:typescript', function () {
+gulp.task('compile:typescript', ['copingTs'], function () {
     console.log('Compiling Typescript files');
     var maps = false;
     if (args.dev) {
         maps = true;
     }
     console.log('Ambiente Dev ' + maps);
-    return gulp.src(config.sourceTs).pipe(tsc({
-        module: 'CommonJS',
-        sourcemap: maps,
+    var tsResults = gulp.src(config.buildTs).pipe(plugins.sourcemaps.init()).pipe(tsc({
+        module: 'commonjs',
+        declarationFiles: true,
         emitError: false
-    })).pipe(gulp.dest(config.build));
+    }));
+    return tsResults.pipe(plugins.sourcemaps.write('../build', { includeContent: false, sourceRoot: '/app' })).pipe(gulp.dest(config.build));
+});
+gulp.task('copingTs', function () {
+    console.log('copying typescript files');
+    return gulp.src(config.sourceTs).pipe(gulp.dest(config.build));
 });
 gulp.task('vet', function () {
     console.log('Analyzing sources with TSLint, JSHint and JSCS');

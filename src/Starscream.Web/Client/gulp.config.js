@@ -4,6 +4,7 @@ module.exports = function() {
             './src/**/*.ts'
         ],
         build: './build/',
+        buildTs: './build/**/*.ts',
         configTs:[
            './*.ts'
         ]

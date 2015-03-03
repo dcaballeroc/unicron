@@ -8,7 +8,7 @@ var plugins = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('build', ['compile:typescript']);
 
-gulp.task('compile:typescript', function() {
+gulp.task('compile:typescript', ['copingTs'] , function() {
     
     console.log('Compiling Typescript files');
       var maps: boolean = false;
@@ -16,18 +16,33 @@ gulp.task('compile:typescript', function() {
            maps = true;
        }
         console.log('Ambiente Dev ' + maps);
-        return gulp
-            .src(config.sourceTs)
-            .pipe( tsc({
-                module: 'CommonJS',
-                sourcemap: maps,
-                emitError: false
-            })) .pipe(
+        var tsResults = gulp
+                        .src(config.buildTs)
+                        .pipe(plugins.sourcemaps.init())
+                        .pipe( tsc({
+                            module: 'commonjs',
+                            declarationFiles: true,
+                            emitError: false
+                        }));
+        
+        return tsResults
+            .pipe(plugins.sourcemaps.write('../build',
+                {includeContent: false, sourceRoot: '/app'}
+            ))
+            .pipe(
             gulp.dest(config.build)
             );
     }
 );
 
+gulp.task('copingTs', function() {
+    console.log('copying typescript files');
+    return gulp
+            .src(config.sourceTs)
+            .pipe(gulp.dest(config.build));
+    }
+
+);
 gulp.task('vet', function() {
     console.log('Analyzing sources with TSLint, JSHint and JSCS');
     var allTs: string[] = config.sourceTs;
