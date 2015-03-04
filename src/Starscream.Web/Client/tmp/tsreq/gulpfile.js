@@ -37,6 +37,10 @@ gulp.task('wiredep', function () {
     var wiredep = require('wiredep').stream;
     return gulp.src(config.index).pipe(wiredep(options)).pipe(plugins.inject(gulp.src(config.compiledJs))).pipe(gulp.dest(config.build));
 });
+gulp.task('inject', ['wiredep', 'styles'], function () {
+    console.log('Wire up the app css into the html, and call wiredep ');
+    return gulp.src(config.index).pipe(plugins.inject(gulp.src(config.css))).pipe(gulp.dest(config.build));
+});
 gulp.task('clean-code', function (done) {
     var files = [].concat(config.buildTs, config.buildJs, config.buildMaps);
     clean(files, done);

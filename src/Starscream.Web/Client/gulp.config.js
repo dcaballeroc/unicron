@@ -19,6 +19,7 @@ module.exports = function() {
             build +  '**/*.module.js',
             build + js
         ],
+        css: temp + 'styles.css',
         buildMaps: build + js + '.map',
         configTs:[
            './*.ts'
