@@ -9,13 +9,7 @@ var plugins = require('gulp-load-plugins')({lazy: true});
 
 
 gulp.task('build-dev', ['vet', 'clean-code', 'copingTs'] , function() {
-    
-     console.log('Compiling Typescript files for Dev');
-      var maps: boolean = false;
-       if (args.dev) {
-           maps = true;
-       }
-        console.log('Ambiente Dev ' + maps);
+        console.log('Compiling Typescript files for Dev');
         var tsResults = gulp
                         .src(config.buildTs)
                         .pipe(plugins.sourcemaps.init())
