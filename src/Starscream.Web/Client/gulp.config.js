@@ -1,6 +1,7 @@
 module.exports = function() {
     var ts = '**/*.ts';
     var js = '**/*.js';
+    var htmls = '**/*.html';
     var root = './';
     var src = root + 'src/';
     var build = root + 'build/';
@@ -12,9 +13,11 @@ module.exports = function() {
         sourceTs:[
             src + ts,
         ],
+        sourceHtmls: src + htmls,
         build: './build/',
         buildTs: build + ts,
         buildJs: build + js,
+        buildHtmls: build + htmls,
         compiledJs: [
             build +  '**/*.module.js',
             build + js
@@ -52,10 +55,13 @@ module.exports = function() {
             json: require('./bower.json'),
             directory: './bower_components/',
             ignorePath: '../..'
-        }
-        
+        },
+       /**
+         * Nancy Settings
+         */
+        defaultPort: 5966
     };
-     config.getWiredepDefaultOptions = function() {
+    config.getWiredepDefaultOptions = function() {
         var options = {
                 bowerJson: config.bower.json,
                 directory: config.bower.directory,
