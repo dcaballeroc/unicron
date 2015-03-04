@@ -99,7 +99,7 @@ gulp.task('inject', ['wiredep', 'styles'], function() {
     console.log('Wire up the app css into the html, and call wiredep ');
 
     return gulp
-        .src(config.index)
+        .src(config.buildIndex)
         .pipe(plugins.inject(gulp.src(config.css)))
         .pipe(gulp.dest(config.build));
 });

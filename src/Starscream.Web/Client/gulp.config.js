@@ -6,6 +6,7 @@ module.exports = function() {
     var src = root + 'src/';
     var build = root + 'build/';
     var temp = root + '.tmp/';
+    var index = src + 'index.html';
     var config = {
         /**
          * Files paths
@@ -13,7 +14,10 @@ module.exports = function() {
         sourceTs:[
             src + ts,
         ],
-        sourceHtmls: src + htmls,
+        sourceHtmls: [
+                        src + htmls,
+                        '!' + index
+                     ],
         build: './build/',
         buildTs: build + ts,
         buildJs: build + js,
@@ -29,7 +33,8 @@ module.exports = function() {
         ],
         temp: temp,
         less: src + 'styles/styles.less',
-        index: src + 'index.html',
+        index: index,
+        buildIndex: build + 'index.html',
         /**
         + TSC options
         */
