@@ -28,6 +28,15 @@ gulp.task('styles', ['clean-styles'], function () {
     console.log('Compiling Less --> CSS');
     return gulp.src(config.less).pipe(plugins.plumber()).pipe(plugins.less()).pipe(plugins.autoprefixer({ browsers: ['last 2 version', '> 5%'] })).pipe(gulp.dest(config.temp));
 });
+gulp.task('less-watcher', function () {
+    gulp.watch([config.less], ['styles']);
+});
+gulp.task('wiredep', function () {
+    console.log('Wire up the bower css js and our app js into the html');
+    var options = config.getWiredepDefaultOptions();
+    var wiredep = require('wiredep').stream;
+    return gulp.src(config.index).pipe(wiredep(options)).pipe(plugins.inject(gulp.src(config.compiledJs))).pipe(gulp.dest(config.build));
+});
 gulp.task('clean-code', function (done) {
     var files = [].concat(config.buildTs, config.buildJs, config.buildMaps);
     clean(files, done);

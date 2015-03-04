@@ -3,20 +3,29 @@ module.exports = function() {
     var js = '**/*.js';
     var root = './';
     var src = root + 'src/';
+    var build = root + 'build/';
     var temp = root + '.tmp/';
     var config = {
+        /**
+         * Files paths
+         */
         sourceTs:[
-            root + 'src/' + ts,
+            src + ts,
         ],
         build: './build/',
-        buildTs: root + 'build/' + ts,
-        buildJs: root + 'build/' + js,
-        buildMaps: root + 'build/' + js + '.map',
+        buildTs: build + ts,
+        buildJs: build + js,
+        compiledJs: [
+            build +  '**/*.module.js',
+            build + js
+        ],
+        buildMaps: build + js + '.map',
         configTs:[
            './*.ts'
         ],
         temp: temp,
         less: src + 'styles/styles.less',
+        index: src + 'index.html',
         /**
         + TSC options
         */
@@ -32,9 +41,26 @@ module.exports = function() {
            pathToWrite: '../build',
            configMaps:  {
             includeContent: false,
-            sourceRoot: '/app'
+            sourceRoot: '/build/app'
             }
+        },
+        /**
+         * Bower and NPM locations
+         */
+        bower: {
+            json: require('./bower.json'),
+            directory: './bower_components/',
+            ignorePath: '../..'
         }
+        
+    };
+     config.getWiredepDefaultOptions = function() {
+        var options = {
+                bowerJson: config.bower.json,
+                directory: config.bower.directory,
+                ignorePath: config.bower.ignorePath
+        };
+        return options;
     };
     return config;
 };
