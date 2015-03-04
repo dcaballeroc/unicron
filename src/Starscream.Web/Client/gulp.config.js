@@ -2,6 +2,8 @@ module.exports = function() {
     var ts = '**/*.ts';
     var js = '**/*.js';
     var root = './';
+    var src = root + 'src/';
+    var temp = root + '.tmp/';
     var config = {
         sourceTs:[
             root + 'src/' + ts,
@@ -13,6 +15,8 @@ module.exports = function() {
         configTs:[
            './*.ts'
         ],
+        temp: temp,
+        less: src + 'styles/styles.less',
         /**
         + TSC options
         */

@@ -54,11 +54,27 @@ gulp.task('vet', function() {
     
     }
 );
+gulp.task('styles', ['clean-styles'], function() {
+    console.log('Compiling Less --> CSS');
+
+    return gulp
+        .src(config.less)
+        .pipe(plugins.plumber())
+        .pipe(plugins.less())
+        .pipe(plugins.autoprefixer({browsers: ['last 2 version', '> 5%']}))
+        .pipe(gulp.dest(config.temp));
+});
+
 gulp.task('clean-code', function(done: () => any) {
     var files = [].concat(config.buildTs, config.buildJs, config.buildMaps);
     clean(files, done);
     }
 );
+
+gulp.task('clean-styles', function(done: () => any) {
+    var css = [].concat(config.temp + '**/*.css');
+    clean(css, done);
+});
 
 function clean(path: string[], done: () => any ): void {
     'use strict';
