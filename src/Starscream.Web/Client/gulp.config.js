@@ -22,6 +22,8 @@ module.exports = function() {
         buildTs: build + ts,
         buildJs: build + js,
         buildHtmls: build + htmls,
+        fonts: './bower_components/font-awesome/fonts/**/*.*',
+        images: src + 'images/**/*.*',
         compiledJs: [
             build +  '**/*.module.js',
             build + js

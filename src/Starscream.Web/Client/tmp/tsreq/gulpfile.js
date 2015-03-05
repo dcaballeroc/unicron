@@ -9,6 +9,8 @@ var plugins = require('gulp-load-plugins')({ lazy: true });
 var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
 var port = config.defaultPort;
+gulp.task('help', plugins.taskListing);
+gulp.task('default', ['help']);
 gulp.task('build-dev', ['clean-code', 'vet', 'copingTs', 'copingHtmls'], function (done) {
     console.log('Compiling Typescript files for Dev');
     var tsResults = gulp.src(config.buildTs).pipe(plugins.sourcemaps.init()).pipe(tsc(config.tsc));
@@ -19,11 +21,17 @@ gulp.task('build-release', ['vet', 'clean-code'], function () {
     console.log('Compiling Typescript files for Release');
     return gulp.src(config.sourceTs).pipe(tsc(config.tsc)).pipe(gulp.dest(config.build));
 });
+gulp.task('fonts', ['clean-fonts'], function () {
+    console.log('Copying fonts');
+    return gulp.src(config.fonts).pipe(gulp.dest(config.build + 'fonts'));
+});
+gulp.task('images', ['clean-images'], function () {
+    console.log('Copying and compressing the images');
+    return gulp.src(config.images).pipe(plugins.imagemin({ optimizationLevel: 4 })).pipe(gulp.dest(config.build + 'images'));
+});
 gulp.task('serve-dev', function (callback) {
     var stream = runSequence('build-dev', 'inject', callback);
     return stream;
-});
-gulp.task('relaunch-dev', ['serve-dev'], function () {
 });
 gulp.task('dev', ['serve-dev'], function () {
     serve(true);
@@ -72,6 +80,14 @@ gulp.task('clean-styles', function (done) {
     clean(css, done);
     console.log('***Finishing to Clean Styles***');
 });
+gulp.task('clean-fonts', function (done) {
+    var fonts = [].concat(config.build + 'fonts/**/*.*');
+    clean(fonts, done);
+});
+gulp.task('clean-images', function (done) {
+    var images = [].concat(config.build + 'images/**/*.*');
+    clean(images, done);
+});
 function serve(isDev) {
     'use strict';
     startBrowserSync(isDev);
@@ -109,7 +125,7 @@ function startBrowserSync(isDev) {
         logLevel: 'debug',
         logPrefix: 'Acklen Avenue',
         notify: true,
-        reloadDelay: 4000
+        reloadDelay: 5000
     };
     browserSync(options);
 }
