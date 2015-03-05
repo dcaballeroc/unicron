@@ -65,6 +65,13 @@ module.exports = function() {
             ignorePath: '../..'
         },
          /**
+         * optimized files
+         */
+        optimized: {
+            app: 'app.js',
+            lib: 'lib.js'
+        },
+         /**
          * template cache
          */
         templateCache: {

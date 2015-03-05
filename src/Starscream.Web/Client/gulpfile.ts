@@ -164,7 +164,8 @@ gulp.task('optimize', ['serve-release'], function() {
     var assets = plugins.useref.assets({searchPath: '{' + config.root + ',' + config.bower.directory + '}'});
     var templateCache = config.temp + config.templateCache.file;
     var cssFilter = plugins.filter('**/*.css');
-    var jsFilter = plugins.filter('**/*.js');
+    var jsLibFilter = plugins.filter('**/' + config.optimized.lib);
+    var jsAppFilter = plugins.filter('**/' + config.optimized.app);
 
 
     return gulp
@@ -177,9 +178,13 @@ gulp.task('optimize', ['serve-release'], function() {
         .pipe(cssFilter)
         .pipe(plugins.csso())
         .pipe(cssFilter.restore())
-        .pipe(jsFilter)
+        .pipe(jsLibFilter)
         .pipe(plugins.uglify())
-        .pipe(jsFilter.restore())
+        .pipe(jsLibFilter.restore())
+        .pipe(jsAppFilter)
+        .pipe(plugins.ngAnnotate())
+        .pipe(plugins.uglify())
+        .pipe(jsAppFilter.restore())
         .pipe(assets.restore())
         .pipe(plugins.useref())
         .pipe(gulp.dest(config.build))
