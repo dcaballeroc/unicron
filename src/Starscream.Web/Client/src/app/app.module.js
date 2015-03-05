@@ -8,6 +8,7 @@ var app = angular.module('app', [
     'ngRoute',
     'ngResource',
     'ngSanitize',
+    'appCommon',
     'app_users'
 ]);
 // Handle routing errors and success events

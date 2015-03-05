@@ -86,9 +86,13 @@ gulp.task('optimize', ['serve-release'], function () {
     console.log('Optimizing the javascript, css, html');
     var assets = plugins.useref.assets({ searchPath: '{' + config.root + ',' + config.bower.directory + '}' });
     var templateCache = config.temp + config.templateCache.file;
+    var cssFilter = plugins.filter('**/*.css');
+    var jsFilter = plugins.filter('**/*.js');
     return gulp.src(config.buildIndex).pipe(plugins.plumber()).pipe(plugins.inject(gulp.src(templateCache, { read: false }), {
         starttag: '<!-- inject:templates:js -->'
-    })).pipe(assets).pipe(assets.restore()).pipe(plugins.useref()).pipe(gulp.dest(config.build));
+    })).pipe(assets).pipe(cssFilter).pipe(plugins.csso()).pipe(cssFilter.restore()).pipe(jsFilter).pipe(plugins.uglify()).pipe(jsFilter.restore()).pipe(assets.restore()).pipe(plugins.useref()).pipe(gulp.dest(config.build)).on('end', function () {
+        del(config.build + '/app');
+    });
 });
 gulp.task('clean-styles', function (done) {
     console.log('***Begining to Clean Styles***');

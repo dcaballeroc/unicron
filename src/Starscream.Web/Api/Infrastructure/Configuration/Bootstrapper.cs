@@ -52,7 +52,14 @@ namespace Starscream.Web.Api.Infrastructure.Configuration
                 "Client/build/app"));
             conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("build/app",
                   "Client/build/app"));
-         
+            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("styles",
+                   "Client/build/styles"));
+            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("js",
+                     "Client/build/js"));
+            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("fonts",
+                   "Client/build/fonts"));
+            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("images",
+                   "Client/build/images"));
             conventions.ViewLocationConventions.Add((viewName, model, context) => "Client/build/"+ viewName);
 
           

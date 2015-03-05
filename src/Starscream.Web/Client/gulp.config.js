@@ -71,7 +71,7 @@ module.exports = function() {
             file: 'templates.js',
             options: {
                 module: 'appCommon',
-                standAlone: false,
+                standAlone: false
                 
             }
         },

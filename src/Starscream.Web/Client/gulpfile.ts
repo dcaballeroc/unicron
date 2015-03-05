@@ -163,6 +163,8 @@ gulp.task('optimize', ['serve-release'], function() {
 
     var assets = plugins.useref.assets({searchPath: '{' + config.root + ',' + config.bower.directory + '}'});
     var templateCache = config.temp + config.templateCache.file;
+    var cssFilter = plugins.filter('**/*.css');
+    var jsFilter = plugins.filter('**/*.js');
 
 
     return gulp
@@ -172,9 +174,18 @@ gulp.task('optimize', ['serve-release'], function() {
             starttag: '<!-- inject:templates:js -->'
         }))
         .pipe(assets)
+        .pipe(cssFilter)
+        .pipe(plugins.csso())
+        .pipe(cssFilter.restore())
+        .pipe(jsFilter)
+        .pipe(plugins.uglify())
+        .pipe(jsFilter.restore())
         .pipe(assets.restore())
         .pipe(plugins.useref())
-        .pipe(gulp.dest(config.build));
+        .pipe(gulp.dest(config.build))
+        .on('end', function() {
+            del(config.build + '/app');
+        });
 });
 
 gulp.task('clean-styles', function(done: () => any) {

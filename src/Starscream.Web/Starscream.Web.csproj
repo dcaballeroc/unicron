@@ -379,14 +379,6 @@
     </Content>
     <Content Include="Client\bower_components\toastr\toastr.min.css" />
     <Content Include="Client\bower_components\toastr\toastr.min.js" />
-    <Content Include="Client\build\app\app.module.js" />
-    <Content Include="Client\build\app\common\RouteSettings.js" />
-    <Content Include="Client\build\app\users\users.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Client\build\app\users\users.js" />
-    <Content Include="Client\build\app\users\users.module.js" />
-    <Content Include="Client\build\app\users\users.routes.js" />
     <Content Include="Client\build\index.html" />
     <Content Include="Client\src\app\users\users.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -717,6 +709,8 @@
     <TypeScriptCompile Include="Client\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Client\build\app\common\" />
+    <Folder Include="Client\build\app\users\" />
     <Folder Include="Client\src\styles\" />
   </ItemGroup>
   <PropertyGroup>
