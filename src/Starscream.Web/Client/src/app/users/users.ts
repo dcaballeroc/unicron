@@ -20,13 +20,12 @@ class Users implements IUsers {
     firstNumber: number;
     secondNumber: number;
     result: number;
-    private $scope: IUsersScope;
+    static $inject: any = ['$scope'];
+    constructor( $scope: IUsersScope) {
+        $scope.vm = this;
+    }
     static controllerId(): string {
         return 'users';
-    }
-
-    constructor( $scope: IUsersScope) {
-        this.$scope = $scope;
     }
     sum(): number {
         this.result = this.firstNumber * this.secondNumber;
