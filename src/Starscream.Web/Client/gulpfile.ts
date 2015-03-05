@@ -88,7 +88,7 @@ gulp.task('templatecache', function() {
 
     return gulp
         .src(config.sourceHtmls)
-      //  .pipe(plugins.minifyHtml({empty: true}))
+        .pipe(plugins.minifyHtml({empty: true}))
         .pipe(plugins.angularTemplatecache(
             config.templateCache.file,
             config.templateCache.options
