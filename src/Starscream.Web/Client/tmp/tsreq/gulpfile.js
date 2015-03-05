@@ -33,6 +33,10 @@ gulp.task('serve-dev', function (callback) {
     var stream = runSequence('build-dev', 'inject', callback);
     return stream;
 });
+gulp.task('serve-release', function (callback) {
+    var stream = runSequence('build-release', 'inject', callback);
+    return stream;
+});
 gulp.task('dev', ['serve-dev'], function () {
     serve(true);
 });
@@ -77,6 +81,14 @@ gulp.task('clean-code', function (done) {
     var files = [].concat(config.buildTs, config.buildJs, config.buildMaps, config.buildHtmls);
     clean(files, done);
     console.log('***Finishing to Clean Code***');
+});
+gulp.task('optimize', ['serve-release'], function () {
+    console.log('Optimizing the javascript, css, html');
+    var assets = plugins.useref.assets({ searchPath: '{' + config.root + ',' + config.bower.directory + '}' });
+    var templateCache = config.temp + config.templateCache.file;
+    return gulp.src(config.buildIndex).pipe(plugins.plumber()).pipe(plugins.inject(gulp.src(templateCache, { read: false }), {
+        starttag: '<!-- inject:templates:js -->'
+    })).pipe(assets).pipe(assets.restore()).pipe(plugins.useref()).pipe(gulp.dest(config.build));
 });
 gulp.task('clean-styles', function (done) {
     console.log('***Begining to Clean Styles***');

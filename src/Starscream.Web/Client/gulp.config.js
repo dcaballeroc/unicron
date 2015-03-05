@@ -22,6 +22,7 @@ module.exports = function() {
         buildTs: build + ts,
         buildJs: build + js,
         buildHtmls: build + htmls,
+        root: root,
         fonts: './bower_components/font-awesome/fonts/**/*.*',
         images: src + 'images/**/*.*',
         compiledJs: [
@@ -70,7 +71,8 @@ module.exports = function() {
             file: 'templates.js',
             options: {
                 module: 'appCommon',
-                standAlone: false  
+                standAlone: false,
+                
             }
         },
        /**
