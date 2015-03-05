@@ -46,7 +46,7 @@ gulp.task('copyingHtmls', function () {
 });
 gulp.task('templatecache', function () {
     console.log('Creating AngularJS $templateCache');
-    return gulp.src(config.sourceHtmls).pipe(plugins.angularTemplatecache(config.templateCache.file, config.templateCache.options)).pipe(gulp.dest(config.temp));
+    return gulp.src(config.sourceHtmls).pipe(plugins.minifyHtml({ empty: true })).pipe(plugins.angularTemplatecache(config.templateCache.file, config.templateCache.options)).pipe(gulp.dest(config.temp));
 });
 gulp.task('vet', function () {
     console.log('Analyzing sources with TSLint, JSHint and JSCS');
@@ -67,7 +67,7 @@ gulp.task('wiredep', function () {
     var wiredep = require('wiredep').stream;
     return gulp.src(config.index).pipe(wiredep(options)).pipe(plugins.inject(gulp.src(config.compiledJs))).pipe(gulp.dest(config.build));
 });
-gulp.task('inject', ['wiredep', 'styles'], function () {
+gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function () {
     console.log('Wire up the app css into the html, and call wiredep ');
     var stream = gulp.src(config.buildIndex).pipe(plugins.inject(gulp.src(config.css))).pipe(gulp.dest(config.build));
     return stream;

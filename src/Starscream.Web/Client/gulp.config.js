@@ -70,8 +70,7 @@ module.exports = function() {
             file: 'templates.js',
             options: {
                 module: 'appCommon',
-                standAlone: false,
-                root: 'build/'
+                standAlone: false  
             }
         },
        /**
