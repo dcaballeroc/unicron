@@ -6,7 +6,7 @@
 interface IAppCommon extends ng.IModule { }
 
 // Create the module and define its dependencies.
-var app_common: IAppCommon = angular.module('app_common', [
+var appCommon: IAppCommon = angular.module('appCommon', [
     // Angular modules 
     'ngResource',       // $resource for REST queries
     'ngAnimate',        // animations
@@ -18,5 +18,5 @@ var app_common: IAppCommon = angular.module('app_common', [
 ]);
 
 // Execute bootstrapping code and any dependencies.
-app_common.run([ '$rootScope', '$route', ( $rootScope: ng.IRootScopeService, $route: ng.route.IRoute) => {
+appCommon.run([ '$rootScope', '$route', ( $rootScope: ng.IRootScopeService, $route: ng.route.IRoute) => {
 }]);

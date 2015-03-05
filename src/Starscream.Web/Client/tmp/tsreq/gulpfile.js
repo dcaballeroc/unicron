@@ -11,7 +11,7 @@ var runSequence = require('run-sequence');
 var port = config.defaultPort;
 gulp.task('help', plugins.taskListing);
 gulp.task('default', ['help']);
-gulp.task('build-dev', ['clean-code', 'vet', 'copingTs', 'copingHtmls'], function (done) {
+gulp.task('build-dev', ['clean-code', 'vet', 'copyingTs', 'copyingHtmls'], function (done) {
     console.log('Compiling Typescript files for Dev');
     var tsResults = gulp.src(config.buildTs).pipe(plugins.sourcemaps.init()).pipe(tsc(config.tsc));
     var stream = tsResults.pipe(plugins.sourcemaps.write(config.sourceMaps.pathToWrite, config.sourceMaps.configMaps)).pipe(gulp.dest(config.build));
@@ -36,13 +36,17 @@ gulp.task('serve-dev', function (callback) {
 gulp.task('dev', ['serve-dev'], function () {
     serve(true);
 });
-gulp.task('copingTs', function () {
+gulp.task('copyingTs', function () {
     console.log('Copying typescript files');
     return gulp.src(config.sourceTs).pipe(gulp.dest(config.build));
 });
-gulp.task('copingHtmls', function () {
+gulp.task('copyingHtmls', function () {
     console.log('Copying Html files');
     return gulp.src(config.sourceHtmls).pipe(gulp.dest(config.build));
+});
+gulp.task('templatecache', function () {
+    console.log('Creating AngularJS $templateCache');
+    return gulp.src(config.sourceHtmls).pipe(plugins.angularTemplatecache(config.templateCache.file, config.templateCache.options)).pipe(gulp.dest(config.temp));
 });
 gulp.task('vet', function () {
     console.log('Analyzing sources with TSLint, JSHint and JSCS');

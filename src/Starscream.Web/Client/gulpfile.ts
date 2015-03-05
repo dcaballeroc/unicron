@@ -13,7 +13,7 @@ var port = config.defaultPort;
 gulp.task('help', plugins.taskListing);
 gulp.task('default', ['help']);
 
-gulp.task('build-dev', ['clean-code', 'vet', 'copingTs', 'copingHtmls'] , function(done: () => any) {
+gulp.task('build-dev', ['clean-code', 'vet', 'copyingTs', 'copyingHtmls'] , function(done: () => any) {
         console.log('Compiling Typescript files for Dev');
         var tsResults = gulp
                         .src(config.buildTs)
@@ -67,7 +67,7 @@ gulp.task('dev', ['serve-dev'], function() {
       serve(true);
     }
     );
-gulp.task('copingTs', function() {
+gulp.task('copyingTs', function() {
     console.log('Copying typescript files');
     return gulp
             .src(config.sourceTs)
@@ -75,7 +75,7 @@ gulp.task('copingTs', function() {
     }
 
 );
-gulp.task('copingHtmls', function() {
+gulp.task('copyingHtmls', function() {
     console.log('Copying Html files');
     return gulp
             .src(config.sourceHtmls)
@@ -83,6 +83,18 @@ gulp.task('copingHtmls', function() {
     }
 
 );
+gulp.task('templatecache', function() {
+    console.log('Creating AngularJS $templateCache');
+
+    return gulp
+        .src(config.sourceHtmls)
+      //  .pipe(plugins.minifyHtml({empty: true}))
+        .pipe(plugins.angularTemplatecache(
+            config.templateCache.file,
+            config.templateCache.options
+            ))
+        .pipe(gulp.dest(config.temp));
+});
 gulp.task('vet', function() {
     console.log('Analyzing sources with TSLint, JSHint and JSCS');
     var allTs: string[] = config.sourceTs;

@@ -63,6 +63,17 @@ module.exports = function() {
             directory: './bower_components/',
             ignorePath: '../..'
         },
+         /**
+         * template cache
+         */
+        templateCache: {
+            file: 'templates.js',
+            options: {
+                module: 'appCommon',
+                standAlone: false,
+                root: 'build/'
+            }
+        },
        /**
          * Nancy Settings
          */
