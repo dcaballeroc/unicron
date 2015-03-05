@@ -29,7 +29,7 @@ class Users implements IUsers {
         this.$scope = $scope;
     }
     sum(): number {
-        this.result = this.firstNumber + this.secondNumber;
+        this.result = this.firstNumber * this.secondNumber;
         return this.result;
     }
 }

@@ -7,17 +7,26 @@ var config = require('./gulp.config')();
 var args = require('yargs').argv;
 var plugins = require('gulp-load-plugins')({ lazy: true });
 var browserSync = require('browser-sync');
+var runSequence = require('run-sequence');
 var port = config.defaultPort;
-gulp.task('build-dev', ['vet', 'clean-code', 'copingTs', 'copingHtmls'], function () {
+gulp.task('build-dev', ['clean-code', 'vet', 'copingTs', 'copingHtmls'], function (done) {
     console.log('Compiling Typescript files for Dev');
     var tsResults = gulp.src(config.buildTs).pipe(plugins.sourcemaps.init()).pipe(tsc(config.tsc));
-    return tsResults.pipe(plugins.sourcemaps.write(config.sourceMaps.pathToWrite, config.sourceMaps.configMaps)).pipe(gulp.dest(config.build));
+    var stream = tsResults.pipe(plugins.sourcemaps.write(config.sourceMaps.pathToWrite, config.sourceMaps.configMaps)).pipe(gulp.dest(config.build));
+    return stream;
 });
 gulp.task('build-release', ['vet', 'clean-code'], function () {
     console.log('Compiling Typescript files for Release');
     return gulp.src(config.sourceTs).pipe(tsc(config.tsc)).pipe(gulp.dest(config.build));
 });
-gulp.task('serve-dev', [], function () {
+gulp.task('serve-dev', function (callback) {
+    var stream = runSequence('build-dev', 'inject', callback);
+    return stream;
+});
+gulp.task('relaunch-dev', ['serve-dev'], function () {
+});
+gulp.task('dev', ['serve-dev'], function () {
+    serve(true);
 });
 gulp.task('copingTs', function () {
     console.log('Copying typescript files');
@@ -30,7 +39,8 @@ gulp.task('copingHtmls', function () {
 gulp.task('vet', function () {
     console.log('Analyzing sources with TSLint, JSHint and JSCS');
     var allTs = config.sourceTs;
-    return gulp.src(allTs).pipe(plugins.if(args.verbose, plugins.print())).pipe(plugins.tslint()).pipe(plugins.tslint.report('verbose'));
+    var stream = gulp.src(allTs).pipe(plugins.if(args.verbose, plugins.print())).pipe(plugins.tslint()).pipe(plugins.tslint.report('verbose'));
+    return stream;
 });
 gulp.task('styles', ['clean-styles'], function () {
     console.log('Compiling Less --> CSS');
@@ -47,16 +57,25 @@ gulp.task('wiredep', function () {
 });
 gulp.task('inject', ['wiredep', 'styles'], function () {
     console.log('Wire up the app css into the html, and call wiredep ');
-    return gulp.src(config.buildIndex).pipe(plugins.inject(gulp.src(config.css))).pipe(gulp.dest(config.build));
+    var stream = gulp.src(config.buildIndex).pipe(plugins.inject(gulp.src(config.css))).pipe(gulp.dest(config.build));
+    return stream;
 });
 gulp.task('clean-code', function (done) {
+    console.log('***Begining to Clean Code***');
     var files = [].concat(config.buildTs, config.buildJs, config.buildMaps, config.buildHtmls);
     clean(files, done);
+    console.log('***Finishing to Clean Code***');
 });
 gulp.task('clean-styles', function (done) {
+    console.log('***Begining to Clean Styles***');
     var css = [].concat(config.temp + '**/*.css');
     clean(css, done);
+    console.log('***Finishing to Clean Styles***');
 });
+function serve(isDev) {
+    'use strict';
+    startBrowserSync(isDev);
+}
 function clean(path, done) {
     'use strict';
     console.log('Cleaning: ' + plugins.util.colors.blue(path));
@@ -72,29 +91,25 @@ function startBrowserSync(isDev) {
     if (args.nosync || browserSync.active) {
         return;
     }
+    ;
+    console.log('Starting browser-sync on port ' + port);
     if (isDev) {
-        gulp.watch([config.less], ['styles']).on('change', changeEvent);
+        gulp.watch([config.less, config.sourceTs, config.sourceHtmls], ['serve-dev', browserSync.reload]).on('change', changeEvent);
     }
     var options = {
         proxy: 'localhost:' + port,
         port: 3000,
         files: isDev ? [
             config.build + '**/*.*',
-            '!' + config.less,
             config.temp + '**/*.css'
         ] : [],
-        ghostMode: {
-            clicks: true,
-            location: false,
-            forms: true,
-            scroll: true
-        },
+        ghostMode: true,
         injectChanges: true,
         logFileChanges: true,
         logLevel: 'debug',
-        logPrefix: 'gulp-patterns',
+        logPrefix: 'Acklen Avenue',
         notify: true,
-        reloadDelay: 0 // 1000
+        reloadDelay: 4000
     };
     browserSync(options);
 }

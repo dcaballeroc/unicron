@@ -18,7 +18,7 @@ typings/
 *.map.*
 *.js.map
 Client/src/app/*/*.js
-Client/tmp/
+Client/tmp/*.*
 
 #OS junk files
 [Tt]humbs.db
