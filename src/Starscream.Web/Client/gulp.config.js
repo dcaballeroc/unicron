@@ -64,6 +64,10 @@ module.exports = function() {
             directory: './bower_components/',
             ignorePath: '../..'
         },
+        packages : [
+            './package.json',
+            './bower.json'
+        ],
          /**
          * optimized files
          */
