@@ -28,7 +28,7 @@ class Users implements IUsers {
         return 'users';
     }
     sum(): number {
-        this.result = this.firstNumber * this.secondNumber;
+        this.result = this.firstNumber + this.secondNumber;
         return this.result;
     }
 }

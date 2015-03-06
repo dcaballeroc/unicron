@@ -40,6 +40,9 @@ gulp.task('serve-release', function (callback) {
 gulp.task('dev', ['serve-dev'], function () {
     serve(true);
 });
+gulp.task('release', ['optimize'], function () {
+    serve(false);
+});
 gulp.task('copyingTs', function () {
     console.log('Copying typescript files');
     return gulp.src(config.sourceTs).pipe(gulp.dest(config.build));
@@ -156,6 +159,9 @@ function startBrowserSync(isDev) {
     console.log('Starting browser-sync on port ' + port);
     if (isDev) {
         gulp.watch([config.less, config.sourceTs, config.sourceHtmls], ['serve-dev', browserSync.reload]).on('change', changeEvent);
+    }
+    else {
+        gulp.watch([config.less, config.sourceTs, config.sourceHtmls], ['optimize', browserSync.reload]).on('change', changeEvent);
     }
     var options = {
         proxy: 'localhost:' + port,
