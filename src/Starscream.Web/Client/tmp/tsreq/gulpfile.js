@@ -78,7 +78,7 @@ gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function () {
 });
 gulp.task('clean-code', function (done) {
     console.log('***Begining to Clean Code***');
-    var files = [].concat(config.buildTs, config.buildJs, config.buildMaps, config.buildHtmls);
+    var files = [].concat(config.buildTs, config.buildJs, config.buildMaps, config.buildHtmls, config.build + '/js');
     clean(files, done);
     console.log('***Finishing to Clean Code***');
 });
@@ -97,7 +97,7 @@ gulp.task('optimize', ['serve-release'], function () {
 });
 gulp.task('clean-styles', function (done) {
     console.log('***Begining to Clean Styles***');
-    var css = [].concat(config.temp + '**/*.css');
+    var css = [].concat(config.temp + '**/*.css', config.build + '/styles');
     clean(css, done);
     console.log('***Finishing to Clean Styles***');
 });

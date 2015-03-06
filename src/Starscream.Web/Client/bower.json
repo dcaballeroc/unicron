@@ -1,12 +1,12 @@
 {
-  "name": "Pluralsight-Gulp",
+  "name": "Starscream-Darth-Vader",
   "version": "0.2.0",
-  "description": "Starter Code for Pluralsight Course JavaScript Build Automation with Gulp.js",
+  "description": "Starter Code for Acklen Avenue projects",
   "authors": [
-    "John Papa"
+    "Dante Dubon"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/johnpapa/pluralsight-gulp",
+  "homepage": "https://github.com/AcklenAvenue/Starscream",
   "ignore": [
     "**/.*",
     "node_modules",
