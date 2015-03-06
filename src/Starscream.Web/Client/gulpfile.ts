@@ -185,8 +185,12 @@ gulp.task('optimize', ['serve-release'], function() {
         .pipe(plugins.ngAnnotate())
         .pipe(plugins.uglify())
         .pipe(jsAppFilter.restore())
+        .pipe(plugins.rev())
         .pipe(assets.restore())
         .pipe(plugins.useref())
+        .pipe(plugins.revReplace())
+        .pipe(gulp.dest(config.build))
+        .pipe(plugins.rev.manifest())
         .pipe(gulp.dest(config.build))
         .on('end', function() {
             del(config.build + '/app');

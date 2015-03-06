@@ -91,7 +91,7 @@ gulp.task('optimize', ['serve-release'], function () {
     var jsAppFilter = plugins.filter('**/' + config.optimized.app);
     return gulp.src(config.buildIndex).pipe(plugins.plumber()).pipe(plugins.inject(gulp.src(templateCache, { read: false }), {
         starttag: '<!-- inject:templates:js -->'
-    })).pipe(assets).pipe(cssFilter).pipe(plugins.csso()).pipe(cssFilter.restore()).pipe(jsLibFilter).pipe(plugins.uglify()).pipe(jsLibFilter.restore()).pipe(jsAppFilter).pipe(plugins.ngAnnotate()).pipe(plugins.uglify()).pipe(jsAppFilter.restore()).pipe(assets.restore()).pipe(plugins.useref()).pipe(gulp.dest(config.build)).on('end', function () {
+    })).pipe(assets).pipe(cssFilter).pipe(plugins.csso()).pipe(cssFilter.restore()).pipe(jsLibFilter).pipe(plugins.uglify()).pipe(jsLibFilter.restore()).pipe(jsAppFilter).pipe(plugins.ngAnnotate()).pipe(plugins.uglify()).pipe(jsAppFilter.restore()).pipe(plugins.rev()).pipe(assets.restore()).pipe(plugins.useref()).pipe(plugins.revReplace()).pipe(gulp.dest(config.build)).pipe(plugins.rev.manifest()).pipe(gulp.dest(config.build)).on('end', function () {
         del(config.build + '/app');
     });
 });
