@@ -15,21 +15,10 @@ gulp.task('default', ['help']);
 
 gulp.task('build-dev', ['clean-code', 'vet', 'copyingTs', 'copyingHtmls'] , function(done: () => any) {
         console.log('Compiling Typescript files for Dev');
-        var tsResults = gulp
-                        .src(config.buildTs)
-                        .pipe(plugins.sourcemaps.init())
-                        .pipe(tsc(config.tsc));
-        var stream = tsResults
-            .pipe(plugins.sourcemaps.write(
-                config.sourceMaps.pathToWrite,
-                config.sourceMaps.configMaps
-            ))
-            .pipe(
-            gulp.dest(config.build)
-            );
-        return stream;
+       return compile_ts_with_maps(config.buildTs, config.build);
     }
 );
+
 
 gulp.task('build-release', ['vet', 'clean-code'], function() {
     console.log('Compiling Typescript files for Release');
@@ -67,6 +56,12 @@ gulp.task('serve-release', function (callback: () => any) {
     return stream;
     }
 );
+gulp.task('compile-specs', function() {
+    
+    });
+gulp.task('test', ['build-dev', 'templatecache'], function(done: () => any) {
+//    startTests(true /* singleRun */, done);
+});
 
 gulp.task('dev', ['serve-dev'], function() {
       serve(true);
@@ -295,4 +290,20 @@ function startBrowserSync(isDev: boolean): void{
     
      browserSync(options);
    
+}
+function compile_ts_with_maps(source: string, dest: string): any{
+    'use strict';
+     var tsResults = gulp
+                        .src(source)
+                        .pipe(plugins.sourcemaps.init())
+                        .pipe(tsc(config.tsc));
+        var stream = tsResults
+            .pipe(plugins.sourcemaps.write(
+                config.sourceMaps.pathToWrite,
+                config.sourceMaps.configMaps
+            ))
+            .pipe(
+            gulp.dest(dest)
+            );
+        return stream;
 }

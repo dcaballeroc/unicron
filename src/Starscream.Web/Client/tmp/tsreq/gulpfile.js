@@ -13,10 +13,27 @@ gulp.task('help', plugins.taskListing);
 gulp.task('default', ['help']);
 gulp.task('build-dev', ['clean-code', 'vet', 'copyingTs', 'copyingHtmls'], function (done) {
     console.log('Compiling Typescript files for Dev');
-    var tsResults = gulp.src(config.buildTs).pipe(plugins.sourcemaps.init()).pipe(tsc(config.tsc));
-    var stream = tsResults.pipe(plugins.sourcemaps.write(config.sourceMaps.pathToWrite, config.sourceMaps.configMaps)).pipe(gulp.dest(config.build));
-    return stream;
+    /*    var tsResults = gulp
+                        .src(config.buildTs)
+                        .pipe(plugins.sourcemaps.init())
+                        .pipe(tsc(config.tsc));
+        var stream = tsResults
+            .pipe(plugins.sourcemaps.write(
+                config.sourceMaps.pathToWrite,
+                config.sourceMaps.configMaps
+            ))
+            .pipe(
+            gulp.dest(config.build)
+            );
+        return stream;*/
+    return compile_ts_with_maps(config.buildTs, config.build);
 });
+function compile_ts_with_maps(source, dest) {
+    'use strict';
+    var tsResults = gulp.src(source).pipe(plugins.sourcemaps.init()).pipe(tsc(config.tsc));
+    var stream = tsResults.pipe(plugins.sourcemaps.write(config.sourceMaps.pathToWrite, config.sourceMaps.configMaps)).pipe(gulp.dest(dest));
+    return stream;
+}
 gulp.task('build-release', ['vet', 'clean-code'], function () {
     console.log('Compiling Typescript files for Release');
     return gulp.src(config.sourceTs).pipe(tsc(config.tsc)).pipe(gulp.dest(config.build));
@@ -36,6 +53,11 @@ gulp.task('serve-dev', function (callback) {
 gulp.task('serve-release', function (callback) {
     var stream = runSequence('build-release', 'inject', callback);
     return stream;
+});
+gulp.task('compile-specs', function () {
+});
+gulp.task('test', ['build-dev', 'templatecache'], function (done) {
+    //    startTests(true /* singleRun */, done);
 });
 gulp.task('dev', ['serve-dev'], function () {
     serve(true);
