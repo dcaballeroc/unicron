@@ -1,6 +1,7 @@
 module.exports = function() {
     var ts = '**/*.ts';
     var js = '**/*.js';
+    var specs = '**/*.specs.*';
     var htmls = '**/*.html';
     var root = './';
     var src = root + 'src/';
@@ -13,6 +14,7 @@ module.exports = function() {
          */
         sourceTs:[
             src + ts,
+            '!'+src+specs
         ],
         sourceHtmls: [
                         src + htmls,

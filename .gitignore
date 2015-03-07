@@ -17,7 +17,7 @@ typings/
 #.tmp
 *.map.*
 *.js.map
-Client/src/app/*/*.js
+src/Starscream.Web/Client/src/app/**/*.js
 Client/tmp/*.*
 
 #OS junk files
