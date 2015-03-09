@@ -1,4 +1,3 @@
-
 /// <reference path="../../../typings/mocha/mocha.d.ts" />
 /// <reference path="../../../typings/chai/chai.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
@@ -8,27 +7,24 @@
 /**
  * Module dependencies.
  */
-
-
 /**
  * Globals
  */
-
-var expect: any = chai.expect;
-describe('Users', () => {
-    var controller: IUsers;
-    var scope: IUsersScope;
+var expect = chai.expect;
+describe('Users', function () {
+    var controller;
+    var scope;
     beforeEach(angular.mock.module('app_users'));
-    beforeEach(angular.mock.inject(function($controller: ng.IControllerService, $rootScope: ng.IRootScopeService) {
-            scope = <IUsersScope>$rootScope.$new();
-            controller = $controller('users', {$scope: scope});
-        }
-        )
-    );
+    beforeEach(angular.mock.inject(function ($controller, $rootScope) {
+        scope = $rootScope.$new();
+        controller = $controller('users', { $scope: scope });
+    }));
     it('should be able to add 2 plus 2', function () {
         controller.firstNumber = 2;
         controller.secondNumber = 2;
         controller.sum();
         expect(controller.result).to.equal(4);
-        });
+    });
 });
+
+//# sourceMappingURL=../../build/users/users.specs.js.map

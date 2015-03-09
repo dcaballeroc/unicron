@@ -1,29 +1,37 @@
 module.exports = function() {
     var ts = '**/*.ts';
     var js = '**/*.js';
-    var specs = '**/*.specs.*';
+    var specs = '**/*.specs.ts';
     var htmls = '**/*.html';
     var root = './';
     var src = root + 'src/';
     var build = root + 'build/';
     var temp = root + '.tmp/';
     var index = src + 'index.html';
+    var wiredep = require('wiredep');
+    var report = './report/';
+    var bowerFiles = wiredep({devDependencies: true})['js'];
+    var buildSpecs =  src + 'specs/';
     var config = {
         /**
          * Files paths
          */
         sourceTs:[
             src + ts,
-            '!'+src+specs
+            '!' + src + specs
         ],
         sourceHtmls: [
                         src + htmls,
                         '!' + index
                      ],
+        sourceSpecs: [
+            src + 'specs/' + specs
+        ],
         build: './build/',
         buildTs: build + ts,
         buildJs: build + js,
         buildHtmls: build + htmls,
+        buildSpecs: buildSpecs,
         root: root,
         fonts: './bower_components/font-awesome/fonts/**/*.*',
         images: src + 'images/**/*.*',
@@ -88,6 +96,11 @@ module.exports = function() {
                 
             }
         },
+          /**
+         * Karma and testing settings
+         */
+        specHelpers: [src + 'test-helpers/*.*'],
+        serverIntegrationSpecs: [src + 'specsIntegration/**/*.spec.*'],
        /**
          * Nancy Settings
          */
@@ -101,5 +114,34 @@ module.exports = function() {
         };
         return options;
     };
+    config.karma = getKarmaOptions();
+    
     return config;
+    
+    function getKarmaOptions() {
+        var options = {
+            files: [].concat(
+                bowerFiles,
+                config.specHelpers,
+                build + '**/*.module.js',
+                build + '**/*.js',
+                buildSpecs + '**/*.js',
+                temp + config.templateCache.file,
+                config.serverIntegrationSpecs
+              
+            ),
+            exclude: [],
+            coverage: {
+                dir: report + 'coverage',
+                reporters: [
+                    {type: 'html', subdir: 'report-html'},
+                    {type: 'lcov', subdir: 'report-lcov'},
+                    {type: 'text-summary'}
+                ]
+            },
+            preprocessors: {}
+        };
+        options.preprocessors[src + '**/!(*.spec)+(.js)'] = ['coverage'];
+        return options;
+    }
 };

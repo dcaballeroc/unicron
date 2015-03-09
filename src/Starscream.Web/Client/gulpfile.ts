@@ -57,10 +57,10 @@ gulp.task('serve-release', function (callback: () => any) {
     }
 );
 gulp.task('compile-specs', function() {
-    
+    compile_ts_with_maps(config.sourceSpecs, config.buildSpecs);
     });
-gulp.task('test', ['build-dev', 'templatecache'], function(done: () => any) {
-//    startTests(true /* singleRun */, done);
+gulp.task('test', ['build-dev', 'templatecache','compile-specs'], function(done: () => any) {
+    startTests(true /* singleRun */, done);
 });
 
 gulp.task('dev', ['serve-dev'], function() {
@@ -290,6 +290,29 @@ function startBrowserSync(isDev: boolean): void{
     
      browserSync(options);
    
+}
+function startTests(singleRun: boolean, done: any) {
+    'use strict';
+    var karma = require('karma').server;
+    var excludeFiles = [];
+    var serverSpecs = config.serverIntegrationSpecs;
+    
+    excludeFiles = serverSpecs;
+
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        exclude: excludeFiles,
+        singleRun: singleRun
+    }, karmaCompleted);
+
+    function karmaCompleted(karmaResult: any) {
+        console.log('Karma completed!');
+        if (karmaResult === 1) {
+            done('karma: tests failed with code ' + karmaResult);
+        } else {
+            done();
+        }
+    }
 }
 function compile_ts_with_maps(source: string, dest: string): any{
     'use strict';

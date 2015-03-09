@@ -13,27 +13,8 @@ gulp.task('help', plugins.taskListing);
 gulp.task('default', ['help']);
 gulp.task('build-dev', ['clean-code', 'vet', 'copyingTs', 'copyingHtmls'], function (done) {
     console.log('Compiling Typescript files for Dev');
-    /*    var tsResults = gulp
-                        .src(config.buildTs)
-                        .pipe(plugins.sourcemaps.init())
-                        .pipe(tsc(config.tsc));
-        var stream = tsResults
-            .pipe(plugins.sourcemaps.write(
-                config.sourceMaps.pathToWrite,
-                config.sourceMaps.configMaps
-            ))
-            .pipe(
-            gulp.dest(config.build)
-            );
-        return stream;*/
     return compile_ts_with_maps(config.buildTs, config.build);
 });
-function compile_ts_with_maps(source, dest) {
-    'use strict';
-    var tsResults = gulp.src(source).pipe(plugins.sourcemaps.init()).pipe(tsc(config.tsc));
-    var stream = tsResults.pipe(plugins.sourcemaps.write(config.sourceMaps.pathToWrite, config.sourceMaps.configMaps)).pipe(gulp.dest(dest));
-    return stream;
-}
 gulp.task('build-release', ['vet', 'clean-code'], function () {
     console.log('Compiling Typescript files for Release');
     return gulp.src(config.sourceTs).pipe(tsc(config.tsc)).pipe(gulp.dest(config.build));
@@ -55,9 +36,10 @@ gulp.task('serve-release', function (callback) {
     return stream;
 });
 gulp.task('compile-specs', function () {
+    compile_ts_with_maps(config.sourceSpecs, config.buildSpecs);
 });
-gulp.task('test', ['build-dev', 'templatecache'], function (done) {
-    //    startTests(true /* singleRun */, done);
+gulp.task('test', ['build-dev', 'templatecache', 'compile-specs'], function (done) {
+    startTests(true, done);
 });
 gulp.task('dev', ['serve-dev'], function () {
     serve(true);
@@ -201,4 +183,31 @@ function startBrowserSync(isDev) {
         reloadDelay: 5000
     };
     browserSync(options);
+}
+function startTests(singleRun, done) {
+    'use strict';
+    var karma = require('karma').server;
+    var excludeFiles = [];
+    var serverSpecs = config.serverIntegrationSpecs;
+    excludeFiles = serverSpecs;
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        exclude: excludeFiles,
+        singleRun: singleRun
+    }, karmaCompleted);
+    function karmaCompleted(karmaResult) {
+        console.log('Karma completed!');
+        if (karmaResult === 1) {
+            done('karma: tests failed with code ' + karmaResult);
+        }
+        else {
+            done();
+        }
+    }
+}
+function compile_ts_with_maps(source, dest) {
+    'use strict';
+    var tsResults = gulp.src(source).pipe(plugins.sourcemaps.init()).pipe(tsc(config.tsc));
+    var stream = tsResults.pipe(plugins.sourcemaps.write(config.sourceMaps.pathToWrite, config.sourceMaps.configMaps)).pipe(gulp.dest(dest));
+    return stream;
 }
