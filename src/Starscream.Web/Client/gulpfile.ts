@@ -59,7 +59,7 @@ gulp.task('serve-release', function (callback: () => any) {
 gulp.task('compile-specs', function() {
     compile_ts_with_maps(config.sourceSpecs, config.buildSpecs);
     });
-gulp.task('test', ['build-dev', 'templatecache','compile-specs'], function(done: () => any) {
+gulp.task('test', ['build-dev', 'templatecache', 'compile-specs'], function(done: () => any) {
     startTests(true /* singleRun */, done);
 });
 
@@ -89,7 +89,7 @@ gulp.task('copyingHtmls', ['lintHtmls'], function() {
 
 );
 
-gulp.task('lintHtmls', function(){
+gulp.task('lintHtmls', function() {
     console.log('Linting HTML files');
     return gulp
             .src(config.sourceHtmls)

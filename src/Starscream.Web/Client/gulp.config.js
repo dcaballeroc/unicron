@@ -141,7 +141,7 @@ module.exports = function() {
             },
             preprocessors: {}
         };
-        options.preprocessors[src + '**/!(*.spec)+(.js)'] = ['coverage'];
+        options.preprocessors['!' + buildSpecs + '**/*.js'] = ['coverage'];
         return options;
     }
 };

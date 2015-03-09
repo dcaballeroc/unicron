@@ -51,9 +51,13 @@ gulp.task('copyingTs', function () {
     console.log('Copying typescript files');
     return gulp.src(config.sourceTs).pipe(gulp.dest(config.build));
 });
-gulp.task('copyingHtmls', function () {
+gulp.task('copyingHtmls', ['lintHtmls'], function () {
     console.log('Copying Html files');
     return gulp.src(config.sourceHtmls).pipe(gulp.dest(config.build));
+});
+gulp.task('lintHtmls', function () {
+    console.log('Linting HTML files');
+    return gulp.src(config.sourceHtmls).pipe(plugins.htmlhint()).pipe(plugins.htmlhint.failReporter());
 });
 gulp.task('templatecache', function () {
     console.log('Creating AngularJS $templateCache');
