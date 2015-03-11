@@ -43,6 +43,11 @@ gulp.task('compile-specs', function () {
 gulp.task('test', ['build-dev', 'templatecache', 'compile-specs'], function (done) {
     startTests(true, done);
 });
+gulp.task('autoTest', ['build-dev', 'templatecache', 'compile-specs'], function (done) {
+    gulp.watch([config.sourceTs], ['build-dev']).on('change', changeEvent);
+    gulp.watch([config.sourceSpecs], ['compile-specs']).on('change', changeEvent);
+    startTests(false, done);
+});
 gulp.task('test-for-build', ['compile-specs'], function (done) {
     startTests(true, done);
 });
