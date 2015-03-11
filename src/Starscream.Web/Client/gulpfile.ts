@@ -8,6 +8,8 @@ var args = require('yargs').argv;
 var plugins = require('gulp-load-plugins')({lazy: true});
 var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
+var path = require('path');
+var _ = require('lodash');
 var port = config.defaultPort;
 
 gulp.task('help', plugins.taskListing);
@@ -47,12 +49,12 @@ gulp.task('images', ['clean-images'], function() {
 });
 
 gulp.task('serve-dev', function(callback: () => any) {
-    var stream = runSequence('build-dev', 'inject', callback);
+    var stream = runSequence('build-dev', 'inject', 'test-for-build', callback);
     return stream;
     }
 );
 gulp.task('serve-release', function (callback: () => any) {
-    var stream = runSequence('build-release', 'inject', callback);
+    var stream = runSequence('build-release', 'inject', 'test-for-build', callback);
     return stream;
     }
 );
@@ -62,13 +64,18 @@ gulp.task('compile-specs', function() {
 gulp.task('test', ['build-dev', 'templatecache', 'compile-specs'], function(done: () => any) {
     startTests(true /* singleRun */, done);
 });
+gulp.task('test-for-build', ['compile-specs'], function(done: () => any) {
+    startTests(true /* singleRun */, done);
+});
 
-gulp.task('dev', ['serve-dev'], function() {
+gulp.task('dev', ['serve-dev', 'fonts', 'images'], function() {
       serve(true);
+      notifyBuilding('gulp build', 'Deployed as Dev', 'Running `gulp dev`');
     }
 );
-gulp.task('release', ['optimize'], function() {
+gulp.task('release', ['optimize',  'fonts', 'images'], function() {
     serve(false);
+     notifyBuilding('gulp build', 'Deployed as Release', 'Running `gulp release`');
     }
 );
 
@@ -338,4 +345,29 @@ function compile_ts_with_maps(source: string, dest: string): any{
             gulp.dest(dest)
             );
         return stream;
+}
+function notify(options: any) {
+    'use strict';
+    var notifier = require('node-notifier');
+    var notifyOptions = {
+        sound: 'Bottle',
+        contentImage: path.join(__dirname, 'gulp.png'),
+        icon: path.join(__dirname, 'gulp.png')
+    };
+    _.assign(notifyOptions, options);
+    notifier.notify(notifyOptions);
+}
+
+function notifyBuilding(title: string, subtittle: string, message: string) {
+    'use strict';
+    console.log('Building everything');
+
+    var msg = {
+        title: title,
+        subtitle: subtittle,
+        message: message
+    };
+   
+    console.log(msg);
+    notify(msg);
 }

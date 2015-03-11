@@ -18,8 +18,8 @@ typings/
 *.map.*
 *.js.map
 src/Starscream.Web/Client/src/app/**/*.js
-src/Starscream.Web/Client/src/report/**/*
-src/Starscream.Web/Client/tmp
+src/Starscream.Web/Client/src/report/coverage/**/*.*
+/src/Starscream.Web/Client/tmp/**/*.*
 Client/tmp/*.*
 
 #OS junk files

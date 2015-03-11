@@ -8,6 +8,8 @@ var args = require('yargs').argv;
 var plugins = require('gulp-load-plugins')({ lazy: true });
 var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
+var path = require('path');
+var _ = require('lodash');
 var port = config.defaultPort;
 gulp.task('help', plugins.taskListing);
 gulp.task('default', ['help']);
@@ -28,11 +30,11 @@ gulp.task('images', ['clean-images'], function () {
     return gulp.src(config.images).pipe(plugins.imagemin({ optimizationLevel: 4 })).pipe(gulp.dest(config.build + 'images'));
 });
 gulp.task('serve-dev', function (callback) {
-    var stream = runSequence('build-dev', 'inject', callback);
+    var stream = runSequence('build-dev', 'inject', 'test-for-build', callback);
     return stream;
 });
 gulp.task('serve-release', function (callback) {
-    var stream = runSequence('build-release', 'inject', callback);
+    var stream = runSequence('build-release', 'inject', 'test-for-build', callback);
     return stream;
 });
 gulp.task('compile-specs', function () {
@@ -41,11 +43,16 @@ gulp.task('compile-specs', function () {
 gulp.task('test', ['build-dev', 'templatecache', 'compile-specs'], function (done) {
     startTests(true, done);
 });
-gulp.task('dev', ['serve-dev'], function () {
-    serve(true);
+gulp.task('test-for-build', ['compile-specs'], function (done) {
+    startTests(true, done);
 });
-gulp.task('release', ['optimize'], function () {
+gulp.task('dev', ['serve-dev', 'fonts', 'images'], function () {
+    serve(true);
+    notifyBuilding('gulp build', 'Deployed as Dev', 'Running `gulp dev`');
+});
+gulp.task('release', ['optimize', 'fonts', 'images'], function () {
     serve(false);
+    notifyBuilding('gulp build', 'Deployed as Release', 'Running `gulp release`');
 });
 gulp.task('copyingTs', function () {
     console.log('Copying typescript files');
@@ -214,4 +221,26 @@ function compile_ts_with_maps(source, dest) {
     var tsResults = gulp.src(source).pipe(plugins.sourcemaps.init()).pipe(tsc(config.tsc));
     var stream = tsResults.pipe(plugins.sourcemaps.write(config.sourceMaps.pathToWrite, config.sourceMaps.configMaps)).pipe(gulp.dest(dest));
     return stream;
+}
+function notify(options) {
+    'use strict';
+    var notifier = require('node-notifier');
+    var notifyOptions = {
+        sound: 'Bottle',
+        contentImage: path.join(__dirname, 'gulp.png'),
+        icon: path.join(__dirname, 'gulp.png')
+    };
+    _.assign(notifyOptions, options);
+    notifier.notify(notifyOptions);
+}
+function notifyBuilding(title, subtittle, message) {
+    'use strict';
+    console.log('Building everything');
+    var msg = {
+        title: title,
+        subtitle: subtittle,
+        message: message
+    };
+    console.log(msg);
+    notify(msg);
 }
