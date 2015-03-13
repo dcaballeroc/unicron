@@ -297,9 +297,9 @@ gulp.task('clean-images', function(done: () => any) {
     var images = [].concat(config.build + 'images/**/*.*');
     clean(images, done);
 });
-function serve(isDev: boolean): void {
+function serve(isDev: boolean, isSpecRunner ?: boolean): void {
     'use strict';
-    startBrowserSync(isDev);
+    startBrowserSync(isDev, isSpecRunner);
 }
 
 function clean(path: string[], done: () => any ): void {
@@ -314,7 +314,7 @@ function changeEvent(event: any) {
     console.log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
 }
 
-function startBrowserSync(isDev: boolean): void{
+function startBrowserSync(isDev: boolean, isSpecRunner: boolean): void{
     'use strict';
      if (args.nosync || browserSync.active) {
         return;
