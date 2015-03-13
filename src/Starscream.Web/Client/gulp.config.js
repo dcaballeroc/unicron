@@ -12,6 +12,7 @@ module.exports = function() {
     var report = './report/';
     var bowerFiles = wiredep({devDependencies: true})['js'];
     var buildSpecs =  src + 'specs/';
+    var specRunnerFile = 'specs.html';
     var config = {
         /**
          * Files paths
@@ -32,6 +33,7 @@ module.exports = function() {
         buildJs: build + js,
         buildHtmls: build + htmls,
         buildSpecs: buildSpecs,
+        src: src,
         root: root,
         fonts: './bower_components/font-awesome/fonts/**/*.*',
         images: src + 'images/**/*.*',
@@ -101,6 +103,18 @@ module.exports = function() {
          */
         specHelpers: [src + 'test-helpers/*.*'],
         serverIntegrationSpecs: [src + 'specsIntegration/**/*.spec.*'],
+        compiledSpecs: buildSpecs + '**/*.js',
+        /**
+         * specs.html, our HTML spec runner
+         */
+        specRunner: src + specRunnerFile,
+        specRunnerFile: specRunnerFile,
+        testlibraries: [
+           'node_modules/mocha/mocha.js',
+           'node_modules/chai/chai.js',
+           'node_modules/mocha-clean/index.js',
+           'node_modules/sinon-chai/lib/sinon-chai.js'
+        ],
        /**
          * Nancy Settings
          */

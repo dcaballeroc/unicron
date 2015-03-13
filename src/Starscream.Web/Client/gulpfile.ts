@@ -64,6 +64,38 @@ gulp.task('compile-specs', function() {
 gulp.task('test', ['build-dev', 'templatecache', 'compile-specs'], function(done: () => any) {
     startTests(true /* singleRun */, done);
 });
+gulp.task('specs-html', ['build-specs-html'], function(done: () => any) {
+    
+    done();
+});
+gulp.task('build-specs-html', ['build-dev', 'templatecache', 'compile-specs'], function() {
+    console.log('building the spec runner');
+
+    var wiredep = require('wiredep').stream;
+    var options = config.getWiredepDefaultOptions();
+    var specs = config.specs;
+
+    options.devDependencies = true;
+
+    if (args.startServers) {
+        specs = [].concat(specs, config.serverIntegrationSpecs);
+    }
+
+    return gulp
+        .src(config.specRunner)
+        .pipe(wiredep(options))
+        .pipe(plugins.inject(gulp.src(config.testlibraries),
+            {name: 'inject:testlibraries', read: false}))
+        .pipe(plugins.inject(gulp.src(config.buildJs)))
+        .pipe(plugins.inject(gulp.src(config.specHelpers),
+            {name: 'inject:spechelpers', read: false}))
+        .pipe(plugins.inject(gulp.src(config.compiledSpecs),
+            {name: 'inject:specs', read: false}))
+        .pipe(plugins.inject(gulp.src(config.temp + config.templateCache.file),
+            {name: 'inject:templates', read: false}))
+        .pipe(gulp.dest(config.src));
+});
+
 gulp.task('autoTest', ['build-dev', 'templatecache', 'compile-specs'], function(done: () => any) {
     gulp.watch([config.sourceTs], ['build-dev'])
             .on('change', changeEvent);
