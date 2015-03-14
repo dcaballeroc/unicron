@@ -12,7 +12,7 @@ module.exports = function() {
     var report = './report/';
     var bowerFiles = wiredep({devDependencies: true})['js'];
     var buildSpecs =  src + 'specs/';
-    var specRunnerFile = 'specs.html';
+    var specRunnerFile = '/specs/specs.html';
     var config = {
         /**
          * Files paths
@@ -66,6 +66,13 @@ module.exports = function() {
            configMaps:  {
             includeContent: false,
             sourceRoot: '/build/app'
+            }
+        },
+         sourceMapsForSpecs: {
+           pathToWrite: '/',
+           configMaps:  {
+            includeContent: false,
+            sourceRoot: '/src/specs'
             }
         },
         /**

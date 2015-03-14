@@ -59,13 +59,13 @@ gulp.task('serve-release', function (callback: () => any) {
     }
 );
 gulp.task('compile-specs', function() {
-    compile_ts_with_maps(config.sourceSpecs, config.buildSpecs);
+    compile_ts_with_maps(config.sourceSpecs, config.buildSpecs, true);
     });
 gulp.task('test', ['build-dev', 'templatecache', 'compile-specs'], function(done: () => any) {
     startTests(true /* singleRun */, done);
 });
 gulp.task('specs-html', ['build-specs-html'], function(done: () => any) {
-    
+    serve(true /* isDev */, true /* specRunner */);
     done();
 });
 gulp.task('build-specs-html', ['build-dev', 'templatecache', 'compile-specs'], function() {
@@ -80,20 +80,21 @@ gulp.task('build-specs-html', ['build-dev', 'templatecache', 'compile-specs'], f
     if (args.startServers) {
         specs = [].concat(specs, config.serverIntegrationSpecs);
     }
+    
 
     return gulp
         .src(config.specRunner)
         .pipe(wiredep(options))
         .pipe(plugins.inject(gulp.src(config.testlibraries),
             {name: 'inject:testlibraries', read: false}))
-        .pipe(plugins.inject(gulp.src(config.buildJs)))
+        .pipe(plugins.inject(gulp.src(config.compiledJs)))
         .pipe(plugins.inject(gulp.src(config.specHelpers),
             {name: 'inject:spechelpers', read: false}))
         .pipe(plugins.inject(gulp.src(config.compiledSpecs),
             {name: 'inject:specs', read: false}))
         .pipe(plugins.inject(gulp.src(config.temp + config.templateCache.file),
             {name: 'inject:templates', read: false}))
-        .pipe(gulp.dest(config.src));
+        .pipe(gulp.dest(config.buildSpecs));
 });
 
 gulp.task('autoTest', ['build-dev', 'templatecache', 'compile-specs'], function(done: () => any) {
@@ -323,8 +324,12 @@ function startBrowserSync(isDev: boolean, isSpecRunner: boolean): void{
     if (isDev) {
         gulp.watch([config.less, config.sourceTs, config.sourceHtmls], ['serve-dev', browserSync.reload])
             .on('change', changeEvent);
+         gulp.watch([config.sourceSpecs], ['compile-specs', browserSync.reload])
+            .on('change', changeEvent);
     } else {
          gulp.watch([config.less, config.sourceTs, config.sourceHtmls], ['optimize', browserSync.reload])
+            .on('change', changeEvent);
+         gulp.watch([config.sourceSpecs], ['compile-specs', browserSync.reload])
             .on('change', changeEvent);
     }
     var options = {
@@ -340,9 +345,12 @@ function startBrowserSync(isDev: boolean, isSpecRunner: boolean): void{
         logLevel: 'debug',
         logPrefix: 'Acklen Avenue',
         notify: true,
-        reloadDelay: 5000
+        reloadDelay: 5000,
+        startPath: null
     };
-    
+    if (isSpecRunner) {
+        options.startPath = config.specRunnerFile;
+    }
      browserSync(options);
    
 }
@@ -369,16 +377,24 @@ function startTests(singleRun: boolean, done: any) {
         }
     }
 }
-function compile_ts_with_maps(source: string, dest: string): any{
+function compile_ts_with_maps(source: string, dest: string, isSpecs?: boolean): any{
     'use strict';
+    var path, configMaps : any;
+    if (isSpecs) {
+        path = config.sourceMapsForSpecs.pathToWrite;
+        configMaps = config.sourceMapsForSpecs.configMaps;
+    } else {
+         path = config.sourceMaps.pathToWrite;
+        configMaps = config.sourceMaps.configMaps;
+    }
      var tsResults = gulp
                         .src(source)
                         .pipe(plugins.sourcemaps.init())
                         .pipe(tsc(config.tsc));
         var stream = tsResults
             .pipe(plugins.sourcemaps.write(
-                config.sourceMaps.pathToWrite,
-                config.sourceMaps.configMaps
+                config.sourceMapsForSpecs.pathToWrite,
+                config.sourceMapsForSpecs.configMaps
             ))
             .pipe(
             gulp.dest(dest)
