@@ -58,7 +58,7 @@ gulp.task('serve-release', function (callback: () => any) {
     return stream;
     }
 );
-gulp.task('compile-specs', function() {
+gulp.task('compile-specs' , function() {
     compile_ts_with_maps(config.sourceSpecs, config.buildSpecs, true);
     });
 gulp.task('test', ['build-dev', 'templatecache', 'compile-specs'], function(done: () => any) {
@@ -68,7 +68,7 @@ gulp.task('specs-html', ['build-specs-html'], function(done: () => any) {
     serve(true /* isDev */, true /* specRunner */);
     done();
 });
-gulp.task('build-specs-html', ['build-dev', 'templatecache', 'compile-specs'], function() {
+gulp.task('build-specs-html', ['serve-dev'], function() {
     console.log('building the spec runner');
 
     var wiredep = require('wiredep').stream;
@@ -297,6 +297,11 @@ gulp.task('clean-fonts', function(done: () => any) {
 gulp.task('clean-images', function(done: () => any) {
     var images = [].concat(config.build + 'images/**/*.*');
     clean(images, done);
+});
+gulp.task('clean-specs', function(done: () => any) {
+   var specs = [].concat(config.compiledSpecs);
+   clean(specs, done);
+    
 });
 function serve(isDev: boolean, isSpecRunner ?: boolean): void {
     'use strict';

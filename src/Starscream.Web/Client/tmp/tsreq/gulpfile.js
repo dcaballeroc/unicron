@@ -47,7 +47,7 @@ gulp.task('specs-html', ['build-specs-html'], function (done) {
     serve(true, true);
     done();
 });
-gulp.task('build-specs-html', ['build-dev', 'templatecache', 'compile-specs'], function () {
+gulp.task('build-specs-html', ['serve-dev'], function () {
     console.log('building the spec runner');
     var wiredep = require('wiredep').stream;
     var options = config.getWiredepDefaultOptions();
@@ -170,6 +170,10 @@ gulp.task('clean-fonts', function (done) {
 gulp.task('clean-images', function (done) {
     var images = [].concat(config.build + 'images/**/*.*');
     clean(images, done);
+});
+gulp.task('clean-specs', function (done) {
+    var specs = [].concat(config.compiledSpecs);
+    clean(specs, done);
 });
 function serve(isDev, isSpecRunner) {
     'use strict';

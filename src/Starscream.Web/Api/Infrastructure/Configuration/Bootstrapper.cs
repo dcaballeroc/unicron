@@ -47,6 +47,7 @@ namespace Starscream.Web.Api.Infrastructure.Configuration
 
          
             conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("bower_components", "Client/bower_components"));
+            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("node_modules", "Client/node_modules"));
             conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory(".tmp", "Client/.tmp"));
             conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("app",
                 "Client/build/app"));
@@ -60,6 +61,10 @@ namespace Starscream.Web.Api.Infrastructure.Configuration
                    "Client/build/fonts"));
             conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("images",
                    "Client/build/images"));
+            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("specs",
+                "Client/src/specs"));
+            conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("src/specs",
+               "Client/src/specs"));
             conventions.ViewLocationConventions.Add((viewName, model, context) => "Client/build/"+ viewName);
 
           
