@@ -16,8 +16,8 @@ var app: Iapp = angular.module('app', [
     'ngSanitize',       // sanitizes html bindings (ex: sidebar.js)
 
 // Custom modules 
-    'appCommon',
-    'app_users'
+    'app.core',
+    'app.users'
 ]);
 
 // Handle routing errors and success events

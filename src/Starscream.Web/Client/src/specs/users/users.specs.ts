@@ -3,7 +3,7 @@
 /// <reference path="../../../typings/chai/chai.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../typings/angularjs/angular-mocks.d.ts" />
-/// <reference path="../../app/users/users.ts"/>
+/// <reference path="../../app/users/users.controller.ts"/>
 /* tslint:disable:typedef */
 /**
  * Module dependencies.
@@ -18,10 +18,10 @@ var expect: any = chai.expect;
 describe('Users', () => {
     var controller: IUsers;
     var scope: IUsersScope;
-    beforeEach(angular.mock.module('app_users'));
+    beforeEach(angular.mock.module('app.users'));
     beforeEach(angular.mock.inject(function($controller: ng.IControllerService, $rootScope: ng.IRootScopeService) {
             scope = <IUsersScope>$rootScope.$new();
-            controller = $controller('users', {$scope: scope});
+            controller = $controller('users.controller', {$scope: scope});
         }
         )
     );

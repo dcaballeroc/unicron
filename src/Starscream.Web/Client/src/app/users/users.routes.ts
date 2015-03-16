@@ -2,13 +2,13 @@
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 'use strict';
 
-var app_users: IAppUsers = angular.module('app_users');
+var appUsers: IAppUsers = angular.module('app.users');
 
 // Collect the routes
-app_users.constant('userRoutes', getRoutes());
+appUsers.constant('userRoutes', getRoutes());
 
 // Configure the routes and route resolvers
-app_users.config(['$routeProvider', 'userRoutes', ($routeProvider: ng.route.IRouteProvider, routes: RouteSettings.IAcklenAvenueRoute[]) => {
+appUsers.config(['$routeProvider', 'userRoutes', ($routeProvider: ng.route.IRouteProvider, routes: RouteSettings.IAcklenAvenueRoute[]) => {
 
     routes.forEach((r: RouteSettings.IAcklenAvenueRoute) => {
         $routeProvider.when(r.url, r.config);
@@ -24,7 +24,7 @@ function getRoutes(): RouteSettings.IAcklenAvenueRoute[] {
             config: {
                 templateUrl: 'app/users/users.html',
                 title: 'Users',
-                controller: 'users',
+                controller: 'users.controller',
                 controllerAs: 'vm',
                 settings: {
                     nav: 1,

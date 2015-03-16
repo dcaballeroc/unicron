@@ -48,7 +48,7 @@ gulp.task('images', ['clean-images'], function() {
         .pipe(gulp.dest(config.build + 'images'));
 });
 
-gulp.task('serve-dev', function(callback: () => any) {
+gulp.task('serve-dev' , function(callback: () => any) {
     var stream = runSequence('build-dev', 'inject', 'test-for-build', callback);
     return stream;
     }
@@ -58,7 +58,7 @@ gulp.task('serve-release', function (callback: () => any) {
     return stream;
     }
 );
-gulp.task('compile-specs' , function() {
+gulp.task('compile-specs', function() {
     compile_ts_with_maps(config.sourceSpecs, config.buildSpecs, true);
     });
 gulp.task('test', ['build-dev', 'templatecache', 'compile-specs'], function(done: () => any) {

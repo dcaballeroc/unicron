@@ -12,7 +12,7 @@ interface IUsers {
     firstNumber: number;
     secondNumber: number;
     result: number;
-    sum():  number;
+    sum():  void;
 }
 
 class Users implements IUsers {
@@ -25,15 +25,14 @@ class Users implements IUsers {
         $scope.vm = this;
     }
     static controllerId(): string {
-        return 'users';
+        return 'users.controller';
     }
-    sum(): number {
+    sum(): void {
         this.result = this.firstNumber + this.secondNumber;
-        return this.result;
     }
 }
 
 // Update the app1 variable name to be that of your module variable
-app_users.controller(Users.controllerId(), ['$scope', ($scope: IUsersScope) =>
+appUsers.controller(Users.controllerId(), ['$scope', ($scope: IUsersScope) =>
     new Users($scope)
 ]);

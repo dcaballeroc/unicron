@@ -100,7 +100,7 @@ module.exports = function() {
         templateCache: {
             file: 'templates.js',
             options: {
-                module: 'appCommon',
+                module: 'app.core',
                 standAlone: false
                 
             }
