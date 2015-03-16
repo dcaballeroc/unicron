@@ -125,7 +125,8 @@ module.exports = function() {
        /**
          * Nancy Settings
          */
-        defaultPort: 5966
+        defaultPort: 5966,
+        subdomain: 'unicron'
     };
     config.getWiredepDefaultOptions = function() {
         var options = {

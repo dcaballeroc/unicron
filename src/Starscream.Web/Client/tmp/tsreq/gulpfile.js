@@ -191,10 +191,16 @@ function changeEvent(event) {
 }
 function startBrowserSync(isDev, isSpecRunner) {
     'use strict';
+    var tunnel = null;
+    var online = false;
     if (args.nosync || browserSync.active) {
         return;
     }
     ;
+    if (args.online) {
+        tunnel = config.subdomain;
+        online = true;
+    }
     console.log('Starting browser-sync on port ' + port);
     if (isDev) {
         gulp.watch([config.less, config.sourceTs, config.sourceHtmls], ['serve-dev', browserSync.reload]).on('change', changeEvent);
@@ -218,7 +224,9 @@ function startBrowserSync(isDev, isSpecRunner) {
         logPrefix: 'Acklen Avenue',
         notify: true,
         reloadDelay: 5000,
-        startPath: null
+        startPath: null,
+        tunnel: tunnel,
+        online: online
     };
     if (isSpecRunner) {
         options.startPath = config.specRunnerFile;
