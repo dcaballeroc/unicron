@@ -1,4 +1,6 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../../typings/toastr/toastr.d.ts" />
+/// <reference path="logger.module.ts" />
 'use strict';
 
 interface ILogger {
