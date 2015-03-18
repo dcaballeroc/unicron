@@ -13,7 +13,7 @@
   },
   "scripts": {
     "init": "npm install",
-    "install": "bower install && tsd reinstall --save --overwrite",
+    "install": "tsd reinstall --save --overwrite && bower install",
     "start": "node src/server/app.js"
   },
   "dependencies": {

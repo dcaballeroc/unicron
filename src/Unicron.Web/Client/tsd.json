@@ -49,6 +49,12 @@
     },
     "toastr/toastr.d.ts": {
       "commit": "95d860879fb90c405aeb13eea7b8564f9c0df2bf"
+    },
+    "chai/chai.d.ts": {
+      "commit": "90e43700429b7ae972915b6ee2c839929e77ecda"
+    },
+    "mocha/mocha.d.ts": {
+      "commit": "90e43700429b7ae972915b6ee2c839929e77ecda"
     }
   }
 }
