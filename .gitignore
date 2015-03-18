@@ -17,10 +17,10 @@ typings/
 #.tmp
 *.map.*
 *.js.map
-src/Starscream.Web/Client/src/app/**/*.js
-src/Starscream.Web/Client/src/specs/**/*.specs.js
-src/Starscream.Web/Client/src/report/coverage/**/*.*
-/src/Starscream.Web/Client/tmp/**/*.*
+src/Unicron.Web/Client/src/app/**/*.js
+src/Unicron.Web/Client/src/specs/**/*.specs.js
+src/Unicron.Web/Client/src/report/coverage/**/*.*
+/src/Unicron.Web/Client/tmp/**/*.*
 Client/tmp/*.*
 
 #OS junk files

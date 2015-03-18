@@ -60,9 +60,9 @@ artifacts:
 
 deploy:
   - provider: WebDeploy
-    server: https://waws-prod-blu-017.publish.azurewebsites.windows.net:443/msdeploy.axd?site=starscream-starter
-    website: starscream-starter
-    username: $starscream-starter
+    server: https://waws-prod-blu-017.publish.azurewebsites.windows.net:443/msdeploy.axd?site=unicron-starter
+    website: unicron-starter
+    username: $unicron-starter
     password: kHbwofpzBaifjtSc7RcpTRon84SPvSABEWPtnBrKWu6QkcwdCmMFWLefaF6o
     ntlm: false
     artifact: appZip
@@ -84,4 +84,4 @@ on_failure:
   
 notifications:
   - provider: Webhook
-    url: http://appharborservicehookendpoint.apphb.com/build/appveyor/Starscream
+    url: http://appharborservicehookendpoint.apphb.com/build/appveyor/Unicron
