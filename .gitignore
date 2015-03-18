@@ -19,7 +19,7 @@ typings/
 *.js.map
 src/Unicron.Web/Client/src/app/**/*.js
 src/Unicron.Web/Client/src/specs/**/*.specs.js
-src/Unicron.Web/Client/src/report/coverage/**/*.*
+/src/Unicron.Web/Client/src/report/coverage/**/*.*
 /src/Unicron.Web/Client/tmp/**/*.*
 Client/tmp/*.*
 
@@ -54,6 +54,7 @@ obj/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
+
 Ankh.NoLoad
 
 #Tooling
@@ -66,6 +67,8 @@ _ReSharper*/
 #Build artifacts
 [Bb]uild/
 [Dd]eploy/
+report/coverage/
+coverage
 database_deployment
 
 #Subversion files
