@@ -148,6 +148,7 @@ module.exports = function() {
                 build + '**/*.module.js',
                 build + '**/*.js',
                 buildSpecs + '**/*.js',
+                buildSpecs + '**/**/*.js',
                 temp + config.templateCache.file,
                 config.serverIntegrationSpecs
               
@@ -164,6 +165,7 @@ module.exports = function() {
             preprocessors: {}
         };
         options.preprocessors['!' + buildSpecs + '**/*.js'] = ['coverage'];
+        options.preprocessors['!' + buildSpecs + '**/**/*.js'] = ['coverage'];
         return options;
     }
 };
