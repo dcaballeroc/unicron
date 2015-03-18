@@ -6,14 +6,14 @@
     "Dante Dubon"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/AcklenAvenue/Starscream",
+  "homepage": "https://github.com/AcklenAvenue/Unicron",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AcklenAvenue/Starscream.git"
+    "url": "https://github.com/AcklenAvenue/Unicron.git"
   },
   "scripts": {
     "init": "npm install",
-    "install": "bower install",
+    "install": "bower install && tsd reinstall --save --overwrite",
     "start": "node src/server/app.js"
   },
   "dependencies": {
