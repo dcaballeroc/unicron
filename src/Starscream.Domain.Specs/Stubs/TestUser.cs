@@ -1,6 +1,5 @@
 ﻿using System;
-using Starscream.Domain.Entities;
-using Starscream.Domain.ValueObjects;
+using Unicron.Users.Domain.Entities;
 
 namespace Starscream.Domain.Specs.Stubs
 {

@@ -1,10 +1,10 @@
 ﻿using BlingBag;
-using Starscream.Domain;
-using Starscream.Domain.DomainEvents;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Services;
+using Unicron.Users.Domain;
+using Unicron.Users.Domain.DomainEvents;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Services;
 
-namespace Starscream.Web.Api
+namespace Unicron.Web.Api
 {
     public class PasswordResetEmailSender : IBlingHandler<PasswordResetTokenCreated>
     {

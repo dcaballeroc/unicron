@@ -2,10 +2,10 @@ using System;
 using AcklenAvenue.Data.NHibernate;
 using Autofac;
 using FluentNHibernate.Cfg.Db;
-using Starscream.Data;
 using NHibernate;
+using Unicron.Data;
 
-namespace Starscream.Web.Api.Infrastructure.Configuration
+namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     public class ConfigureDatabaseWiring : IBootstrapperTask<ContainerBuilder>
     {

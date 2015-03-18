@@ -2,7 +2,7 @@ using System.Text;
 using Nancy;
 using Newtonsoft.Json;
 
-namespace Starscream.Web.Api.Infrastructure.RestExceptions
+namespace Unicron.Web.Api.Infrastructure.RestExceptions
 {
     public static class ResponseBodyExtensions
     {

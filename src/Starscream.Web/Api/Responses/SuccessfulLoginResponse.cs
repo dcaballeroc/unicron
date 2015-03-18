@@ -1,6 +1,6 @@
 using System;
 
-namespace Starscream.Web.Api.Responses
+namespace Unicron.Web.Api.Responses
 {
     public class SuccessfulLoginResponse<T>
     {

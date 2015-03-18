@@ -1,8 +1,7 @@
 using Autofac;
-
 using Nancy.Bootstrapper;
 
-namespace Starscream.Web.Api.Infrastructure.Configuration
+namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     public class DataBaseErrorHandling
     {

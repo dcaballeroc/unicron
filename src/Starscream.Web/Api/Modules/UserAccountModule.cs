@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using AcklenAvenue.Commands;
 using AutoMapper;
-using Starscream.Domain.Application.Commands;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Services;
 using Nancy;
 using Nancy.ModelBinding;
+using Unicron.Users.Domain.Application.Commands;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Services;
+using Unicron.Web.Api.Infrastructure;
+using Unicron.Web.Api.Requests;
+using Unicron.Web.Api.Requests.Facebook;
+using Unicron.Web.Api.Requests.Google;
 
-using Starscream.Web.Api.Infrastructure;
-using Starscream.Web.Api.Requests;
-using Starscream.Web.Api.Requests.Facebook;
-using Starscream.Web.Api.Requests.Google;
-
-namespace Starscream.Web.Api.Modules
+namespace Unicron.Web.Api.Modules
 {
 
     public class UserAccountModule : NancyModule

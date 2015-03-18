@@ -1,10 +1,9 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Net.Mail;
 using AcklenAvenue.Email;
 using Typesafe.Mailgun;
 
-namespace StarScream.EmailClients.DotNet
+namespace Unicron.EmailClients.DotNet
 {
     public class MailGunSmtpClient : ISmtpClient
     {

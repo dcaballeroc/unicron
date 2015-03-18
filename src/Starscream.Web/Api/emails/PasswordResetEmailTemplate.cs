@@ -1,8 +1,8 @@
 ﻿using System;
 using AcklenAvenue.Email;
-using Starscream.Domain;
+using Unicron.Users.Domain;
 
-namespace Starscream.Web.Api.emails
+namespace Unicron.Web.Api.emails
 {
     public class PasswordResetEmailTemplate : IEmailBodyTemplate, IEmailSubjectTemplate
     {

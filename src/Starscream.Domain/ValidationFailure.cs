@@ -1,4 +1,4 @@
-﻿namespace Starscream.Domain
+﻿namespace Unicron.Users.Domain
 {
     public class ValidationFailure
     {

@@ -1,8 +1,8 @@
 using FluentNHibernate.Automapping;
 using FluentNHibernate.Automapping.Alterations;
-using Starscream.Domain.Entities;
+using Unicron.Users.Domain.Entities;
 
-namespace Starscream.Data
+namespace Unicron.Data
 {
     public class UserLoginSessionAutoMappingOverride : IAutoMappingOverride<UserLoginSession>
     {

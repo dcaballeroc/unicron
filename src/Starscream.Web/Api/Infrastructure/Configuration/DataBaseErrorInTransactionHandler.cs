@@ -1,13 +1,10 @@
 ﻿using System;
-
 using Autofac;
-
-using NHibernate;
-
 using Nancy;
 using Nancy.Bootstrapper;
+using NHibernate;
 
-namespace Starscream.Web.Api.Infrastructure.Configuration
+namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     public class DataBaseErrorInTransactionHandler
     {

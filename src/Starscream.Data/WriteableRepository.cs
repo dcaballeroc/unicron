@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
-using Starscream.Domain;
-using Starscream.Domain.Services;
+using Unicron.Users.Domain;
+using Unicron.Users.Domain.Services;
 
-namespace Starscream.Data
+namespace Unicron.Data
 {
     public class WriteableRepository : IWriteableRepository
     {

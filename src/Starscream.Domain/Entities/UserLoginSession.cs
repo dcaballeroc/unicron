@@ -1,11 +1,8 @@
 using System;
 using System.Linq;
-using System.Security.Claims;
 using AcklenAvenue.Commands;
-using Starscream.Domain.Services;
 
-
-namespace Starscream.Domain.Entities
+namespace Unicron.Users.Domain.Entities
 {
     public class UserLoginSession : Entity, IUserSession
     {

@@ -1,4 +1,4 @@
-using Starscream.Domain.Services;
+using Unicron.Users.Domain.Services;
 
 namespace AcklenAvenue.Email
 {

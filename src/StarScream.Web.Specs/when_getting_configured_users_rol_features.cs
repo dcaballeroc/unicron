@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using FizzWare.NBuilder;
 using Machine.Specifications;
-using Starscream.Domain.Entities;
-using Starscream.Web.Api.Infrastructure.Authentication;
-using Starscream.Web.Api.Infrastructure.Authentication.Roles;
-using Starscream.Web.Api.Infrastructure.Exceptions;
+using Unicron.Web.Api.Infrastructure.Authentication;
+using Unicron.Web.Api.Infrastructure.Authentication.Roles;
+using Unicron.Web.Api.Infrastructure.Exceptions;
 
 namespace StarScream.Web.Specs
 {

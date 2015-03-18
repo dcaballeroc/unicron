@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Starscream.Web.Api.Requests.Admin
+namespace Unicron.Web.Api.Requests.Admin
 {
     public class AdminUpdateUserRequest
     {

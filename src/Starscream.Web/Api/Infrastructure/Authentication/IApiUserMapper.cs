@@ -1,6 +1,6 @@
 using Nancy.Security;
 
-namespace Starscream.Web.Api.Infrastructure.Authentication
+namespace Unicron.Web.Api.Infrastructure.Authentication
 {
     public interface IApiUserMapper<in T>
     {

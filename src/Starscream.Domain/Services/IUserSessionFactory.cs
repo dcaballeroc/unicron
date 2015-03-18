@@ -1,6 +1,6 @@
-using Starscream.Domain.Entities;
+using Unicron.Users.Domain.Entities;
 
-namespace Starscream.Domain.Services
+namespace Unicron.Users.Domain.Services
 {
     public interface IUserSessionFactory
     {

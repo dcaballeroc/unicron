@@ -1,6 +1,6 @@
 using System;
 
-namespace Starscream.Domain.Application.Commands
+namespace Unicron.Users.Domain.Application.Commands
 {
     public class EnableUser
     {

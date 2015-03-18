@@ -1,4 +1,4 @@
-namespace Starscream.Web.Api.Requests
+namespace Unicron.Web.Api.Requests
 {
     public class NewPasswordRequest
     {

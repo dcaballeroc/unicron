@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using AcklenAvenue.Commands;
-using Starscream.Domain.Application.Commands;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Exceptions;
-using Starscream.Domain.Services;
+using Unicron.Users.Domain.Application.Commands;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Exceptions;
+using Unicron.Users.Domain.Services;
 
-
-namespace Starscream.Domain.Validators
+namespace Unicron.Users.Domain.Validators
 {
     public class PassowrdResetValidator : ICommandValidator<ResetPassword>
     {

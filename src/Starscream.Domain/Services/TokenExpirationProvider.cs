@@ -1,7 +1,7 @@
 using System;
 using System.Configuration;
 
-namespace Starscream.Domain.Services
+namespace Unicron.Users.Domain.Services
 {
     public class TokenExpirationProvider : ITokenExpirationProvider
     {

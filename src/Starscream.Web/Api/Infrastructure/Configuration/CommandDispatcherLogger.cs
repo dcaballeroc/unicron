@@ -1,11 +1,9 @@
 using System;
-using System.Diagnostics;
 using System.Linq;
-using log4net;
-using NHibernate.Linq;
 using AcklenAvenue.Commands;
+using log4net;
 
-namespace Starscream.Web.Api.Infrastructure.Configuration
+namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     public class CommandDispatcherLogger:ICommandDispatcher
     {

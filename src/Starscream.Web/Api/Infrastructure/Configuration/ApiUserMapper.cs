@@ -1,13 +1,11 @@
 using System;
-using Starscream.Data;
-using Starscream.Domain;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Exceptions;
-using Starscream.Domain.Services;
-using Starscream.Web.Api.Infrastructure.Authentication;
 using Nancy.Security;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Exceptions;
+using Unicron.Users.Domain.Services;
+using Unicron.Web.Api.Infrastructure.Authentication;
 
-namespace Starscream.Web.Api.Infrastructure.Configuration
+namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     public class ApiUserMapper : IApiUserMapper<Guid>
     {

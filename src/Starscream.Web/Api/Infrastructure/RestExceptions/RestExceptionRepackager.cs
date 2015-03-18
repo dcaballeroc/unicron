@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Nancy.Bootstrapper;
 
-namespace Starscream.Web.Api.Infrastructure.RestExceptions
+namespace Unicron.Web.Api.Infrastructure.RestExceptions
 {
     public static class RestExceptionRepackager
     {

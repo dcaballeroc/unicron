@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
-using Starscream.Domain.Entities;
-using Starscream.Domain.ValueObjects;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.ValueObjects;
 
-namespace Starscream.Domain.Application.Commands
+namespace Unicron.Users.Domain.Application.Commands
 {
     public class CreateEmailLoginUser
     {

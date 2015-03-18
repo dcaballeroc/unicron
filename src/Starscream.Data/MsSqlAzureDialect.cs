@@ -1,6 +1,6 @@
 using NHibernate.Dialect;
 
-namespace Starscream.Data
+namespace Unicron.Data
 {
     public class MsSqlAzureDialect : MsSql2008Dialect
     {

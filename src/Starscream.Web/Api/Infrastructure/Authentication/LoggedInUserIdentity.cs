@@ -2,12 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AcklenAvenue.Commands;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Services;
 using Nancy.Security;
+using Unicron.Users.Domain.Entities;
 
-
-namespace Starscream.Web.Api.Infrastructure.Authentication
+namespace Unicron.Web.Api.Infrastructure.Authentication
 {
     public class LoggedInUserIdentity : IUserIdentity
     {

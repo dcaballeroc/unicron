@@ -1,12 +1,10 @@
-﻿using System;
-using AcklenAvenue.Commands;
-using Starscream.Domain.Application.Commands;
-using Starscream.Domain.DomainEvents;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Services;
+﻿using AcklenAvenue.Commands;
+using Unicron.Users.Domain.Application.Commands;
+using Unicron.Users.Domain.DomainEvents;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Services;
 
-
-namespace Starscream.Domain.Application.CommandHandlers
+namespace Unicron.Users.Domain.Application.CommandHandlers
 {
     public  class DisablingUser : ICommandHandler<DisableUser>
     {

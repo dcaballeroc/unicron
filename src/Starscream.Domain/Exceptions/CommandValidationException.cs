@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Starscream.Domain.Exceptions
+namespace Unicron.Users.Domain.Exceptions
 {
     public class CommandValidationException : Exception
     {

@@ -1,11 +1,11 @@
 using System;
-using AutoMapper;
 using Autofac;
-using Starscream.Domain.Entities;
-using Starscream.Web.Api.Requests;
-using Starscream.Web.Api.Responses.Admin;
+using AutoMapper;
+using Unicron.Users.Domain.Entities;
+using Unicron.Web.Api.Requests;
+using Unicron.Web.Api.Responses.Admin;
 
-namespace Starscream.Web.Api.Infrastructure.Configuration
+namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     public class ConfigureAutomapperMappings : IBootstrapperTask<ContainerBuilder>
     {

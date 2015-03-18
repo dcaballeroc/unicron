@@ -6,12 +6,11 @@ using AcklenAvenue.Commands;
 using FizzWare.NBuilder;
 using Machine.Specifications;
 using Moq;
-using Starscream.Domain.Application.CommandHandlers;
-using Starscream.Domain.Application.Commands;
-using Starscream.Domain.DomainEvents;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Services;
-
+using Unicron.Users.Domain.Application.CommandHandlers;
+using Unicron.Users.Domain.Application.Commands;
+using Unicron.Users.Domain.DomainEvents;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Services;
 using It = Machine.Specifications.It;
 
 namespace Starscream.Domain.Specs

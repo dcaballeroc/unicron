@@ -1,8 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
-namespace Starscream.Domain.Entities
+namespace Unicron.Users.Domain.Entities
 {
     public class User : Entity
     {

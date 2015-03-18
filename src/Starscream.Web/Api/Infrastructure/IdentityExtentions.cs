@@ -1,13 +1,10 @@
 using AcklenAvenue.Commands;
 using Nancy;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Services;
+using Unicron.Users.Domain.Entities;
+using Unicron.Web.Api.Infrastructure.Authentication;
+using Unicron.Web.Api.Infrastructure.Exceptions;
 
-using Starscream.Web.Api.Infrastructure.Authentication;
-using Starscream.Web.Api.Infrastructure.Exceptions;
-using Starscream.Web.Api.Modules;
-
-namespace Starscream.Web.Api.Infrastructure
+namespace Unicron.Web.Api.Infrastructure
 {
     public static class IdentityExtentions
     {

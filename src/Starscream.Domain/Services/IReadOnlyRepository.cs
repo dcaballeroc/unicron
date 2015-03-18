@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Starscream.Domain.Entities;
 
-namespace Starscream.Domain.Services
+namespace Unicron.Users.Domain.Services
 {
     public interface IReadOnlyRepository
     {

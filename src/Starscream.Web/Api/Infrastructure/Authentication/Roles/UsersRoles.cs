@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Starscream.Web.Api.Infrastructure.Authentication.Roles
+namespace Unicron.Web.Api.Infrastructure.Authentication.Roles
 {
     public class UsersRoles
     {

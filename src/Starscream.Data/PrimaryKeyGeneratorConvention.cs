@@ -1,7 +1,7 @@
 using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.Instances;
 
-namespace Starscream.Data
+namespace Unicron.Data
 {
     public class PrimaryKeyGeneratorConvention : IIdConvention
     {

@@ -1,4 +1,4 @@
-namespace Starscream.Web.Api.Infrastructure.Authentication
+namespace Unicron.Web.Api.Infrastructure.Authentication
 {
     public interface IMenuProvider
     {

@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Web.UI.WebControls;
 using AcklenAvenue.Commands;
 using AutoMapper;
 using Nancy;
 using Nancy.ModelBinding;
 using Nancy.Security;
-using Starscream.Domain.Application.Commands;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Services;
+using Unicron.Users.Domain.Application.Commands;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Services;
+using Unicron.Web.Api.Infrastructure;
+using Unicron.Web.Api.Requests.Admin;
+using Unicron.Web.Api.Responses.Admin;
 
-using Starscream.Web.Api.Infrastructure;
-using Starscream.Web.Api.Requests;
-using Starscream.Web.Api.Requests.Admin;
-using Starscream.Web.Api.Responses.Admin;
-
-namespace Starscream.Web.Api.Modules
+namespace Unicron.Web.Api.Modules
 {
     public class AdminModule : NancyModule
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Starscream.Web.Api.Requests
+namespace Unicron.Web.Api.Requests
 {
     public class NewUserRequest
     {

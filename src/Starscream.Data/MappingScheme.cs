@@ -4,10 +4,9 @@ using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.Helpers;
-using Starscream.Domain;
-using Starscream.Domain.Entities;
+using Unicron.Users.Domain;
 
-namespace Starscream.Data
+namespace Unicron.Data
 {
     public class MappingScheme : IDatabaseMappingScheme<MappingConfiguration>
     {

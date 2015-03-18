@@ -1,30 +1,24 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
+using AcklenAvenue.Commands;
 using AcklenAvenue.Email;
 using Autofac;
-using Autofac.Extras.DynamicProxy2;
 using AutoMapper;
 using BlingBag;
-using Castle.DynamicProxy;
 using log4net;
 using Newtonsoft.Json;
-using Starscream.Data;
-using Starscream.Domain;
-using Starscream.Domain.Services;
-using StarScream.EmailClients.DotNet;
-using AcklenAvenue.Commands;
-using StarScream.TemplateEngines.Razor;
-using Starscream.Web.Api.emails;
-using Starscream.Web.Api.Infrastructure.Authentication;
-using Starscream.Web.Api.Infrastructure.Authentication.Roles;
+using Unicron.Data;
+using Unicron.EmailClients.DotNet;
+using Unicron.TemplateEngines.Razor;
+using Unicron.Users.Domain;
+using Unicron.Web.Api.emails;
+using Unicron.Web.Api.Infrastructure.Authentication;
+using Unicron.Web.Api.Infrastructure.Authentication.Roles;
 
-namespace Starscream.Web.Api.Infrastructure.Configuration
+namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     
     public class ConfigureCommonDependencies : IBootstrapperTask<ContainerBuilder>

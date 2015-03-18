@@ -4,13 +4,13 @@ using AcklenAvenue.Testing.Moq;
 using AcklenAvenue.Testing.Moq.ExpectedObjects;
 using Machine.Specifications;
 using Moq;
-using Starscream.Domain.Application.CommandHandlers;
-using Starscream.Domain.Application.Commands;
-using Starscream.Domain.DomainEvents;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Services;
-using Starscream.Domain.ValueObjects;
-
+using Unicron.Users.Domain;
+using Unicron.Users.Domain.Application.CommandHandlers;
+using Unicron.Users.Domain.Application.Commands;
+using Unicron.Users.Domain.DomainEvents;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Services;
+using Unicron.Users.Domain.ValueObjects;
 using It = Machine.Specifications.It;
 
 namespace Starscream.Domain.Specs

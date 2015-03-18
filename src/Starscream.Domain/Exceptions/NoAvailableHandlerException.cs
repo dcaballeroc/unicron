@@ -1,6 +1,6 @@
 using System;
 
-namespace Starscream.Domain.Exceptions
+namespace Unicron.Users.Domain.Exceptions
 {
     public class NoAvailableHandlerException : Exception
     {

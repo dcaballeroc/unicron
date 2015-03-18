@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using AcklenAvenue.Data.NHibernate.Testing;
-using Starscream.Domain;
-using Starscream.Domain.Entities;
-using Starscream.Domain.ValueObjects;
 using Machine.Specifications;
 using NHibernate;
+using Unicron.Data;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.ValueObjects;
 
 namespace Starscream.Data.Specs.ReadOnlyRepositorySpecs
 {

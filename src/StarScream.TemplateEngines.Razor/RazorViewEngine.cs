@@ -1,6 +1,6 @@
 using AcklenAvenue.Email;
 
-namespace StarScream.TemplateEngines.Razor
+namespace Unicron.TemplateEngines.Razor
 {
     public class RazorViewEngine : IViewEngine
     {

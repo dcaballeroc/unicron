@@ -1,9 +1,8 @@
 using System;
 using DomainDrivenDatabaseDeployer;
-using Starscream.Domain;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Services;
 using NHibernate;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Services;
 
 namespace DatabaseDeployer
 {

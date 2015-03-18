@@ -2,14 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Starscream.Domain;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Exceptions;
-using Starscream.Domain.Services;
 using NHibernate;
 using NHibernate.Linq;
+using Unicron.Users.Domain;
+using Unicron.Users.Domain.Exceptions;
+using Unicron.Users.Domain.Services;
 
-namespace Starscream.Data
+namespace Unicron.Data
 {
     public class ReadOnlyRepository : IReadOnlyRepository
     {

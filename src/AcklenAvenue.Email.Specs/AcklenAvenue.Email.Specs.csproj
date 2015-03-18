@@ -66,9 +66,9 @@
       <Project>{8E8BC717-05D0-4B6E-A6D1-AA5F1CA59C67}</Project>
       <Name>AcklenAvenue.Email</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Starscream.Domain\Starscream.Domain.csproj">
+    <ProjectReference Include="..\Starscream.Domain\Unicron.Users.Domain.csproj">
       <Project>{2BEE7A33-DCB7-4F9C-B45C-A7DAC69AEB52}</Project>
-      <Name>Starscream.Domain</Name>
+      <Name>Unicron.Users.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

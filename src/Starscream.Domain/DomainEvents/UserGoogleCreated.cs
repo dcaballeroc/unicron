@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Starscream.Domain.DomainEvents
+namespace Unicron.Users.Domain.DomainEvents
 {
     public class UserGoogleCreated : UserCreated
     {

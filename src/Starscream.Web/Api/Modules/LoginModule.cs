@@ -1,19 +1,17 @@
 ﻿using System;
-using Nancy.Security;
-using Starscream.Data;
-using Starscream.Domain;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Exceptions;
-using Starscream.Domain.Services;
-using Starscream.Domain.ValueObjects;
-using Starscream.Web.Api.Infrastructure.Authentication;
-using Starscream.Web.Api.Infrastructure.Exceptions;
-using Starscream.Web.Api.Requests;
-using Starscream.Web.Api.Responses;
 using Nancy;
 using Nancy.ModelBinding;
+using Nancy.Security;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Exceptions;
+using Unicron.Users.Domain.Services;
+using Unicron.Users.Domain.ValueObjects;
+using Unicron.Web.Api.Infrastructure.Authentication;
+using Unicron.Web.Api.Infrastructure.Exceptions;
+using Unicron.Web.Api.Requests;
+using Unicron.Web.Api.Responses;
 
-namespace Starscream.Web.Api.Modules
+namespace Unicron.Web.Api.Modules
 {
     public class LoginModule : NancyModule
     {

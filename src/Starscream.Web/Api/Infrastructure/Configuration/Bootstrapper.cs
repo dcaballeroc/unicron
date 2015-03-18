@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Autofac;
-using Starscream.Domain;
-using Starscream.Web.Api.Infrastructure.Authentication;
-using Starscream.Web.Api.Infrastructure.RestExceptions;
 using Nancy;
 using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
@@ -13,9 +10,12 @@ using Nancy.Bootstrappers.Autofac;
 using Nancy.Conventions;
 using Nancy.Security;
 using Newtonsoft.Json;
-using TokenDoesNotExistException = Starscream.Web.Api.Infrastructure.Authentication.TokenDoesNotExistException;
+using Unicron.Users.Domain;
+using Unicron.Web.Api.Infrastructure.Authentication;
+using Unicron.Web.Api.Infrastructure.RestExceptions;
+using TokenDoesNotExistException = Unicron.Web.Api.Infrastructure.Authentication.TokenDoesNotExistException;
 
-namespace Starscream.Web.Api.Infrastructure.Configuration
+namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     public class Bootstrapper : AutofacNancyBootstrapper
     {

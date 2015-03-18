@@ -1,9 +1,7 @@
 using System;
 using AcklenAvenue.Commands;
-using Starscream.Domain.Services;
 
-
-namespace Starscream.Domain
+namespace Unicron.Users.Domain
 {
     public class VisitorSession : IUserSession
     {

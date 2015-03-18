@@ -1,4 +1,4 @@
-namespace Starscream.Domain.ValueObjects
+namespace Unicron.Users.Domain.ValueObjects
 {
     public class EncryptedPassword
     {

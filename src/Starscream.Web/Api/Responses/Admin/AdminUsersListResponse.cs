@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Starscream.Web.Api.Responses.Admin
+namespace Unicron.Web.Api.Responses.Admin
 {
     public class AdminUsersListResponse 
     {

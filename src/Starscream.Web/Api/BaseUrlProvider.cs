@@ -1,7 +1,7 @@
 using System;
 using System.Web;
 
-namespace Starscream.Web.Api
+namespace Unicron.Web.Api
 {
     public class BaseUrlProvider : IBaseUrlProvider
     {

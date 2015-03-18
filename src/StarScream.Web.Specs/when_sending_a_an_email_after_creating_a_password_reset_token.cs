@@ -2,12 +2,12 @@ using System;
 using AcklenAvenue.Testing.Moq.ExpectedObjects;
 using Machine.Specifications;
 using Moq;
-using Starscream.Domain;
-using Starscream.Domain.DomainEvents;
-using Starscream.Domain.Entities;
-using Starscream.Domain.Services;
-using Starscream.Domain.ValueObjects;
-using Starscream.Web.Api;
+using Unicron.Users.Domain;
+using Unicron.Users.Domain.DomainEvents;
+using Unicron.Users.Domain.Entities;
+using Unicron.Users.Domain.Services;
+using Unicron.Users.Domain.ValueObjects;
+using Unicron.Web.Api;
 using It = Machine.Specifications.It;
 
 namespace StarScream.Web.Specs

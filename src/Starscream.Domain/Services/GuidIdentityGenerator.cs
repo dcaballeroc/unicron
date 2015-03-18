@@ -1,6 +1,6 @@
 using System;
 
-namespace Starscream.Domain.Services
+namespace Unicron.Users.Domain.Services
 {
     public class GuidIdentityGenerator : IIdentityGenerator<Guid>
     {

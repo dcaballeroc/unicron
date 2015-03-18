@@ -1,6 +1,6 @@
 using System;
 
-namespace Starscream.Domain
+namespace Unicron.Users.Domain
 {
     public abstract class Entity : IEntity
     {

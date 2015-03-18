@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Starscream.Web.Api.Requests.Facebook
+﻿namespace Unicron.Web.Api.Requests.Facebook
 {
     public class FacebookRegisterRequest
     {

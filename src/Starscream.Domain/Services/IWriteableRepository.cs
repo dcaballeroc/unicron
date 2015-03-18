@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Starscream.Domain.Entities;
 
-namespace Starscream.Domain.Services
+namespace Unicron.Users.Domain.Services
 {
     public interface IWriteableRepository
     {

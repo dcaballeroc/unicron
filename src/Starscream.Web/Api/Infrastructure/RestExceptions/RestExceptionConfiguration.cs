@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Nancy;
 
-namespace Starscream.Web.Api.Infrastructure.RestExceptions
+namespace Unicron.Web.Api.Infrastructure.RestExceptions
 {
     public class RestExceptionConfiguration
     {

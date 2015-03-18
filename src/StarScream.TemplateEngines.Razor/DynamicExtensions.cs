@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Reflection;
 
-namespace StarScream.TemplateEngines.Razor
+namespace Unicron.TemplateEngines.Razor
 {
     public static class DynamicExtensions
     {

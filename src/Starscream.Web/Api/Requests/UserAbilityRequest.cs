@@ -1,6 +1,6 @@
 using System;
 
-namespace Starscream.Web.Api.Requests
+namespace Unicron.Web.Api.Requests
 {
     public class UserAbilityRequest
     {

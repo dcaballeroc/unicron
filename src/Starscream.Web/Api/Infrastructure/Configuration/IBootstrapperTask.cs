@@ -1,6 +1,6 @@
 using System;
 
-namespace Starscream.Web.Api.Infrastructure.Configuration
+namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     public interface IBootstrapperTask<in T>
     {

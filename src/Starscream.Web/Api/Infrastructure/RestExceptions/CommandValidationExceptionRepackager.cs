@@ -1,10 +1,9 @@
 using System;
 using System.Linq;
 using Nancy;
-using Starscream.Domain;
-using Starscream.Domain.Exceptions;
+using Unicron.Users.Domain.Exceptions;
 
-namespace Starscream.Web.Api.Infrastructure.RestExceptions
+namespace Unicron.Web.Api.Infrastructure.RestExceptions
 {
     public class CommandValidationExceptionRepackager : IExceptionRepackager
     {

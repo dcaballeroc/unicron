@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Starscream.Web.Api.Responses.Admin
+namespace Unicron.Web.Api.Responses.Admin
 {
     public class AdminUserResponse
     {

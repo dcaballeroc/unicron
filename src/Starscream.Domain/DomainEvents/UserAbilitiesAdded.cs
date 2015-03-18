@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Starscream.Domain.DomainEvents
+namespace Unicron.Users.Domain.DomainEvents
 {
     public class UserAbilitiesAdded
     {

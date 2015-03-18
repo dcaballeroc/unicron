@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Starscream.Web.Api.Requests.Google
+﻿namespace Unicron.Web.Api.Requests.Google
 {
     public class GoogleRegisterRequest
         {

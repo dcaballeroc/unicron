@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Starscream.Web</RootNamespace>
-    <AssemblyName>Starscream.Web</AssemblyName>
+    <RootNamespace>Unicron.Web</RootNamespace>
+    <AssemblyName>Unicron.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -380,9 +380,6 @@
     <Content Include="Client\bower_components\toastr\toastr.min.css" />
     <Content Include="Client\bower_components\toastr\toastr.min.js" />
     <Content Include="Client\build\index.html" />
-    <Content Include="Client\src\app\users\users.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Client\src\index.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -669,21 +666,21 @@
       <Project>{8E8BC717-05D0-4B6E-A6D1-AA5F1CA59C67}</Project>
       <Name>AcklenAvenue.Email</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Starscream.Data\Starscream.Data.csproj">
+    <ProjectReference Include="..\Starscream.Data\Unicron.Data.csproj">
       <Project>{828BB611-5955-47C0-AB91-32374D8506E2}</Project>
-      <Name>Starscream.Data</Name>
+      <Name>Unicron.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Starscream.Domain\Starscream.Domain.csproj">
+    <ProjectReference Include="..\Starscream.Domain\Unicron.Users.Domain.csproj">
       <Project>{2BEE7A33-DCB7-4F9C-B45C-A7DAC69AEB52}</Project>
-      <Name>Starscream.Domain</Name>
+      <Name>Unicron.Users.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StarScream.EmailClients.DotNet\StarScream.EmailClients.DotNet.csproj">
+    <ProjectReference Include="..\StarScream.EmailClients.DotNet\Unicron.EmailClients.DotNet.csproj">
       <Project>{B85057A5-F5AA-4397-85A3-EF3F21AEA76D}</Project>
-      <Name>StarScream.EmailClients.DotNet</Name>
+      <Name>Unicron.EmailClients.DotNet</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StarScream.TemplateEngines.Razor\StarScream.TemplateEngines.Razor.csproj">
+    <ProjectReference Include="..\StarScream.TemplateEngines.Razor\Unicron.TemplateEngines.Razor.csproj">
       <Project>{EABDB5FE-FD37-4C87-BD52-67D7D996CA03}</Project>
-      <Name>StarScream.TemplateEngines.Razor</Name>
+      <Name>Unicron.TemplateEngines.Razor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -694,11 +691,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Client\bower_components\angular-ui-router\api\angular-ui-router.d.ts" />
-    <TypeScriptCompile Include="Client\src\app\app.module.ts" />
-    <TypeScriptCompile Include="Client\src\app\common\RouteSettings.ts" />
-    <TypeScriptCompile Include="Client\src\app\users\users.module.ts" />
-    <TypeScriptCompile Include="Client\src\app\users\users.routes.ts" />
-    <TypeScriptCompile Include="Client\src\app\users\users.ts" />
     <TypeScriptCompile Include="Client\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Client\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Client\typings\angularjs\angular-mocks.d.ts" />
@@ -711,6 +703,8 @@
   <ItemGroup>
     <Folder Include="Client\build\app\common\" />
     <Folder Include="Client\build\app\users\" />
+    <Folder Include="Client\src\app\common\" />
+    <Folder Include="Client\src\app\users\" />
     <Folder Include="Client\src\styles\" />
   </ItemGroup>
   <PropertyGroup>

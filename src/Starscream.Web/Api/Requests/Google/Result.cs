@@ -1,4 +1,4 @@
-﻿namespace Starscream.Web.Api.Requests.Google
+﻿namespace Unicron.Web.Api.Requests.Google
 {
     public class Result
     {

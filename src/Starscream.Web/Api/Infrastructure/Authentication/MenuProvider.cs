@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Starscream.Web.Api.Infrastructure.Authentication.Roles;
-using Starscream.Web.Api.Infrastructure.Exceptions;
+using Unicron.Web.Api.Infrastructure.Authentication.Roles;
+using Unicron.Web.Api.Infrastructure.Exceptions;
 
-namespace Starscream.Web.Api.Infrastructure.Authentication
+namespace Unicron.Web.Api.Infrastructure.Authentication
 {
     public class MenuProvider:IMenuProvider
     {

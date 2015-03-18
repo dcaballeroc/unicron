@@ -1,9 +1,9 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
-using Starscream.Domain.ValueObjects;
+using Unicron.Users.Domain.ValueObjects;
 
-namespace Starscream.Domain.Services
+namespace Unicron.Users.Domain.Services
 {
     public class HashPasswordEncryptor : IPasswordEncryptor
     {

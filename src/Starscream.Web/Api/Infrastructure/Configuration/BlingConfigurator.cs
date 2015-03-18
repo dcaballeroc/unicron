@@ -1,16 +1,10 @@
 using System;
-using System.Dynamic;
-using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
-using BlingBag;
-using Castle.DynamicProxy;
-using log4net;
-using Starscream.Domain;
 using AcklenAvenue.Commands;
+using BlingBag;
+using log4net;
 
-namespace Starscream.Web.Api.Infrastructure.Configuration
+namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     
 

@@ -1,6 +1,6 @@
 ﻿using Nancy;
 
-namespace Starscream.Web.Api.Infrastructure
+namespace Unicron.Web.Api.Infrastructure
 {
     public class RootModule : NancyModule
     {

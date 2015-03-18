@@ -1,6 +1,6 @@
 using System;
 
-namespace Starscream.Domain.Entities
+namespace Unicron.Users.Domain.Entities
 {
     public class Role:IEntity
     {

@@ -1,6 +1,6 @@
 using Machine.Specifications;
 using Moq;
-using Starscream.Domain.Services;
+using Unicron.Users.Domain.Services;
 using It = Machine.Specifications.It;
 
 namespace AcklenAvenue.Email.Specs

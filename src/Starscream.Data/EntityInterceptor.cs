@@ -1,10 +1,9 @@
 using System.Diagnostics;
 using NHibernate;
 using NHibernate.Type;
-using Starscream.Domain;
-using Starscream.Domain.Entities;
+using Unicron.Users.Domain;
 
-namespace Starscream.Data
+namespace Unicron.Data
 {
     public class EntityInterceptor : EmptyInterceptor
     {

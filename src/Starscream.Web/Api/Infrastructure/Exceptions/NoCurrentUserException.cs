@@ -1,6 +1,6 @@
 using System;
 
-namespace Starscream.Web.Api.Infrastructure.Exceptions
+namespace Unicron.Web.Api.Infrastructure.Exceptions
 {
     public class NoCurrentUserException : Exception
     {

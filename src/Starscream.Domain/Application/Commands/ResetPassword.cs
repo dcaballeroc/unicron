@@ -1,7 +1,7 @@
 using System;
-using Starscream.Domain.ValueObjects;
+using Unicron.Users.Domain.ValueObjects;
 
-namespace Starscream.Domain.Application.Commands
+namespace Unicron.Users.Domain.Application.Commands
 {
     public class ResetPassword
     {

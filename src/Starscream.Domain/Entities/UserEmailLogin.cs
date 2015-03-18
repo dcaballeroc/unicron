@@ -1,6 +1,6 @@
-using Starscream.Domain.ValueObjects;
+using Unicron.Users.Domain.ValueObjects;
 
-namespace Starscream.Domain.Entities
+namespace Unicron.Users.Domain.Entities
 {
     public class UserEmailLogin : User
     {

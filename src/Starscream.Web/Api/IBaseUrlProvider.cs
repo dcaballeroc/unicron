@@ -1,4 +1,4 @@
-﻿namespace Starscream.Web.Api
+﻿namespace Unicron.Web.Api
 {
     public interface IBaseUrlProvider
     {
