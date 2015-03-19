@@ -13,6 +13,7 @@ module.exports = function() {
     var bowerFiles = wiredep({devDependencies: true})['js'];
     var buildSpecs =  src + 'specs/';
     var specRunnerFile = '/specs/specs.html';
+    var specRunner = src + specRunnerFile;
     var config = {
         /**
          * Files paths
@@ -23,7 +24,8 @@ module.exports = function() {
         ],
         sourceHtmls: [
                         src + htmls,
-                        '!' + index
+                        '!' + index,
+                        '!' + specRunner
                      ],
         sourceSpecs: [
             src + 'specs/' + specs
@@ -114,8 +116,14 @@ module.exports = function() {
         /**
          * specs.html, our HTML spec runner
          */
-        specRunner: src + specRunnerFile,
+        specRunner: specRunner,
         specRunnerFile: specRunnerFile,
+        /*
+         * bootlint settings
+         */
+        bootlint: {
+            disableRules: ['W001', 'W005']
+        },
         testlibraries: [
            'node_modules/mocha/mocha.js',
            'node_modules/chai/chai.js',
