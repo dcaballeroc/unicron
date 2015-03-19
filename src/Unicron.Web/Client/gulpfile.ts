@@ -127,7 +127,7 @@ gulp.task('copyingTs', function() {
     }
 
 );
-gulp.task('copyingHtmls', ['lintHtmls'], function() {
+gulp.task('copyingHtmls', ['lintHtmls', 'bootlintHTML'], function() {
     console.log('Copying Html files');
     return gulp
             .src(config.sourceHtmls)
@@ -140,8 +140,15 @@ gulp.task('lintHtmls', function() {
     console.log('Linting HTML files');
     return gulp
             .src(config.sourceHtmls)
-            .pipe(plugins.htmlhint())
+            .pipe(plugins.htmlhint())          
             .pipe(plugins.htmlhint.failReporter());
+});
+
+gulp.task('bootlintHTML', function() {
+    console.log('Bootrsap HTML');
+    return gulp
+            .src(config.sourceHtmls)           
+            .pipe(plugins.bootlint({disabledIds: config.bootlint.disableRules}));
 });
 
 gulp.task('templatecache', function() {
@@ -156,6 +163,7 @@ gulp.task('templatecache', function() {
             ))
         .pipe(gulp.dest(config.temp));
 });
+
 gulp.task('vet', function() {
     console.log('Analyzing sources with TSLint, JSHint and JSCS');
     var allTs: string[] = config.sourceTs;
