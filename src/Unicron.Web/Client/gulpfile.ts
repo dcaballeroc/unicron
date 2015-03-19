@@ -406,8 +406,8 @@ function compile_ts_with_maps(source: string, dest: string, isSpecs?: boolean): 
                         .pipe(tsc(config.tsc));
         var stream = tsResults
             .pipe(plugins.sourcemaps.write(
-                config.sourceMapsForSpecs.pathToWrite,
-                config.sourceMapsForSpecs.configMaps
+                path,
+                configMaps
             ))
             .pipe(
             gulp.dest(dest)

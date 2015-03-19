@@ -72,7 +72,7 @@ module.exports = function() {
            pathToWrite: '/',
            configMaps:  {
             includeContent: false,
-            sourceRoot: '/src/specs'
+            sourceRoot: '/src/'
             }
         },
         /**
