@@ -5,11 +5,10 @@ interface ICommonException extends ng.IModule { }
 var commonException: ICommonException = angular.module('common.exception', [
     // Angular modules 
     // Custom modules 
-
     'common.logger'
     // 3rd Party Modules
 ]);
 
 // Execute bootstrapping code and any dependencies.
-commonException.run(['common.logger' , (commonLogger: ICommonLogger) => {
+commonException.run([ () => {
 }]);

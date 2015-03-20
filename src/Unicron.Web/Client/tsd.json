@@ -55,6 +55,12 @@
     },
     "mocha/mocha.d.ts": {
       "commit": "90e43700429b7ae972915b6ee2c839929e77ecda"
+    },
+    "sinon/sinon.d.ts": {
+      "commit": "95ce1d9e8212be19d36aa8ccecb48303cc5c87f9"
+    },
+    "sinon-chai/sinon-chai.d.ts": {
+      "commit": "95ce1d9e8212be19d36aa8ccecb48303cc5c87f9"
     }
   }
 }

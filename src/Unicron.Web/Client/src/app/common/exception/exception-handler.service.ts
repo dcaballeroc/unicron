@@ -5,31 +5,39 @@
 
 interface IConfigureExceptionHandlerProvider {
     appErrorPrefix: string;
-}
-
-interface IExceptionHandlerProvider {
     config(): void;
     configure(errorPrefix: string): void;
-    $get(): IConfigureExceptionHandlerProvider;
 }
 
-class ExceptionHandlerProvider implements IExceptionHandlerProvider {
-    appErrorPrefix: IConfigureExceptionHandlerProvider;
+class ConfigureExceptionHandlerProvider implements IConfigureExceptionHandlerProvider {
+    appErrorPrefix: string;
+    constructor() {
+        this.config();
+    }
     config(): void {
          this.appErrorPrefix = undefined;
      }
     configure(errorPrefix: string): void {
-        var _config: IConfigureExceptionHandlerProvider = {
-            appErrorPrefix: errorPrefix
-        };
-        this.appErrorPrefix = _config;
-    }
-    $get(): IConfigureExceptionHandlerProvider {
-        return this.appErrorPrefix;
+        this.appErrorPrefix = errorPrefix;
     }
 }
 
-commonException.provider('exceptionHandler', ExceptionHandlerProvider).config(configure);
+class ExceptionHandlerProvider implements ng.IServiceProvider {
+    config: IConfigureExceptionHandlerProvider;
+    constructor(config: IConfigureExceptionHandlerProvider) {
+        this.config = config;
+    }
+    $get(): any {
+           console.log('viendo');
+            return {
+                getConfig: (): any => {
+                return this.config;
+                }
+            };
+    }
+}
+commonException.provider('exceptionHandler', [ () => new ExceptionHandlerProvider(new ConfigureExceptionHandlerProvider())
+]).config(configure);
 
 configure.$inject = ['$provide'];
 function configure($provide: any): void {
@@ -38,10 +46,10 @@ function configure($provide: any): void {
     }
 extendExceptionHandler.$inject = ['$delegate', 'exceptionHandler', 'logger'];
 /* @ngInject */
-    function extendExceptionHandler($delegate: any, exceptionHandler: IExceptionHandlerProvider, logger: ILogger): any {
+    function extendExceptionHandler($delegate: any, exceptionHandler: any, logger: ILogger): any {
         'use strict';
         return function(exception: any, cause: any): void {
-            var appErrorPrefix: string = exceptionHandler.$get().appErrorPrefix || '';
+            var appErrorPrefix: string = exceptionHandler.getConfig().appErrorPrefix || '';
             var errorData: any = {exception: exception, cause: cause};
             exception.message = appErrorPrefix + exception.message;
             $delegate(exception, cause);
