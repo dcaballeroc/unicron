@@ -127,7 +127,7 @@ gulp.task('copyingTs', function() {
     }
 
 );
-gulp.task('copyingHtmls', ['lintHtmls', 'bootlintHTML'], function() {
+gulp.task('copyingHtmls', ['lintHtmls'], function() {
     console.log('Copying Html files');
     return gulp
             .src(config.sourceHtmls)
@@ -140,15 +140,19 @@ gulp.task('lintHtmls', function() {
     console.log('Linting HTML files');
     return gulp
             .src(config.sourceHtmls)
-            .pipe(plugins.htmlhint())          
+            .pipe(plugins.htmlhint())
             .pipe(plugins.htmlhint.failReporter());
 });
 
 gulp.task('bootlintHTML', function() {
     console.log('Bootrsap HTML');
     return gulp
-            .src(config.sourceHtmls)           
-            .pipe(plugins.bootlint({disabledIds: config.bootlint.disableRules}));
+        .src(config.sourceHtmls)
+        .pipe(plugins.bootlint(
+        {
+            disabledIds: config.bootlint.disableRules
+        }
+        ));
 });
 
 gulp.task('templatecache', function() {

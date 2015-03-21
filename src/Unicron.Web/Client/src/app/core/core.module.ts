@@ -9,8 +9,11 @@ var appCore: IAppCore = angular.module('app.core', [
     // Angular modules 
 
     // Custom modules 
-    'common.logger'
+    'common.logger',
+    'common.exception',
+    'common.router',
     // 3rd Party Modules
+    'ui.router'
 ]);
 
 // Execute bootstrapping code and any dependencies.

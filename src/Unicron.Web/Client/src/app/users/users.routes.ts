@@ -11,26 +11,25 @@ appUsers.constant('userRoutes', getRoutes());
 appUsers.config(['$routeProvider', 'userRoutes', ($routeProvider: ng.route.IRouteProvider, routes: RouteSettings.IAcklenAvenueRoute[]) => {
 
     routes.forEach((r: RouteSettings.IAcklenAvenueRoute) => {
-        $routeProvider.when(r.url, r.config);
+        $routeProvider.when(r.config.url, r.config);
     });
     $routeProvider.otherwise({ redirectTo: '/' });
 }]);
 
 function getRoutes(): RouteSettings.IAcklenAvenueRoute[] {
     'use strict';
-    return [
-        {
+    var userTempRoute: RouteSettings.IAcklenAvenueRoute = {
+        state: 'Users',
+        config: {
             url: '/users',
-            config: {
-                templateUrl: 'app/users/users.html',
-                title: 'Users',
-                controller: 'users.controller',
-                controllerAs: 'vm',
-                settings: {
+            templateUrl: 'app/users/users.html',
+            controller: 'users.controller',
+            controllerAs: 'vm',
+            settings: {
                     nav: 1,
                     content: '<i></i> Dashboard'
                 }
-            }
         }
-    ];
+    };
+    return [userTempRoute];
 }

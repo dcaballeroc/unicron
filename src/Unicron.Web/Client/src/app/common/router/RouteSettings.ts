@@ -6,13 +6,15 @@ module RouteSettings {
     }
 
    export  interface IAcklenAvenueRouteConfig extends ng.route.IRoute {
-        title: string;
-        settings: IAcklenAvenueRouteSettings;
-        current?: IAcklenAvenueRouteConfig;
-    }
-
-    export interface IAcklenAvenueRoute {
         url: string;
+        templateUrl: string;
+        controller: string;
+        controllerAs: string;
+        title?: string;
+        settings?: IAcklenAvenueRouteSettings;
+    }
+    export interface IAcklenAvenueRoute {
+        state: string;
         config: IAcklenAvenueRouteConfig;
     }
 }
