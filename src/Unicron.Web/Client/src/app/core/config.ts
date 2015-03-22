@@ -29,6 +29,7 @@ var config: Iconfig = {
 };
 
 core.value('config', config);
+core.config(configureRouterAndException);
 
 configureRouterAndException.$inject = ['$compileProvider', '$logProvider',
                          'routeHelperProvider', 'exceptionHandlerProvider'];
@@ -41,12 +42,12 @@ function configureRouterAndException ($compileProvider: ng.ICompileProvider, $lo
     if ($logProvider.debugEnabled) {
             $logProvider.debugEnabled(true);
     }
-    exceptionHandlerProvider.configure(config.appErrorPrefix);
+    exceptionHandlerProvider.$get().getConfig().configure(config.appErrorPrefix);
     configureStateHelper();
     function configureStateHelper() {
         'use strict';
          routerHelperProvider.configure({
-                docTitle: 'Acklen Avenue Unicron: ',
+                docTitle: 'A/A Unicron',
                 resolveAlways: {}
             });
     }
