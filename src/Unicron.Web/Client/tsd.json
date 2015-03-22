@@ -61,6 +61,9 @@
     },
     "sinon-chai/sinon-chai.d.ts": {
       "commit": "95ce1d9e8212be19d36aa8ccecb48303cc5c87f9"
+    },
+    "angular-ui-router/angular-ui-router.d.ts": {
+      "commit": "5513f0c7749e258c7e9be561f46a4ec65a702311"
     }
   }
 }

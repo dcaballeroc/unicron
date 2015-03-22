@@ -28,7 +28,6 @@ class ExceptionHandlerProvider implements ng.IServiceProvider {
         this.config = config;
     }
     $get(): any {
-           console.log('viendo');
             return {
                 getConfig: (): any => {
                 return this.config;
