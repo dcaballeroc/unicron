@@ -9,7 +9,7 @@ interface IProvideRoutes {
 class UserRoutes implements IProvideRoutes {
     getRoutes(): RouteSettings.IAcklenAvenueRoute[] {
             var userTempRoute: RouteSettings.IAcklenAvenueRoute = {
-                state: 'Users',
+                state: 'users',
                 config: {
                     url: '/users',
                     templateUrl: 'app/users/users.html',
@@ -26,7 +26,7 @@ class UserRoutes implements IProvideRoutes {
 }
 var appUsers: IAppUsers = angular.module('app.users');
 appUsers.constant('userRoutes', new UserRoutes() );
-appUsers.run(['userRoutes', 'routeHelper', (userRoutes: UserRoutes, routeHelper: RouterHelperProvider) => {
+appUsers.run(['userRoutes', 'routeHelper', (userRoutes: UserRoutes, routeHelper: any) => {
      routeHelper.configureStates(userRoutes.getRoutes(), '/');
 } ]);
 
