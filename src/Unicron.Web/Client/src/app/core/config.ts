@@ -29,3 +29,25 @@ var config: Iconfig = {
 };
 
 core.value('config', config);
+
+configureRouterAndException.$inject = ['$compileProvider', '$logProvider',
+                         'routeHelperProvider', 'exceptionHandlerProvider'];
+/* @ngInject */
+function configureRouterAndException ($compileProvider: ng.ICompileProvider, $logProvider: ng.ILogProvider,
+                         routerHelperProvider: any , exceptionHandlerProvider: any) {
+        'use strict';
+    $compileProvider.debugInfoEnabled(false);
+    // turn debugging off/on (no info or warn)
+    if ($logProvider.debugEnabled) {
+            $logProvider.debugEnabled(true);
+    }
+    exceptionHandlerProvider.configure(config.appErrorPrefix);
+    configureStateHelper();
+    function configureStateHelper() {
+        'use strict';
+         routerHelperProvider.configure({
+                docTitle: 'Acklen Avenue Unicron: ',
+                resolveAlways: {}
+            });
+    }
+}
