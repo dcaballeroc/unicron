@@ -22,22 +22,6 @@ namespace Unicron.Web.Api.Infrastructure.Configuration
 {
     public class Bootstrapper : AutofacNancyBootstrapper
     {
-        private byte[] favicon;
-        protected override byte[] FavIcon
-        {
-            get { return this.favicon ?? (this.favicon = LoadFavIcon()); }
-        }
-        private byte[] LoadFavIcon()
-        {
-            
-            using (var resource = Properties.Resources.favicon)
-            {
-                var stream = new System.IO.MemoryStream();
-                resource.Save(stream, ImageFormat.Png);
-                stream.Position = 0;
-                return stream.ToArray();
-            }
-        }
         static readonly Action<Response> CorsResponse = x =>
         {
             x.WithHeader("Access-Control-Allow-Methods",

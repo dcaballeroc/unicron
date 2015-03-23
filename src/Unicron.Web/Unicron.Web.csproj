@@ -382,6 +382,7 @@
     <Content Include="Client\bower_components\toastr\toastr.min.js" />
     <Content Include="Client\build\index.html" />
     <Content Include="Client\src\index.html" />
+    <None Include="favicon.ico" />
     <Content Include="favicon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
