@@ -112,6 +112,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
@@ -381,6 +382,9 @@
     <Content Include="Client\bower_components\toastr\toastr.min.js" />
     <Content Include="Client\build\index.html" />
     <Content Include="Client\src\index.html" />
+    <Content Include="favicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
