@@ -17,7 +17,8 @@ var app: Iapp = angular.module('app', [
 
 // Custom modules 
     'app.core',
-    'app.users'
+    'app.users',
+    'app.layout'
 ]);
 
 // Handle routing errors and success events

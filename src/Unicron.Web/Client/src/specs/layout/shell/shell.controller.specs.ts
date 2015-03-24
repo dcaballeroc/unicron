@@ -17,7 +17,7 @@ describe('Shell', () => {
     beforeEach(inject(function($controller: ng.IControllerService,
         $rootScope: ng.IRootScopeService, _$timeout_: ng.ITimeoutService) {
                 scope = <IShellScope>$rootScope.$new();
-                controller = $controller('shell.controller', {$scope: scope});
+                controller = $controller('Shell', {$scope: scope});
                 $timeout = _$timeout_;
             }
         )

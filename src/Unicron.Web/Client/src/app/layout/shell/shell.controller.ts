@@ -49,7 +49,7 @@ class Shell implements IShell {
         }, 1000);
     }
     static controllerId(): string {
-        return 'shell.controller';
+        return 'Shell';
     }
     private setValues(): void {
         this.title = this.config.appTitle;
@@ -63,7 +63,7 @@ class Shell implements IShell {
     }
 }
 // Update the app1 variable name to be that of your module variable
-appLayout.controller(Shell.controllerId(),
+appLayout.controller('Shell',
     ['$scope', '$timeout', 'config', 'logger', ($scope: IShellScope, $timeOut: ng.ITimeoutService, config: Iconfig, logger: ILogger) =>
     new Shell($scope, $timeOut, config, logger)
 ]);
