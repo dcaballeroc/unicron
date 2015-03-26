@@ -18,7 +18,7 @@ class UserRoutes implements IProvideRoutes {
                     title: 'users',
                     settings: {
                             nav: 1,
-                            content: '<i></i> Dashboard'
+                            content: '<i></i> Users'
                         }
                 }
             };

@@ -44,6 +44,12 @@ describe('Sidebar', () => {
        $rootScope.$apply();
        expect(controller.isCurrent($state.current)).to.equal('current');
    });
+   it('should have isCurrent() for non route not return `current`', function() {
+            $location.path('/invalid');
+            $rootScope.$apply();
+            expect(controller.isCurrent({title: 'invalid'})).not.to.equal('current');
+    });
+    
     
      function getMockStates(): any {
         return [

@@ -30,7 +30,7 @@ class Shell implements IShell {
     private $timeOut: ng.ITimeoutService;
     private config: Iconfig;
     private logger: ILogger;
-    static $inject: any = ['$timeout', 'config', 'logger'];
+    static $inject: any = ['$scope', '$timeout', 'config', 'logger'];
     constructor($scope: IShellScope, $timeOut: ng.ITimeoutService, config: Iconfig, logger: ILogger) {
         $scope.vm = this;
         this.$timeOut = $timeOut;
