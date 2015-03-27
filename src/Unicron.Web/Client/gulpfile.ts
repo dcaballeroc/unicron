@@ -68,7 +68,7 @@ gulp.task('specs-html', ['build-specs-html'], function(done: () => any) {
     serve(true /* isDev */, true /* specRunner */);
     done();
 });
-gulp.task('build-specs-html', ['serve-dev'], function() {
+gulp.task('build-specs-html', ['serve-dev', 'fonts', 'images'], function() {
     console.log('building the spec runner');
 
     var wiredep = require('wiredep').stream;

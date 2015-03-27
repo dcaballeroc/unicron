@@ -2,23 +2,18 @@
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 
 
-interface IAppCore extends ng.IModule { }
+interface IAppLayout extends ng.IModule { }
 
 // Create the module and define its dependencies.
-var appCore: IAppCore = angular.module('app.core', [
+var appLayout: IAppLayout = angular.module('app.layout', [
     // Angular modules 
-    'ngAnimate',
-    'ngSanitize',
+
     // Custom modules 
-    'common.logger',
-    'common.exception',
-    'common.router',
+    'app.core'
     // 3rd Party Modules
-    'ui.router',
-    'ngplus'
+
 ]);
 
 // Execute bootstrapping code and any dependencies.
-appCore.run([ () => {
+appLayout.run([ () => {
 }]);
-

@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <title ng-bind="title"></title>
     <base href="/">
+     <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide { display: none!important; }
+    </style>
  
     <!-- build:css styles/lib.css -->
     <!-- bower:css -->
@@ -20,10 +25,19 @@
     <!-- endbuild -->
 </head>
 <body>
-    <div ui-view>
-
-    </div>
- 
+   <div>
+        <div ng-include="'app/layout/shell/shell.html'"></div>
+        <div id="splash-page" ng-show="false">
+            <div class="page-splash">
+                <div class="page-splash-message">
+                    Unicron
+                </div>
+                <div class="progress progress-striped active page-progress-bar">
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </div> 
     <!-- build:js js/lib.js -->
     <!-- bower:js -->
   

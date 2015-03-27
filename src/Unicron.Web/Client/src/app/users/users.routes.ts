@@ -15,9 +15,10 @@ class UserRoutes implements IProvideRoutes {
                     templateUrl: 'app/users/users.html',
                     controller: 'users.controller',
                     controllerAs: 'vm',
+                    title: 'users',
                     settings: {
                             nav: 1,
-                            content: '<i></i> Dashboard'
+                            content: '<i></i> Users'
                         }
                 }
             };

@@ -15,7 +15,6 @@
 "label-undefined": true,
 "max-line-length": [true, 140],
 "member-ordering": [true,
-"public-before-private",
 "variables-before-functions"
 ],
 "no-arg": true,
