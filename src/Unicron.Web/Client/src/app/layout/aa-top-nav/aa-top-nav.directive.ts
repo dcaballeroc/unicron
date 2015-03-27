@@ -1,27 +1,28 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../layout.module.ts" />
 interface ITopNavScope extends ng.IScope {
-    vm: TopNavController;
+    vm: AATopNavController;
 }
-class TopNavController {
+class AATopNavController {
     constructor($scope: ITopNavScope) {
         $scope.vm = this;
+        console.log('hola');
     }
 }
-appLayout.controller('TopNavController',
+appLayout.controller('aa-TopNavController',
     ['$scope', ($scope: ITopNavScope) =>
-    new TopNavController($scope)
+    new AATopNavController($scope)
 ]);
 'use strict';
-class TopNav implements ng.IDirective {
+class AATopNav implements ng.IDirective {
       bindToController: boolean = true;
       controllerAs: string = 'vm';
-      controller: TopNavController;
+      controller: AATopNavController;
       restrict: string = 'EA';
       scope: any = {
                 'tagline': '=',
                 'title':  '='
             };
-     templateUrl: string = 'app/layout/top-nav/top-nav.html';
+     templateUrl: string = 'app/layout/aa-top-nav/aa-top-nav.html';
 }
-appLayout.directive('TopNav', [() => new TopNav()]);
+appLayout.directive('aaTopNav', [() => new AATopNav()]);
