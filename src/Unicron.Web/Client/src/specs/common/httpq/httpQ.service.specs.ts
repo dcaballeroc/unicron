@@ -34,25 +34,24 @@ describe('httpq', () => {
     });
     describe('GET', () => {
         it('Promise should be defined', function() {
-
             $httpBackend.whenGET('/test').respond(() => dataMock);
-            var promise = httpq.get<IDataMock>('/test');
+            var promise = httpq.Get<IDataMock>('/test');
             $httpBackend.flush();
             expect(promise).to.be.defined;
         });
-        it('Get Should return correct data on success', function() {
+        it('Get should return correct data on success', function() {
             $httpBackend.whenGET('/test').respond(dataMock);
             var response: IDataMock;
-            var promise = httpq.get<IDataMock>('/test');
+            var promise = httpq.Get<IDataMock>('/test');
             promise.then(function(data: IDataMock) {
                 response = data;
             });
             $httpBackend.flush();
             expect(response.name).to.be.equal(dataMock.name);
         });
-        it('Get Should reject the promise and respond with error', function() {
+        it('Get should reject the promise and respond with error', function() {
             $httpBackend.whenGET('/test').respond(401, 'error');
-            var promise = httpq.get<IDataMock>('/test');
+            var promise = httpq.Get<IDataMock>('/test');
             var result: any;
             promise.then(function(data: IDataMock) {
                 result = data;
@@ -60,10 +59,57 @@ describe('httpq', () => {
                 result = error;
             });
             $httpBackend.flush();
-            console.log(result);
             expect(result).to.be.equal('error');
         });
    });
+   describe('POST', () => {
+       it('Post should send the data and the server respond correctly', function() {
+           $httpBackend.whenPOST('/test', dataMock).respond(201, 'success');
+           var promise = httpq.Post<IDataMock>('/test', dataMock);
+           var result: any;
+           promise.then(function(data: any) {
+               result = data;
+            });
+           $httpBackend.flush();
+           expect(result).to.be.equal('success');
+        });
+       it('Post should reject the promise and responde with error', function() {
+           $httpBackend.whenPOST('/test', dataMock).respond(401, 'error');
+           var promise = httpq.Post<IDataMock>('/test', dataMock);
+           var result: any;
+           promise.then(function(data: any) {
+               result = data;
+               }, function(error) {
+                  result = error;
+           });
+           $httpBackend.flush();
+            expect(result).to.be.equal('error');
+        });
+    });
+    describe('PUT', () => {
+       it('Put should send the data and the server responde correctly', function() {
+          $httpBackend.whenPUT('/test', dataMock).respond(201, 'success');
+           var promise = httpq.Put<IDataMock>('/test', dataMock);
+           var result: any;
+           promise.then(function(data: any) {
+               result = data;
+            });
+           $httpBackend.flush();
+           expect(result).to.be.equal('success');
+       });
+       it('Put should reject the promise and responde with error', function() {
+           $httpBackend.whenPUT('/test', dataMock).respond(401, 'error');
+           var promise = httpq.Put<IDataMock>('/test', dataMock);
+           var result: any;
+           promise.then(function(data: any) {
+               result = data;
+               }, function(error) {
+                  result = error;
+           });
+           $httpBackend.flush();
+           expect(result).to.be.equal('error');
+        });
+    });
    
     
 });
