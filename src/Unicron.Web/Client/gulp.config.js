@@ -172,8 +172,8 @@ module.exports = function() {
             },
             preprocessors: {}
         };
-        options.preprocessors['!' + buildSpecs + '**/*.js'] = ['coverage'];
-        options.preprocessors['!' + buildSpecs + '**/**/*.js'] = ['coverage'];
+        options.preprocessors[buildSpecs + '**/!(*.spec)+(.js)'] = ['coverage'];
+        options.preprocessors[buildSpecs + '**/**/!(*.spec)+(.js)'] = ['coverage'];
         return options;
     }
 };

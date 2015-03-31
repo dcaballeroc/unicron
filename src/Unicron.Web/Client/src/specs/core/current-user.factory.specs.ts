@@ -11,10 +11,26 @@
 describe('current-user factory', () => {
     var spyLocalStorage: any;
     var spySessionStorage: any;
+    var stubSessionStorage: any;
+    var stubLocalStorage: any;
     var currentUserManager: ICurrentUserManager;
+    var userMock: ICurrentUser = {
+        email : 'email',
+        name : 'name',
+        token : 'token',
+        expires : getExpireDate()
+    };
+    function getExpireDate(): string {
+        'use strict';
+        var date = new Date();
+        date.setDate(date.getDate() + 1);
+        return JSON.stringify(date);
+    }
     beforeEach(function() {
        spyLocalStorage = sinon.spy(localStorage, 'setItem');
        spySessionStorage = sinon.spy(sessionStorage, 'setItem');
+       stubLocalStorage = sinon.stub(localStorage, 'getItem');
+       stubSessionStorage = sinon.stub(sessionStorage, 'getItem');
     });
     beforeEach(angular.mock.module('app.core'));
     beforeEach(inject(function(_currentUser_) {
@@ -23,6 +39,8 @@ describe('current-user factory', () => {
     afterEach(function() {
         spyLocalStorage.restore();
         spySessionStorage.restore();
+        stubLocalStorage.restore();
+        stubSessionStorage.restore();
     });
     it('should save the user on local storage', () => {
         var testDate = new Date();
@@ -34,5 +52,31 @@ describe('current-user factory', () => {
         currentUserManager.SetUserOnSession('email', 'name', 'token', testDate);
         chai.expect(spySessionStorage).to.have.been.called;
     });
+    it('should get the user from the local storage', () => {
+        stubLocalStorage.returns(JSON.stringify(userMock));
+        var userSaved: ICurrentUser = currentUserManager.GetUser();
+        chai.expect(userSaved).to.be.eqls(userMock);
+    });
+     it('should get the user from the session storage', () => {
+        stubLocalStorage.returns(undefined);
+        stubSessionStorage.returns(JSON.stringify(userMock));
+        var userSaved: ICurrentUser = currentUserManager.GetUser();
+        chai.expect(userSaved).to.be.eql(userSaved);
+    });
+     it('should return undefined when user does not exists', () => {
+        stubLocalStorage.returns(undefined);
+        stubSessionStorage.returns(undefined);
+         var userSaved: ICurrentUser = currentUserManager.GetUser();
+        chai.expect(userSaved).to.be.undefined;
+    });
+     it('should return undefined when user have been expired', () => {
+        var dateExpired = new Date();
+        dateExpired.setDate(dateExpired.getDate() - 1);
+        userMock.expires = JSON.stringify(dateExpired);
+        stubLocalStorage.returns(JSON.stringify(userMock));
+        var userSaved: ICurrentUser = currentUserManager.GetUser();
+        chai.expect(userSaved).to.be.undefined;
+    });
+    
     
 });

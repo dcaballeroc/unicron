@@ -4,7 +4,7 @@ interface ICurrentUser {
     email: string;
     name: string;
     token: string;
-    expires: Date
+    expires: string
 }
 interface ICurrentUserManager {
     GetUser(): ICurrentUser;
@@ -21,7 +21,22 @@ class CurrentUserManager implements ICurrentUserManager {
         this.windowsKey = 'user';
     }
     GetUser(): ICurrentUser {
-        return undefined;
+        var userFromLocalStorage: string = this.$window.localStorage.getItem(this.windowsKey);
+        var user: ICurrentUser;
+        if (userFromLocalStorage) {
+            user = <ICurrentUser>JSON.parse(userFromLocalStorage);
+        } else {
+            var userFromSessionStorage: string = this.$window.sessionStorage.getItem(this.windowsKey);
+            if (!userFromSessionStorage) {
+                return undefined;
+            }
+            user = <ICurrentUser>JSON.parse(userFromSessionStorage);
+        }
+        var expires: Date = new Date(JSON.parse(user.expires));
+        if (expires < new Date()) {
+            return undefined;
+        }
+        return user;
     }
     SetUserLocal(email: string, name: string, token: string, expires: Date): void {
         this.SetUser(email, name, token, expires);
@@ -33,7 +48,7 @@ class CurrentUserManager implements ICurrentUserManager {
             email : email,
             name : name,
             token : token,
-            expires : expires
+            expires : JSON.stringify(expires)
         };
     }
      SetUserOnSession(email: string, name: string, token: string, expires: Date): void {
