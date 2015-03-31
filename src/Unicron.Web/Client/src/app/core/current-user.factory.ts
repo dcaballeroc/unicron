@@ -10,6 +10,7 @@ interface ICurrentUserManager {
     GetUser(): ICurrentUser;
     SetUserLocal (email: string, name: string,  token: string, expires: Date): void;
     SetUserOnSession (email: string, name: string,  token: string, expires: Date): void;
+    RemoveUser(): void;
 }
 class CurrentUserManager implements ICurrentUserManager {
     currentUser: ICurrentUser;
@@ -34,6 +35,7 @@ class CurrentUserManager implements ICurrentUserManager {
         }
         var expires: Date = new Date(JSON.parse(user.expires));
         if (expires < new Date()) {
+            this.RemoveUser();
             return undefined;
         }
         return user;
@@ -56,6 +58,10 @@ class CurrentUserManager implements ICurrentUserManager {
          var userString: string = JSON.stringify(this.currentUser);
          this.$window.sessionStorage.setItem(this.windowsKey, userString);
      }
+    RemoveUser(): void {
+        this.$window.sessionStorage.removeItem(this.windowsKey);
+        this.$window.localStorage.removeItem(this.windowsKey);
+    }
 }
 
 appCore.factory('currentUser', ['$window', ($window: ng.IWindowService) => new CurrentUserManager($window) ]);

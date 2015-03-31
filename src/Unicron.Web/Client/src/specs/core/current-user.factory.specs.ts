@@ -10,6 +10,8 @@
 
 describe('current-user factory', () => {
     var spyLocalStorage: any;
+    var spyDeleteLocalStorage: any;
+    var spyDeleteSessionStorage: any;
     var spySessionStorage: any;
     var stubSessionStorage: any;
     var stubLocalStorage: any;
@@ -31,6 +33,8 @@ describe('current-user factory', () => {
        spySessionStorage = sinon.spy(sessionStorage, 'setItem');
        stubLocalStorage = sinon.stub(localStorage, 'getItem');
        stubSessionStorage = sinon.stub(sessionStorage, 'getItem');
+       spyDeleteLocalStorage = sinon.spy(localStorage, 'removeItem');
+       spyDeleteSessionStorage = sinon.spy(sessionStorage, 'removeItem');
     });
     beforeEach(angular.mock.module('app.core'));
     beforeEach(inject(function(_currentUser_) {
@@ -41,6 +45,8 @@ describe('current-user factory', () => {
         spySessionStorage.restore();
         stubLocalStorage.restore();
         stubSessionStorage.restore();
+        spyDeleteLocalStorage.restore();
+        spyDeleteSessionStorage.restore();
     });
     it('should save the user on local storage', () => {
         var testDate = new Date();
@@ -77,6 +83,17 @@ describe('current-user factory', () => {
         var userSaved: ICurrentUser = currentUserManager.GetUser();
         chai.expect(userSaved).to.be.undefined;
     });
+    it('should delete user when have been expired', () => {
+        var dateExpired = new Date();
+        dateExpired.setDate(dateExpired.getDate() - 1);
+        userMock.expires = JSON.stringify(dateExpired);
+        stubLocalStorage.returns(JSON.stringify(userMock));
+        var userSaved: ICurrentUser = currentUserManager.GetUser();
+        chai.expect(userSaved).to.be.undefined;
+        chai.expect(spyDeleteLocalStorage).to.have.been.called;
+        chai.expect(spyDeleteSessionStorage).to.have.been.called;
+    });
+
     
     
 });
