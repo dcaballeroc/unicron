@@ -93,7 +93,4 @@ describe('current-user factory', () => {
         chai.expect(spyDeleteLocalStorage).to.have.been.called;
         chai.expect(spyDeleteSessionStorage).to.have.been.called;
     });
-
-    
-    
 });
