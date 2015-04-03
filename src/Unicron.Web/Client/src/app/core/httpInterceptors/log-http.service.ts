@@ -9,6 +9,10 @@ class LogHttpService {
         this.logError(rejection);
         return this.$q.reject(rejection);
     };
+    requestError: any = (rejection: any): any => {
+        this.logError(rejection);
+        return this.$q.reject(rejection);
+    };
     private logError(rejection: any): void {
          var errorData: any = {
             method: rejection.config.method,

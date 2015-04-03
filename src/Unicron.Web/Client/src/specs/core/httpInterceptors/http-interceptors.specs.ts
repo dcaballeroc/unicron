@@ -71,6 +71,7 @@ describe('HttpInterceptors', () => {
        var $q: ng.IQService;
        var logger: ILogger;
        var spyLogger: any;
+     
        beforeEach(inject(function(_logHttpService_: LogHttpService, _$q_: ng.IQService, _logger_: ILogger) {
            logHttpService = _logHttpService_;
            $q = _$q_;
@@ -79,6 +80,7 @@ describe('HttpInterceptors', () => {
        }));
        afterEach(function() {
           spyLogger.restore();
+         
        });
        
        it('Should have the logger http service be defined', function() {
@@ -97,6 +99,7 @@ describe('HttpInterceptors', () => {
             $httpBackend.flush();
            chai.expect(spyLogger).to.have.been.calledWith('Error on Response', 'Error 401 in GET URL = /testLog');
        });
+       
     });
     
 });
