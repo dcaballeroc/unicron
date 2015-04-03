@@ -12,6 +12,7 @@ module.exports = function() {
     var report = './report/';
     var bowerFiles = wiredep({devDependencies: true})['js'];
     var buildSpecs =  src + 'specs/';
+    var buildJs = build + js;
     var specRunnerFile = '/specs/specs.html';
     var specRunner = src + specRunnerFile;
     var config = {
@@ -32,7 +33,7 @@ module.exports = function() {
         ],
         build: './build/',
         buildTs: build + ts,
-        buildJs: build + js,
+        buildJs: buildJs,
         buildHtmls: build + htmls,
         buildSpecs: buildSpecs,
         src: src,
@@ -172,8 +173,9 @@ module.exports = function() {
             },
             preprocessors: {}
         };
-        options.preprocessors['!' + buildSpecs + '**/*.js'] = ['coverage'];
-        options.preprocessors['!' + buildSpecs + '**/**/*.js'] = ['coverage'];
+        options.preprocessors[buildSpecs + '**/!(*.spec)+(.js)'] = ['coverage'];
+        options.preprocessors[buildSpecs + '**/**/!(*.spec)+(.js)'] = ['coverage'];
+        options.preprocessors[buildJs] = ['coverage'];
         return options;
     }
 };
