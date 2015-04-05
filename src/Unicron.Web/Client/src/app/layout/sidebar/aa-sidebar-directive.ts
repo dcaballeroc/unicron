@@ -12,7 +12,7 @@ class AASidebar implements ng.IDirective {
         var $dropdownElement: any = element.find('.sidebar-dropdown a');
         element.addClass('sidebar');
         $dropdownElement.click(dropdown);
-        function dropdown(e: any): any {
+        dropdown: any = (e: any) => {
                 var dropClass: string = 'dropy';
                 e.preventDefault();
                 if (!$dropdownElement.hasClass(dropClass)) {
@@ -22,7 +22,10 @@ class AASidebar implements ng.IDirective {
                     $dropdownElement.removeClass(dropClass);
                     $sidebarInner.slideUp(350, this.scope.whenDoneAnimating);
                 }
-            }
+            };
+        
+     
     };
+
 }
 appLayout.directive('aaSidebar', [() => new AASidebar()]);

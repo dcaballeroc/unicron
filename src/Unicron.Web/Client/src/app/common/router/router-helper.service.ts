@@ -65,6 +65,7 @@
                             return;
                         }
                         stateCounts.errors++;
+                        console.log(error);
                         handlingStateChangeError = true;
                         var msg = formatErrorMessage(error);
                         logger.warning(msg, [toState]);
