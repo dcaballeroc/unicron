@@ -19,7 +19,12 @@ class LoginUsersService implements ILoginUsersService {
     constructor(private httpq: IHttpQ) {
     }
     Login(email: string, password: string): ng.IPromise<IUserResponse> {
-        return undefined;
+        var request: IUserLoginRequest = {
+            email: email,
+            password: password
+        };
+        var response: ng.IPromise<IUserResponse> = this.httpq.Post<IUserLoginRequest, IUserResponse>('/login', request);
+        return response;
     }
 }
 appUsers.factory('loginUsersService', ['httpq', (httpq: IHttpQ) => new LoginUsersService(httpq)]);

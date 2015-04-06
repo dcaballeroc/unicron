@@ -30,7 +30,13 @@ describe('User Login Service', () => {
             email: 'test@test.com',
             password: 'test'
         };
-        $httpBackend.whenPOST('/login', userLoginRequest).respond(userResponse);
+        $httpBackend.whenPOST('/login', JSON.stringify(userLoginRequest)).respond(userResponse);
+        var promise = loginService.Login(userLoginRequest.email, userLoginRequest.password);
+        var result: any;
+        promise.then(function(data) {
+             result = data;
+        });
         $httpBackend.flush();
+        chai.expect(result.name).to.be.equal(userResponse.name);
     });
 });
