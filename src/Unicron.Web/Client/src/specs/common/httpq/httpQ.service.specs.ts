@@ -25,7 +25,7 @@ describe('httpq', () => {
                                ) {
         $httpBackend = _$httpBackend_;
         $q = _$q_;
-        
+
         httpq = _httpq_;
     }));
     afterEach(function() {
@@ -65,7 +65,7 @@ describe('httpq', () => {
    describe('POST', () => {
        it('Post should send the data and the server respond correctly', function() {
            $httpBackend.whenPOST('/test', dataMock).respond(201, 'success');
-           var promise = httpq.Post<IDataMock>('/test', dataMock);
+           var promise = httpq.Post<IDataMock, IDataMock>('/test', dataMock);
            var result: any;
            promise.then(function(data: any) {
                result = data;
@@ -75,7 +75,7 @@ describe('httpq', () => {
         });
        it('Post should reject the promise and responde with error', function() {
            $httpBackend.whenPOST('/test', dataMock).respond(401, 'error');
-           var promise = httpq.Post<IDataMock>('/test', dataMock);
+           var promise = httpq.Post<IDataMock, IDataMock>('/test', dataMock);
            var result: any;
            promise.then(function(data: any) {
                result = data;
@@ -89,7 +89,7 @@ describe('httpq', () => {
     describe('PUT', () => {
        it('Put should send the data and the server responde correctly', function() {
           $httpBackend.whenPUT('/test', dataMock).respond(201, 'success');
-           var promise = httpq.Put<IDataMock>('/test', dataMock);
+           var promise = httpq.Put<IDataMock, IDataMock>('/test', dataMock);
            var result: any;
            promise.then(function(data: any) {
                result = data;
@@ -99,7 +99,7 @@ describe('httpq', () => {
        });
        it('Put should reject the promise and responde with error', function() {
            $httpBackend.whenPUT('/test', dataMock).respond(401, 'error');
-           var promise = httpq.Put<IDataMock>('/test', dataMock);
+           var promise = httpq.Put<IDataMock, IDataMock>('/test', dataMock);
            var result: any;
            promise.then(function(data: any) {
                result = data;
@@ -110,7 +110,7 @@ describe('httpq', () => {
            expect(result).to.be.equal('error');
         });
     });
-   
-    
+
+
 });
 
