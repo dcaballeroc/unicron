@@ -20,7 +20,7 @@ describe('aaSidebar directive ', () => {
     beforeEach(inject(function(_$compile_: ng.ICompileService, _$rootScope_: ng.IRootScopeService) {
         $compile = _$compile_;
         $rootScope = _$rootScope_;
-        e1 = angular.element('<aa-sidebar when-done-animating="vm.sidebarReady(42)" > \
+        e1 = angular.element('<aa-sidebar whenDoneAnimating="vm.sidebarReady(42)" > \
                 <div class="sidebar-dropdown"><a href="">Menu</a></div> \
                 <div class="sidebar-inner" style="display: none"></div> \
             </aa-sidebar>');
@@ -37,7 +37,45 @@ describe('aaSidebar directive ', () => {
             clickIt();
             hasIsOpenClass(true);
         });
+        it('is present for an open menu', function () {
+            openDropdown();
+            hasIsOpenClass(true);
+        });
+        it('is removed from a closed menu after clicking', function () {
+            openDropdown();
+            clickIt();
+            hasIsOpenClass(false);
+        });
+
     });
+    describe('when animating w/ jQuery fx off', () => {
+        var oldFxOff: any;
+        beforeEach(function() {
+            oldFxOff = $.fx.off;
+            $.fx.off = true;
+            e1.appendTo(document.body);
+        });
+        afterEach(function () {
+            $.fx.off = this.oldFxOff;
+            e1.remove();
+        });
+        it('dropdown is visible after opening a closed menu', function () {
+            dropdownIsVisible(false); // hidden before click
+            clickIt();
+            dropdownIsVisible(true); // visible after click
+        });
+        it('dropdown is hidden after closing an open menu', function () {
+            openDropdown();
+            dropdownIsVisible(true); // visible before click
+            clickIt();
+            dropdownIsVisible(false); // hidden after click
+        });
+       
+    });
+    function openDropdown() {
+        dropdownElement.addClass(isOpenClass);
+        innerElement.css('display', 'block');
+    }
     function hasIsOpenClass(isTrue: boolean): void {
         var hasClass = dropdownElement.hasClass(isOpenClass);
         chai.expect(hasClass).equal(!!isTrue,
@@ -45,6 +83,11 @@ describe('aaSidebar directive ', () => {
     }
     function clickIt(): void {
         dropdownElement.trigger('click');
+    }
+    function dropdownIsVisible(isTrue) {
+        var display = innerElement.css('display');
+        chai.expect(display).to.equal(isTrue ? 'block' : 'none',
+            'innerElement display value is ' + display);
     }
     
 });
