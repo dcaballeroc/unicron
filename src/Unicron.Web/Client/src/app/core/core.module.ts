@@ -6,10 +6,10 @@ interface IAppCore extends ng.IModule { }
 
 // Create the module and define its dependencies.
 var appCore: IAppCore = angular.module('app.core', [
-    // Angular modules 
+    // Angular modules
     'ngAnimate',
     'ngSanitize',
-    // Custom modules 
+    // Custom modules
     'common.logger',
     'common.exception',
     'common.router',

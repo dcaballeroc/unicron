@@ -14,8 +14,8 @@ var app: Iapp = angular.module('app', [
     'ngRoute',          // routing
     'ngResource',       // $resource for REST queries
     'ngSanitize',       // sanitizes html bindings (ex: sidebar.js)
-
-// Custom modules 
+    'ngMessages',
+// Custom modules
     'app.core',
     'app.users',
     'app.layout'

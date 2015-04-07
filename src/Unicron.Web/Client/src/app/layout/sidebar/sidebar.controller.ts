@@ -12,6 +12,7 @@ interface ISidebarScope extends ng.IScope {
 interface ISidebar {
     activate(): void;
     isCurrent(route: any): any;
+    showSideBar(): boolean;
 }
 
 class Sidebar implements ISidebar {

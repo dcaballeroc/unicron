@@ -39,15 +39,25 @@ describe('Sidebar', () => {
     beforeEach(inject(function($templateCache) {
         $templateCache.put('app/users/users.html', '');
     }));
-   it('should have isCurrent() for /users to return `current`', function() {
+   it('Should have isCurrent() for /users to return `current`', function() {
        $location.path('/users');
        $rootScope.$apply();
        expect(controller.isCurrent($state.current)).to.equal('current');
    });
-   it('should have isCurrent() for non route not return `current`', function() {
+   it('Should have isCurrent() for non route not return `current`', function() {
             $location.path('/invalid');
             $rootScope.$apply();
             expect(controller.isCurrent({title: 'invalid'})).not.to.equal('current');
+    });
+    it('Should showSideBar() if route is configured for that', function() {
+        $location.path('/users');
+        $rootScope.$apply();
+        chai.expect(controller.showSideBar()).to.be.true;
+    });
+it('Should not showSideBar() if route is configured for that', function() {
+    $location.path('/login');
+    $rootScope.$apply();
+    chai.expect(controller.showSideBar()).to.be.false;
     });
      function getMockStates(): any {
         return [
@@ -62,9 +72,25 @@ describe('Sidebar', () => {
                     settings: {
                             nav: 1,
                             content: '<i></i> Dashboard',
-                            notShowInMenu: true,
-                            notShowSideBar: true
+                            notShowInMenu: false,
+                            notShowSideBar: false
                         }
+                }
+            },
+            {
+                state: 'login',
+                config: {
+                    url: '/login',
+                    templateUrl: 'app/users/users.login.html',
+                    controller: 'users.login.controller',
+                    controllerAs: 'vm',
+                    title: 'users',
+                    settings: {
+                        nav: 1,
+                        content: '<i></i> Dashboard',
+                        notShowInMenu: true,
+                        notShowSideBar: true
+                    }
                 }
             }
         ];
