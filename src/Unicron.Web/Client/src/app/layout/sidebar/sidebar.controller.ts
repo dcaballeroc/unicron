@@ -15,17 +15,11 @@ interface ISidebar {
 }
 
 class Sidebar implements ISidebar {
-    $scope: ISidebarScope;
-    $state: IStateService;
-    routeHelper: any;
     private navRoutes: any;
     private states: any;
     static $inject: any = ['$scope', '$state', 'routeHelper'];
-    constructor($scope: ISidebarScope, $state: angular.ui.IStateService, routeHelper: any) {
+    constructor(private $scope: ISidebarScope, private $state: angular.ui.IStateService, private routeHelper: any) {
         $scope.vm = this;
-        this.$scope = $scope;
-        this.$state = $state;
-        this.routeHelper = routeHelper;
         this.states = routeHelper.getStates();
         this.activate();
     }
@@ -48,7 +42,7 @@ class Sidebar implements ISidebar {
         }
        return true;
     }
-    isCurrent(route: any): any {
+    isCurrent(route: any): string {
         if (!route.title || !this.$state.current || !this.$state.current.title) {
                 return '';
         }
