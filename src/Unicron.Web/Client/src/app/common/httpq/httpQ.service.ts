@@ -26,7 +26,6 @@ class HttpQ implements IHttpQ {
          var defer: ng.IDeferred<K> = this.$q.defer();
          this.$http.post<T>(resource, payload)
             .success(function(data: any): void {
-                console.log(data);
                 defer.resolve(data);
             })
             .error(function(error: any): void {

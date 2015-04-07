@@ -1,0 +1,102 @@
+/// <reference path="../../../typings/mocha/mocha.d.ts" />
+/// <reference path="../../../typings/chai/chai.d.ts" />
+/// <reference path="../../../typings/sinon/sinon.d.ts" />
+/// <reference path="../../../typings/sinon-chai/sinon-chai.d.ts" />
+/// <reference path="../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../typings/angularjs/angular-mocks.d.ts" />
+/// <reference path="../../app/users/users.login.service.ts"/>
+/// <reference path="../../app/users/users.login.controller.ts"/>
+/// <reference path="../../app/common/httpq/httpQ.service.ts"/>
+/// <reference path="../../app/core/current-user.factory.ts"/>
+/* tslint:disable:typedef */
+
+describe('users.login.controller', () => {
+    var userLoginController: IUsersLogin;
+    var scope: IUsersLoginScope;
+    var userLoggedData: IUserResponse = {
+        name: 'User Test',
+        expires: JSON.stringify(new Date()),
+        token: 'token'
+    };
+    var email = 'test@test.com';
+    var password = 'password';
+    var userLoggedPromise: ng.IPromise<IUserResponse>;
+    var failedUserPromise: ng.IPromise<any>;
+    var loginUsersService: ILoginUsersService;
+    var currentUser: ICurrentUserManager;
+    var stubLoginUserService: any;
+    var spyCurrentUserManagerLocal: any;
+    var spyCurrentUserManagerSession: any;
+    var spyLogService: any;
+    var $rootScope: ng.IRootScopeService;
+    var logger: ILogger;
+
+    beforeEach(module('app.users'));
+    beforeEach(inject(function($controller: ng.IControllerService, _$rootScope_: ng.IRootScopeService,
+        _$q_: ng.IQService, _loginUsersService_: ILoginUsersService, _currentUser_: ICurrentUserManager, _logger_: ILogger) {
+        $rootScope = _$rootScope_;
+        scope = <IUsersLoginScope>$rootScope.$new();
+        userLoginController = $controller('users.login.controller', {$scope: scope});
+        userLoggedPromise = getUserPromise(_$q_);
+        failedUserPromise = getUserFailedPromise(_$q_);
+        loginUsersService = _loginUsersService_;
+        currentUser = _currentUser_;
+        logger = _logger_;
+    }));
+    beforeEach(function() {
+        stubLoginUserService = sinon.stub(loginUsersService, 'Login');
+        spyCurrentUserManagerLocal = sinon.spy(currentUser, 'SetUserLocal');
+        spyCurrentUserManagerSession = sinon.spy(currentUser, 'SetUserOnSession');
+        spyLogService = sinon.spy(logger, 'error');
+    });
+    afterEach(function() {
+        stubLoginUserService.restore();
+        spyCurrentUserManagerLocal.restore();
+        spyCurrentUserManagerSession.restore();
+        spyLogService.restore();
+    });
+
+    it('Should be register as users.login.controller ', function() {
+        chai.expect(userLoginController).to.be.not.undefined;
+    });
+    it('Should call the login service', function() {
+        stubLoginUserService.returns(userLoggedPromise);
+        userLoginController.email = email;
+        userLoginController.password = password;
+        userLoginController.login();
+        $rootScope.$apply();
+        chai.expect(stubLoginUserService).to.have.been.calledWith(email, password);
+    });
+    it('Should save the user logged on local storage because user select remember ', function() {
+        stubLoginUserService.returns(userLoggedPromise);
+        userLoginController.email = email;
+        userLoginController.password = password;
+        userLoginController.rememberMe = true;
+        userLoginController.login();
+        $rootScope.$apply();
+        chai.expect(spyCurrentUserManagerLocal).to.have.been.calledWith
+        (email, userLoggedData.name, userLoggedData.token);
+    });
+    it('Should save the user logged on session storage because user does not select remember ', function() {
+        stubLoginUserService.returns(userLoggedPromise);
+        userLoginController.email = email;
+        userLoginController.password = password;
+        userLoginController.rememberMe = false;
+        userLoginController.login();
+        $rootScope.$apply();
+    chai.expect(spyCurrentUserManagerSession).to.have.been.calledWith
+        (email, userLoggedData.name, userLoggedData.token);
+        });
+
+    function getUserPromise($q: ng.IQService): ng.IPromise<IUserResponse> {
+        var deferred = $q.defer<IUserResponse>();
+        deferred.resolve(userLoggedData);
+        return deferred.promise;
+    }
+
+    function getUserFailedPromise($q: ng.IQService): ng.IPromise<any> {
+        var deferred = $q.defer();
+        deferred.reject('Invalid email address or password. Please try again.');
+        return deferred.promise;
+    }
+});
