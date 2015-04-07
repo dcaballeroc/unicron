@@ -31,6 +31,8 @@ class UsersLogin implements IUsersLogin {
     login(): void {
         this.loginUserService.Login(this.email, this.password).then((data: IUserResponse) =>  {
             this.SaveUser(data);
+        }).catch((error: any) => {
+            this.logger.error('Error', error, null);
         });
     }
     private SaveUser(data: IUserResponse): void {

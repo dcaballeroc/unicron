@@ -20,6 +20,7 @@ describe('users.login.controller', () => {
     };
     var email = 'test@test.com';
     var password = 'password';
+    var errorMessage = 'Invalid email address or password. Please try again.';
     var userLoggedPromise: ng.IPromise<IUserResponse>;
     var failedUserPromise: ng.IPromise<any>;
     var loginUsersService: ILoginUsersService;
@@ -75,7 +76,7 @@ describe('users.login.controller', () => {
         userLoginController.login();
         $rootScope.$apply();
         chai.expect(spyCurrentUserManagerLocal).to.have.been.calledWith
-        (email, userLoggedData.name, userLoggedData.token);
+                    (email, userLoggedData.name, userLoggedData.token);
     });
     it('Should save the user logged on session storage because user does not select remember ', function() {
         stubLoginUserService.returns(userLoggedPromise);
@@ -84,9 +85,17 @@ describe('users.login.controller', () => {
         userLoginController.rememberMe = false;
         userLoginController.login();
         $rootScope.$apply();
-    chai.expect(spyCurrentUserManagerSession).to.have.been.calledWith
-        (email, userLoggedData.name, userLoggedData.token);
-        });
+        chai.expect(spyCurrentUserManagerSession).to.have.been.calledWith
+                        (email, userLoggedData.name, userLoggedData.token);
+    });
+    it('Should call the logger service on error request', function() {
+        stubLoginUserService.returns(failedUserPromise);
+        userLoginController.email = email;
+        userLoginController.password = password;
+        userLoginController.login();
+        $rootScope.$apply();
+        chai.expect(spyLogService).to.have.been.calledWith('Error', errorMessage);
+    });
 
     function getUserPromise($q: ng.IQService): ng.IPromise<IUserResponse> {
         var deferred = $q.defer<IUserResponse>();
