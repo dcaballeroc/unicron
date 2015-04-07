@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
    <div ng-controller="Sidebar as vm">
-   <span>
+    <span ng-if="vm.showSideBar()">
        <aa-sidebar when-done-animating="vm.sidebarReady()">
            <div class="sidebar-filler"></div>
            <div class="sidebar-dropdown"><a href="#">Menu</a></div>

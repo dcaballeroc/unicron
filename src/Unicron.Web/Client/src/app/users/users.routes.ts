@@ -19,8 +19,7 @@ class UserRoutes implements IProvideRoutes {
                         title: 'users',
                         settings: {
                             nav: 2,
-                            content: '<i></i> Users',
-                            showInMenu: true
+                            content: '<i></i> Users'
                         }
                     }
                 },
@@ -35,7 +34,8 @@ class UserRoutes implements IProvideRoutes {
                         settings: {
                             nav: 1,
                             content: '<i></i> Login',
-                            showInMenu: false
+                            notShowInMenu: true,
+                            notShowSideBar: true
                         }
                     }
                 },

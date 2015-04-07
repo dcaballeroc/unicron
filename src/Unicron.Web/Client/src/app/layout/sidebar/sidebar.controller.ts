@@ -30,15 +30,23 @@ class Sidebar implements ISidebar {
         this.activate();
     }
      getNavRoutes(): void {
-         console.log(this.states);
-     this.navRoutes = this.states.filter(function(r: any): any {
-            return r.settings && r.settings.nav && r.settings.showInMenu;
-         }).sort(function(r1: any, r2: any): any {
-             return r1.settings.nav - r2.settings.nav;
-         });
+        this.navRoutes = this.states.filter(function(r: any): any {
+            return r.settings && r.settings.nav && !r.settings.notShowInMenu;
+        }).sort(function(r1: any, r2: any): any {
+            return r1.settings.nav - r2.settings.nav;
+        });
     }
     activate(): void {
        this.getNavRoutes();
+    }
+    showSideBar(): boolean {
+        var settings: any = this.$state.current.settings;
+        if (settings) {
+                if (settings.notShowSideBar) {
+                    return false;
+                }
+        }
+       return true;
     }
     isCurrent(route: any): any {
         if (!route.title || !this.$state.current || !this.$state.current.title) {

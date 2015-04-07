@@ -17,7 +17,7 @@ describe('Sidebar', () => {
     var $location: ng.ILocationService;
     var routeHelper: any;
     var $rootScope: ng.IRootScopeService;
-    
+
     beforeEach(angular.mock.module('app.layout'));
     beforeEach(inject(function($controller: ng.IControllerService,
                 _$rootScope_: ng.IRootScopeService,
@@ -28,11 +28,11 @@ describe('Sidebar', () => {
                     $rootScope = _$rootScope_;
                     routeHelper = _routeHelper_;
                     routeHelper.configureStates(getMockStates(), '/');
-                    controller = $controller('Sidebar', {$scope: scope, $tate: _$state_, routeHelper: _routeHelper_ });
+                    controller = $controller('Sidebar', {$scope: scope, $state: _$state_, routeHelper: _routeHelper_ });
                     $state = _$state_;
                     $location = _$location_;
                     $rootScope.$apply();
-        
+
             }
         )
     );
@@ -49,8 +49,6 @@ describe('Sidebar', () => {
             $rootScope.$apply();
             expect(controller.isCurrent({title: 'invalid'})).not.to.equal('current');
     });
-    
-    
      function getMockStates(): any {
         return [
             {
@@ -63,7 +61,9 @@ describe('Sidebar', () => {
                     title: 'users',
                     settings: {
                             nav: 1,
-                            content: '<i></i> Dashboard'
+                            content: '<i></i> Dashboard',
+                            notShowInMenu: true,
+                            notShowSideBar: true
                         }
                 }
             }
