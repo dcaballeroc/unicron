@@ -8,21 +8,41 @@ interface IProvideRoutes {
 
 class UserRoutes implements IProvideRoutes {
     getRoutes(): RouteSettings.IAcklenAvenueRoute[] {
-            var userTempRoute: RouteSettings.IAcklenAvenueRoute = {
-                state: 'users',
-                config: {
-                    url: '/users',
-                    templateUrl: 'app/users/users.html',
-                    controller: 'users.controller',
-                    controllerAs: 'vm',
-                    title: 'users',
-                    settings: {
-                            nav: 1,
-                            content: '<i></i> Users'
+            var userRoutes: RouteSettings.IAcklenAvenueRoute [] = [
+                {
+                    state: 'users',
+                    config: {
+                        url: '/users',
+                        templateUrl: 'app/users/users.html',
+                        controller: 'users.controller',
+                        controllerAs: 'vm',
+                        title: 'users',
+                        settings: {
+                            nav: 2,
+                            content: '<i></i> Users',
+                            showInMenu: true
                         }
-                }
-            };
-            return [userTempRoute];
+                    }
+                },
+                {
+                    state: 'login',
+                    config: {
+                        url: '/login',
+                        templateUrl: 'app/users/users.login.html',
+                        controller: 'users.login.controller',
+                        controllerAs: 'vm',
+                        title: 'Login',
+                        settings: {
+                            nav: 1,
+                            content: '<i></i> Login',
+                            showInMenu: false
+                        }
+                    }
+                },
+            ];
+
+
+            return userRoutes;
         }
 }
 var appUsers: IAppUsers = angular.module('app.users');

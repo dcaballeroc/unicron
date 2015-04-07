@@ -30,8 +30,9 @@ class Sidebar implements ISidebar {
         this.activate();
     }
      getNavRoutes(): void {
+         console.log(this.states);
      this.navRoutes = this.states.filter(function(r: any): any {
-          return r.settings && r.settings.nav;
+            return r.settings && r.settings.nav && r.settings.showInMenu;
          }).sort(function(r1: any, r2: any): any {
              return r1.settings.nav - r2.settings.nav;
          });

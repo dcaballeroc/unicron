@@ -3,6 +3,7 @@ module RouteSettings {
     export interface IAcklenAvenueRouteSettings {
         nav: number;
         content: string;
+        showInMenu: boolean;
     }
 
    export  interface IAcklenAvenueRouteConfig extends ng.route.IRoute {
