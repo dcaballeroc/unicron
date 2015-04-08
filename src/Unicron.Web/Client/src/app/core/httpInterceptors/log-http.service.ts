@@ -22,8 +22,9 @@ class LogHttpService {
             status: rejection.status,
             statusText: rejection.statusText
         };
+        // Not show on screen
        this.logger.error('Error on Response', 'Error '
-        + errorData.status + ' in ' + errorData.method + ' URL = ' + errorData.url , errorData);
+        + errorData.status + ' in ' + errorData.method + ' URL = ' + errorData.url , errorData, true);
     }
 }
 appCore.factory('logHttpService', ['$q', 'logger', ($q: ng.IQService, logger: ILogger)

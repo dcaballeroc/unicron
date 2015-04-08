@@ -41,6 +41,45 @@ describe('Logger', () => {
             chai.expect(spyToastrError).to.not.have.been.called;
         });
     });
+    describe('Info', () => {
+        var spyToastrInfo: any;
+        beforeEach(function() {
+            spyToastrInfo = sinon.spy(toastrService, 'info');
+        });
+        afterEach(function() {
+            spyToastrInfo.restore();
+        });
+        it('should call tostr if notShowOnScreen is false', function() {
+            logger.info('Test', 'Test', null);
+            chai.expect(spyToastrInfo).to.have.been.called;
+        });
+    });
+    describe('Success', () => {
+        var spyToastrSuccess: any;
+        beforeEach(function() {
+            spyToastrSuccess = sinon.spy(toastrService, 'success');
+        });
+        afterEach(function() {
+            spyToastrSuccess.restore();
+        });
+        it('should call tostr if notShowOnScreen is false', function() {
+            logger.success('Test', 'Test', null);
+            chai.expect(spyToastrSuccess).to.have.been.called;
+        });
+    });
+    describe('Success', () => {
+        var spyToastrWarning: any;
+        beforeEach(function() {
+            spyToastrWarning = sinon.spy(toastrService, 'warning');
+        });
+        afterEach(function() {
+            spyToastrWarning.restore();
+        });
+        it('should call tostr if notShowOnScreen is false', function() {
+            logger.warning('Test', 'Test', null);
+            chai.expect(spyToastrWarning).to.have.been.called;
+        });
+    });
 
 
 });

@@ -10,35 +10,35 @@
 /// <reference path="../../../app/common/logger/logger.service.ts"/>
 /* tslint:disable:typedef */
 describe('HttpInterceptors', () => {
-  
+
     var $httpProvider: ng.IHttpProvider;
     var $httpBackend: ng.IHttpBackendService;
     var $http: ng.IHttpService;
-   
+
     var userMock: ICurrentUser = {
         email : 'email',
         name : 'name',
         token : 'tokenXXX',
         expires : JSON.stringify(new Date())
     };
-    
+
     beforeEach(angular.mock.module('app.core', function(_$httpProvider_: ng.IHttpProvider) {
         $httpProvider = _$httpProvider_;
     }));
     beforeEach(inject(function(_$httpBackend_: ng.IHttpBackendService,
                             _$http_: ng.IHttpService) {
-        
-       
+
+
         $httpBackend = _$httpBackend_;
         $http = _$http_;
-       
+
     }));
     afterEach(function() {
-      
+
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
     });
-   
+
     describe('Authorization Interceptor', () => {
         var currentUser: ICurrentUserManager;
         var authorizationService: AuthorizationService;
@@ -71,7 +71,7 @@ describe('HttpInterceptors', () => {
        var $q: ng.IQService;
        var logger: ILogger;
        var spyLogger: any;
-     
+
        beforeEach(inject(function(_logHttpService_: LogHttpService, _$q_: ng.IQService, _logger_: ILogger) {
            logHttpService = _logHttpService_;
            $q = _$q_;
@@ -80,9 +80,9 @@ describe('HttpInterceptors', () => {
        }));
        afterEach(function() {
           spyLogger.restore();
-         
+
        });
-       
+
        it('Should have the logger http service be defined', function() {
            chai.expect(logHttpService).to.be.not.undefined;
        });
@@ -99,7 +99,7 @@ describe('HttpInterceptors', () => {
             $httpBackend.flush();
            chai.expect(spyLogger).to.have.been.calledWith('Error on Response', 'Error 401 in GET URL = /testLog');
        });
-       
+
     });
-    
+
 });
