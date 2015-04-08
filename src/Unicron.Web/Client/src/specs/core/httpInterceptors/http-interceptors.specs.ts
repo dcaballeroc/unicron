@@ -4,6 +4,7 @@
 /// <reference path="../../../../typings/angularjs/angular-mocks.d.ts" />
 /// <reference path="../../../../typings/sinon/sinon.d.ts" />
 /// <reference path="../../../../typings/sinon-chai/sinon-chai.d.ts" />
+/// <reference path="../../../../typings/angular-ui-router/angular-ui-router.d.ts" />
 /// <reference path="../../../app/core/current-user.factory.ts"/>
 /// <reference path="../../../app/core/httpInterceptors/auth.service.ts"/>
 /// <reference path="../../../app/core/httpInterceptors/log-http.service.ts"/>
@@ -43,13 +44,19 @@ describe('HttpInterceptors', () => {
         var currentUser: ICurrentUserManager;
         var authorizationService: AuthorizationService;
         var stubCurrentUser: any;
-        beforeEach(inject(function( _authorizationService_: AuthorizationService, _currentUser_: ICurrentUserManager) {
+        var $state: angular.ui.IStateService;
+        var spy$state: any;
+        beforeEach(inject(function( _authorizationService_: AuthorizationService,
+            _currentUser_: ICurrentUserManager, _$state_: angular.ui.IStateService) {
             currentUser = _currentUser_;
             authorizationService = _authorizationService_;
             stubCurrentUser = sinon.stub(currentUser, 'GetUser', () => userMock);
+            $state = _$state_;
+            spy$state = sinon.spy($state, 'transitionTo');
         }));
         afterEach(function() {
               stubCurrentUser.restore();
+              spy$state.restore();
         });
         it('Should have the authorization service be defined', function() {
             chai.expect(authorizationService).to.be.not.undefined;
@@ -64,6 +71,16 @@ describe('HttpInterceptors', () => {
             }).respond(' ');
             $http.get('/test');
             $httpBackend.flush();
+        });
+        it('Should redirect to login on 401 errors', function() {
+            var errorData: any = {
+                name: 'Error test',
+                origin: 'Test'
+            };
+            $httpBackend.whenGET('/test401Error').respond(401, errorData);
+            $http.get('/test401Error', errorData);
+            $httpBackend.flush();
+            chai.expect(spy$state).to.have.been.called;
         });
     });
    describe('Logger Interceptor', () => {
