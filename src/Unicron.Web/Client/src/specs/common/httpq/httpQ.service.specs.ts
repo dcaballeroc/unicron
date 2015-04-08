@@ -50,7 +50,7 @@ describe('httpq', () => {
             expect(response.name).to.be.equal(dataMock.name);
         });
         it('Get should reject the promise and respond with error', function() {
-            $httpBackend.whenGET('/test').respond(401, 'error');
+            $httpBackend.whenGET('/test').respond(405, 'error');
             var promise = httpq.Get<IDataMock>('/test');
             var result: any;
             promise.then(function(data: IDataMock) {
@@ -74,7 +74,7 @@ describe('httpq', () => {
            expect(result).to.be.equal('success');
         });
        it('Post should reject the promise and responde with error', function() {
-           $httpBackend.whenPOST('/test', dataMock).respond(401, 'error');
+           $httpBackend.whenPOST('/test', dataMock).respond(405, 'error');
            var promise = httpq.Post<IDataMock, IDataMock>('/test', dataMock);
            var result: any;
            promise.then(function(data: any) {
@@ -98,7 +98,7 @@ describe('httpq', () => {
            expect(result).to.be.equal('success');
        });
        it('Put should reject the promise and responde with error', function() {
-           $httpBackend.whenPUT('/test', dataMock).respond(401, 'error');
+           $httpBackend.whenPUT('/test', dataMock).respond(405, 'error');
            var promise = httpq.Put<IDataMock, IDataMock>('/test', dataMock);
            var result: any;
            promise.then(function(data: any) {

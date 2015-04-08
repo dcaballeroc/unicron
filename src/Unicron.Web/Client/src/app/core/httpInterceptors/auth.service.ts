@@ -12,7 +12,7 @@ class AuthorizationService {
         if (user) {
             config.headers.Authorization = 'Bearer ' + user.token;
         }
-        return config || this.$q.when(config);
+        return config || this.$q.when();
     };
     requestError: any = (rejection: any): any => {
         return this.$q.reject(rejection);
@@ -20,9 +20,8 @@ class AuthorizationService {
     responseError: any = (rejection: any): any => {
         if (rejection.status === 401) {
             var $state: any = this.$injector.get('$state');
-            console.log('Testing');
-            console.log($state);
-            $state.transitionTo('login');
+            $state.go('login');
+            this.currentUser.RemoveUser();
         }
         return this.$q.reject(rejection);
     };

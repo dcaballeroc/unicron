@@ -44,19 +44,21 @@ describe('HttpInterceptors', () => {
         var currentUser: ICurrentUserManager;
         var authorizationService: AuthorizationService;
         var stubCurrentUser: any;
+        var spyCurrentUserRemove: any;
         var $state: angular.ui.IStateService;
-        var spy$state: any;
         beforeEach(inject(function( _authorizationService_: AuthorizationService,
             _currentUser_: ICurrentUserManager, _$state_: angular.ui.IStateService) {
             currentUser = _currentUser_;
             authorizationService = _authorizationService_;
             stubCurrentUser = sinon.stub(currentUser, 'GetUser', () => userMock);
+            spyCurrentUserRemove = sinon.spy(currentUser, 'RemoveUser');
             $state = _$state_;
-            spy$state = sinon.spy($state, 'transitionTo');
+
         }));
         afterEach(function() {
-              stubCurrentUser.restore();
-              spy$state.restore();
+            stubCurrentUser.restore();
+            spyCurrentUserRemove.restore();
+
         });
         it('Should have the authorization service be defined', function() {
             chai.expect(authorizationService).to.be.not.undefined;
@@ -77,10 +79,22 @@ describe('HttpInterceptors', () => {
                 name: 'Error test',
                 origin: 'Test'
             };
+            $state.go = sinon.spy();
             $httpBackend.whenGET('/test401Error').respond(401, errorData);
             $http.get('/test401Error', errorData);
             $httpBackend.flush();
-            chai.expect(spy$state).to.have.been.called;
+            chai.expect($state.go).to.have.been.calledWith('login');
+        });
+        it('Should remove user on 401 errors', function() {
+            var errorData: any = {
+                name: 'Error test',
+                origin: 'Test'
+            };
+            $state.go = sinon.spy();
+            $httpBackend.whenGET('/test401Error').respond(401, errorData);
+            $http.get('/test401Error', errorData);
+            $httpBackend.flush();
+            chai.expect(spyCurrentUserRemove).to.have.been.called;
         });
     });
    describe('Logger Interceptor', () => {
@@ -111,10 +125,10 @@ describe('HttpInterceptors', () => {
                 name: 'Error test',
                 origin: 'Test'
             };
-            $httpBackend.whenGET('/testLog').respond(401, errorData);
+            $httpBackend.whenGET('/testLog').respond(402, errorData);
             $http.get('/testLog', errorData);
             $httpBackend.flush();
-           chai.expect(spyLogger).to.have.been.calledWith('Error on Response', 'Error 401 in GET URL = /testLog');
+           chai.expect(spyLogger).to.have.been.calledWith('Error on Response', 'Error 402 in GET URL = /testLog');
        });
 
     });
