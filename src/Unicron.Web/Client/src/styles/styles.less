@@ -4,6 +4,7 @@
 @color_warning: #f88529;
 @color_important: #fa3031;
 @color_violet: #935ab6;
+@color_error_glyphicon: #a94442;
 
 * {
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
@@ -366,10 +367,6 @@ form {
     margin-left: 15px;
 }
 
-.form-horizontal .control-label {
-    width: 90px;
-}
-
 .form-horizontal .controls {
     margin-left: 110px;
 }
@@ -377,7 +374,9 @@ form {
     .form-horizontal .controls:first-child {
         *padding-left: 100px;
     }
-
+.form-horizontal .glyphicon-remove {
+    color: @color_error_glyphicon;
+}
 .form-horizontal .form-actions {
     padding-left: 110px;
 }
@@ -1140,8 +1139,6 @@ form {
     }
 
     form .control-label {
-        float: none !important;
-        width: auto !important;
         text-align: left !important;
     }
 

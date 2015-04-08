@@ -331,14 +331,14 @@ form label {
 .form-inline button {
   margin-left: 15px;
 }
-.form-horizontal .control-label {
-  width: 90px;
-}
 .form-horizontal .controls {
   margin-left: 110px;
 }
 .form-horizontal .controls:first-child {
   *padding-left: 100px;
+}
+.form-horizontal .glyphicon-remove {
+  color: #a94442;
 }
 .form-horizontal .form-actions {
   padding-left: 110px;
@@ -961,8 +961,6 @@ form label {
     margin: 0 !important;
   }
   form .control-label {
-    float: none !important;
-    width: auto !important;
     text-align: left !important;
   }
   form .controls {
