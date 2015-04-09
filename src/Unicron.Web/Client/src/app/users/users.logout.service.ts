@@ -6,13 +6,14 @@ interface IUserLogoutService {
 
 class UserLogoutService implements IUserLogoutService {
 
-    static $inject: any = ['currentUser'];
+    static $inject: any = ['currentUser', '$state'];
     /*@ngInject*/
-    constructor(private currentUser: ICurrentUserManager) {
+    constructor(private currentUser: ICurrentUserManager, private $state: any) {
     }
     Logout(): void {
         this.currentUser.RemoveUser();
+        this.$state.go('login');
     }
 }
-appUsers.factory('userLogoutService', ['currentUser',
-    (currentUser: ICurrentUserManager) => new UserLogoutService(currentUser)]);
+appUsers.factory('userLogoutService', ['currentUser', '$state',
+    (currentUser: ICurrentUserManager, $state: any) => new UserLogoutService(currentUser, $state)]);
