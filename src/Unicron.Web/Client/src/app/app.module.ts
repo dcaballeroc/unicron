@@ -22,7 +22,13 @@ var app: Iapp = angular.module('app', [
 ]);
 
 // Handle routing errors and success events
-app.run(['$state', ($state: any) => {
+app.run(['$state', 'currentUser', ($state: any, currentUser: ICurrentUserManager) => {
     // Include $route to kick start the router.
-    $state.go('login');
+    var user: ICurrentUser = currentUser.GetUser();
+    if (user) {
+        $state.go('home');
+    } else {
+        $state.go('login');
+    }
+
 }]);
