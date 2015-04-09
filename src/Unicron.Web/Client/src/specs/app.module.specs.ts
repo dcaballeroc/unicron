@@ -10,18 +10,21 @@ describe('app.module', () => {
 
     var $state: any;
 
-    beforeEach(function() {
+    describe('When user has not been authenticated', () => {
+        beforeEach(function() {
         module('app', function($provide: ng.auto.IProvideService) {
-           $provide.value('$state', {
+            $provide.value('$state', {
                 go: sinon.spy()
             });
         });
         inject(function(_$state_: any) {
             $state = _$state_;
+            });
         });
-    });
 
-    it('Should route login on start', function() {
-        chai.expect($state.go).to.have.been.calledWith('login');
-    });
+        it('Should route login on start', function() {
+            chai.expect($state.go).to.have.been.calledWith('login');
+                });
+        });
+
 });
