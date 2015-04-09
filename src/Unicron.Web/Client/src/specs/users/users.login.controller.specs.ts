@@ -96,6 +96,13 @@ describe('users.login.controller', () => {
         $rootScope.$apply();
         chai.expect(spyLogService).to.have.been.calledWith('Error', errorMessage);
     });
+    it('Should redirect the user to home if is logged succesfully', inject(function($state: any) {
+        $state.go = sinon.spy();
+        stubLoginUserService.returns(userLoggedPromise);
+        userLoginController.login();
+        $rootScope.$apply();
+        chai.expect($state.go).to.have.been.calledWith('home');
+    }));
 
     function getUserPromise($q: ng.IQService): ng.IPromise<IUserResponse> {
         var deferred = $q.defer<IUserResponse>();

@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/angularjs/angular-resource.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../common/logger/logger.service.ts" />
 
 interface IUsersLoginScope extends ng.IScope {
@@ -19,10 +20,10 @@ class UsersLogin implements IUsersLogin {
     email: string;
     password: string;
     rememberMe: boolean;
-    static $inject: any = ['$scope', 'logger', 'loginUsersService', 'currentUser'];
+    static $inject: any = ['$scope', 'logger', 'loginUsersService', 'currentUser', '$state'];
     /*@ngInject*/
     constructor($scope: IUsersLoginScope, private logger: ILogger, private loginUserService: ILoginUsersService,
-                private currentUser: ICurrentUserManager) {
+                private currentUser: ICurrentUserManager, private $state: any) {
         $scope.vm = this;
     }
     static controllerId(): string {
@@ -31,6 +32,7 @@ class UsersLogin implements IUsersLogin {
     login(): void {
         this.loginUserService.Login(this.email, this.password).then((data: IUserResponse) =>  {
             this.SaveUser(data);
+            this.$state.go('home');
         }).catch((error: any) => {
             this.logger.error('Error', error, null);
         });
@@ -44,10 +46,10 @@ class UsersLogin implements IUsersLogin {
         }
     }
 }
-
 // Update the app1 variable name to be that of your module variable
 appUsers.controller(UsersLogin.controllerId(),
-        ['$scope', 'logger', 'loginUsersService', 'currentUser',
-            ($scope: IUsersLoginScope, logger: ILogger, loginUserService: ILoginUsersService, currentUser: ICurrentUserManager) =>
-    new UsersLogin($scope, logger, loginUserService, currentUser)
+        ['$scope', 'logger', 'loginUsersService', 'currentUser', '$state',
+            ($scope: IUsersLoginScope, logger: ILogger,
+                loginUserService: ILoginUsersService, currentUser: ICurrentUserManager, $state: any) =>
+    new UsersLogin($scope, logger, loginUserService, currentUser, $state)
 ]);

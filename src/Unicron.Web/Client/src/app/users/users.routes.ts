@@ -10,6 +10,20 @@ class UserRoutes implements IProvideRoutes {
     getRoutes(): RouteSettings.IAcklenAvenueRoute[] {
             var userRoutes: RouteSettings.IAcklenAvenueRoute [] = [
                 {
+                    state: 'home',
+                    config: {
+                        url: '/home',
+                        templateUrl: 'app/users/users.home.html',
+                        controller: 'users.home.controller',
+                        controllerAs: 'vm',
+                        title: 'Home',
+                        settings: {
+                            nav: 1,
+                            content: '<i class="fa fa-group"></i> Home'
+                        }
+                    }
+                },
+                {
                     state: 'users',
                     config: {
                         url: '/users',
@@ -19,7 +33,7 @@ class UserRoutes implements IProvideRoutes {
                         title: 'users',
                         settings: {
                             nav: 2,
-                            content: '<i></i> Users'
+                            content: '<i class="fa fa-group"></i> Users'
                         }
                     }
                 },
@@ -32,13 +46,14 @@ class UserRoutes implements IProvideRoutes {
                         controllerAs: 'vm',
                         title: 'Login',
                         settings: {
-                            nav: 1,
+                            nav: 0,
                             content: '<i></i> Login',
                             notShowInMenu: true,
                             notShowSideBar: true
                         }
                     }
                 },
+
             ];
 
 
