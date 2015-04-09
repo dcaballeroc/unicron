@@ -34,7 +34,8 @@ describe('users.login.controller', () => {
 
     beforeEach(module('app.users'));
     beforeEach(inject(function($controller: ng.IControllerService, _$rootScope_: ng.IRootScopeService,
-        _$q_: ng.IQService, _loginUsersService_: ILoginUsersService, _currentUser_: ICurrentUserManager, _logger_: ILogger) {
+        _$q_: ng.IQService, _loginUsersService_: ILoginUsersService,
+        _currentUser_: ICurrentUserManager, _logger_: ILogger) {
         $rootScope = _$rootScope_;
         scope = <IUsersLoginScope>$rootScope.$new();
         userLoginController = $controller('users.login.controller', {$scope: scope});
