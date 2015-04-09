@@ -39,11 +39,11 @@ describe('Sidebar', () => {
     beforeEach(inject(function($templateCache) {
         $templateCache.put('app/users/users.html', '');
     }));
-   it('Should have isCurrent() for /users to return `current`', function() {
-       $location.path('/users');
+    it('Should have isCurrent() for /login to return `current`', function() {
+       $location.path('/login');
        $rootScope.$apply();
        expect(controller.isCurrent($state.current)).to.equal('current');
-   });
+    });
    it('Should have isCurrent() for non route not return `current`', function() {
             $location.path('/invalid');
             $rootScope.$apply();

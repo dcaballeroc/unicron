@@ -19,7 +19,7 @@ class UserRoutes implements IProvideRoutes {
                         title: 'Home',
                         settings: {
                             nav: 1,
-                            content: '<i class="fa fa-group"></i> Home'
+                            content: '<i class="fa fa-home"></i> Home'
                         }
                     }
                 },

@@ -21,9 +21,10 @@
         };
 
         this.$get = RouterHelper;
-        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger'];
+        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger', 'currentUser'];
         /* @ngInject */
-        function RouterHelper($location: any, $rootScope: any, $state: any, logger: any) {
+        function RouterHelper($location: any, $rootScope: any,
+            $state: any, logger: any, currentUser: ICurrentUserManager) {
             var handlingStateChangeError = false;
             var hasOtherwise = false;
             var stateCounts = {
@@ -82,10 +83,26 @@
                     }
                 );
             }
+            function handleUsersNotLogged() {
+                /// Cancel Route change on not logged
+                $rootScope.$on('$stateChangeStart',
+                    function(event: any, toState: any, toParams: any, fromState: any, fromParams: any){
+                        var user = currentUser.GetUser();
+                        if (!user) {
+                            if(toState.url !== '/login') {
+                                event.preventDefault();
+                                $location.path('/login');
+                            }
+                        }
+                    }
+                );
+
+            }
 
             function init() {
                 handleRoutingErrors();
                 updateDocTitle();
+                handleUsersNotLogged();
             }
 
             function getStates() { return $state.get(); }
