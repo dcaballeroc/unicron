@@ -12,34 +12,38 @@ interface ISidebarScope extends ng.IScope {
 interface ISidebar {
     activate(): void;
     isCurrent(route: any): any;
+    showSideBar(): boolean;
 }
 
 class Sidebar implements ISidebar {
-    $scope: ISidebarScope;
-    $state: IStateService;
-    routeHelper: any;
     private navRoutes: any;
     private states: any;
     static $inject: any = ['$scope', '$state', 'routeHelper'];
-    constructor($scope: ISidebarScope, $state: angular.ui.IStateService, routeHelper: any) {
+    constructor(private $scope: ISidebarScope, private $state: angular.ui.IStateService, private routeHelper: any) {
         $scope.vm = this;
-        this.$scope = $scope;
-        this.$state = $state;
-        this.routeHelper = routeHelper;
         this.states = routeHelper.getStates();
         this.activate();
     }
      getNavRoutes(): void {
-     this.navRoutes = this.states.filter(function(r: any): any {
-          return r.settings && r.settings.nav;
-         }).sort(function(r1: any, r2: any): any {
-             return r1.settings.nav - r2.settings.nav;
-         });
+        this.navRoutes = this.states.filter(function(r: any): any {
+            return r.settings && r.settings.nav && !r.settings.notShowInMenu;
+        }).sort(function(r1: any, r2: any): any {
+            return r1.settings.nav - r2.settings.nav;
+        });
     }
     activate(): void {
        this.getNavRoutes();
     }
-    isCurrent(route: any): any {
+    showSideBar(): boolean {
+        var settings: any = this.$state.current.settings;
+        if (settings) {
+                if (settings.notShowSideBar) {
+                    return false;
+                }
+        }
+       return true;
+    }
+    isCurrent(route: any): string {
         if (!route.title || !this.$state.current || !this.$state.current.title) {
                 return '';
         }

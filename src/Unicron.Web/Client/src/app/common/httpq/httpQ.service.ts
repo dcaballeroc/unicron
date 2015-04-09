@@ -3,8 +3,8 @@
 /// <reference path="../../../app/core/core.module.ts" />
 interface IHttpQ {
     Get<T>(resource: string): ng.IPromise<T>;
-    Post<T>(resource: string, payload: T): ng.IPromise<T>;
-    Put<T>(resource: string, payload: T): ng.IPromise<T>;
+    Post<T, K>(resource: string, payload: T): ng.IPromise<K>;
+    Put<T, K>(resource: string, payload: T): ng.IPromise<K>;
 }
 class HttpQ implements IHttpQ {
     static $inject: any = ['$http', '$q'];
@@ -22,8 +22,8 @@ class HttpQ implements IHttpQ {
             });
         return defer.promise;
     }
-    Post<T>(resource: string, payload: T): ng.IPromise<T> {
-         var defer: ng.IDeferred<T> = this.$q.defer();
+    Post<T, K>(resource: string, payload: T): ng.IPromise<K> {
+         var defer: ng.IDeferred<K> = this.$q.defer();
          this.$http.post<T>(resource, payload)
             .success(function(data: any): void {
                 defer.resolve(data);
@@ -33,8 +33,8 @@ class HttpQ implements IHttpQ {
         });
         return defer.promise;
     }
-    Put<T>(resource: string, payload: T): ng.IPromise<T> {
-         var defer: ng.IDeferred<T> = this.$q.defer();
+    Put<T, K>(resource: string, payload: T): ng.IPromise<K> {
+         var defer: ng.IDeferred<K> = this.$q.defer();
          this.$http.put<T>(resource, payload)
             .success(function(data: any): void {
                 defer.resolve(data);

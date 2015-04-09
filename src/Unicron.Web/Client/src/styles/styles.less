@@ -1,9 +1,11 @@
+
 @color_lightblue: #52b9e9;
 @color_blue: #1171a3;
 @color_success: #43c83c;
 @color_warning: #f88529;
 @color_important: #fa3031;
 @color_violet: #935ab6;
+@color_error_glyphicon: #a94442;
 
 * {
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
@@ -41,7 +43,7 @@ select {
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
-input[type="radio"], input[type="checkbox"] {
+input[type="radio"] {
     margin: 0 0 0 !important;
     margin-right: 5px !important;
     line-height: 23px !important;
@@ -366,10 +368,6 @@ form {
     margin-left: 15px;
 }
 
-.form-horizontal .control-label {
-    width: 90px;
-}
-
 .form-horizontal .controls {
     margin-left: 110px;
 }
@@ -377,7 +375,9 @@ form {
     .form-horizontal .controls:first-child {
         *padding-left: 100px;
     }
-
+.form-horizontal .glyphicon-remove {
+    color: @color_error_glyphicon;
+}
 .form-horizontal .form-actions {
     padding-left: 110px;
 }
@@ -1140,8 +1140,6 @@ form {
     }
 
     form .control-label {
-        float: none !important;
-        width: auto !important;
         text-align: left !important;
     }
 

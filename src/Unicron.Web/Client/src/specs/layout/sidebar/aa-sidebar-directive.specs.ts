@@ -15,7 +15,7 @@ describe('aaSidebar directive ', () => {
     var isOpenClass = 'dropy';
     var $compile: ng.ICompileService;
     var $rootScope: ng.IRootScopeService;
-    
+
     beforeEach(module('app.layout'));
     beforeEach(inject(function(_$compile_: ng.ICompileService, _$rootScope_: ng.IRootScopeService) {
         $compile = _$compile_;
@@ -70,7 +70,7 @@ describe('aaSidebar directive ', () => {
             clickIt();
             dropdownIsVisible(false); // hidden after click
         });
-       
+
     });
     function openDropdown() {
         dropdownElement.addClass(isOpenClass);
@@ -89,5 +89,5 @@ describe('aaSidebar directive ', () => {
         chai.expect(display).to.equal(isTrue ? 'block' : 'none',
             'innerElement display value is ' + display);
     }
-    
+
 });

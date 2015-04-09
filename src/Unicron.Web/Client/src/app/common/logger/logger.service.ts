@@ -4,7 +4,7 @@
 'use strict';
 
 interface ILogger {
-    error(title: string, message: string, data: any): void;
+    error(title: string, message: string, data: any, notShowOnScreen?: boolean): void;
     info(title: string, message: string, data: any): void;
     success(title: string, message: string, data: any): void;
     warning(title: string, message: string, data: any): void;
@@ -19,8 +19,10 @@ class Logger implements ILogger {
         this.log = log;
         this.toastr = toastr;
     }
-     error(title: string, message: string, data: any): void {
-         this.toastr.error(message, title);
+    error(title: string, message: string, data: any, notShowOnScreen?: boolean): void {
+        if (!notShowOnScreen) {
+            this.toastr.error(message, title);
+        }
          this.log.error('Error: ' + message, data);
      }
     info(title: string, message: string, data: any): void {

@@ -64,6 +64,12 @@
     },
     "angular-ui-router/angular-ui-router.d.ts": {
       "commit": "5513f0c7749e258c7e9be561f46a4ec65a702311"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "65ea56c919fd95dcd0ca3c59c9aa5eaa99c86885"
+    },
+    "moment/moment.d.ts": {
+      "commit": "65ea56c919fd95dcd0ca3c59c9aa5eaa99c86885"
     }
   }
 }

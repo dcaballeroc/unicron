@@ -8,21 +8,56 @@ interface IProvideRoutes {
 
 class UserRoutes implements IProvideRoutes {
     getRoutes(): RouteSettings.IAcklenAvenueRoute[] {
-            var userTempRoute: RouteSettings.IAcklenAvenueRoute = {
-                state: 'users',
-                config: {
-                    url: '/users',
-                    templateUrl: 'app/users/users.html',
-                    controller: 'users.controller',
-                    controllerAs: 'vm',
-                    title: 'users',
-                    settings: {
+            var userRoutes: RouteSettings.IAcklenAvenueRoute [] = [
+                {
+                    state: 'home',
+                    config: {
+                        url: '/home',
+                        templateUrl: 'app/users/users.home.html',
+                        controller: 'users.home.controller',
+                        controllerAs: 'vm',
+                        title: 'Home',
+                        settings: {
                             nav: 1,
-                            content: '<i></i> Users'
+                            content: '<i class="fa fa-home"></i> Home'
                         }
-                }
-            };
-            return [userTempRoute];
+                    }
+                },
+                {
+                    state: 'users',
+                    config: {
+                        url: '/users',
+                        templateUrl: 'app/users/users.html',
+                        controller: 'users.controller',
+                        controllerAs: 'vm',
+                        title: 'users',
+                        settings: {
+                            nav: 2,
+                            content: '<i class="fa fa-group"></i> Users'
+                        }
+                    }
+                },
+                {
+                    state: 'login',
+                    config: {
+                        url: '/login',
+                        templateUrl: 'app/users/users.login.html',
+                        controller: 'users.login.controller',
+                        controllerAs: 'vm',
+                        title: 'Login',
+                        settings: {
+                            nav: 0,
+                            content: '<i></i> Login',
+                            notShowInMenu: true,
+                            notShowSideBar: true
+                        }
+                    }
+                },
+
+            ];
+
+
+            return userRoutes;
         }
 }
 var appUsers: IAppUsers = angular.module('app.users');
