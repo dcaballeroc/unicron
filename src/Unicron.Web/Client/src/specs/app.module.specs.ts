@@ -17,6 +17,9 @@ describe('app.module', () => {
                 $provide.value('$state', {
                     go: sinon.spy()
                 });
+                $provide.value('currentUser', {
+                    GetUser: sinon.stub().returns(undefined)
+                });
             });
             inject(function(_$state_: any) {
                 $state = _$state_;

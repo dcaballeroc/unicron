@@ -6,7 +6,7 @@
 /// <reference path="../../app/common/httpq/httpQ.service.ts"/>
 /* tslint:disable:typedef */
 
-describe('User Login Service', () => {
+describe('users.login.service', () => {
     var $httpBackend: ng.IHttpBackendService;
     var userResponse: IUserResponse = {
         name: 'User Test',
