@@ -22,7 +22,7 @@ Active demo: [http://unicron-starter.azurewebsites.net/](http://unicron-starter.
 - Install Python 2.7
     `choco install python -version 2.7.2`
 - Open terminal
-- Type `npm install -g node-inspector bower gulp typescript tsd`
+- Type `npm install -g node-inspector bower gulp typescript tsd phantomjs tslint karma karma-cli`
 
 ## Quick Start
 Prior to start, clone this repo and navigate to `src/Unicron.Web/Client` and run the following commands:

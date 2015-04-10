@@ -89,22 +89,22 @@
     <script src="/build/app/core/core.module.js"></script>
   
   
-    <script src="/build/app/layout/layout.module.js"></script>
+    <script src="/build/app/widgets/widgets.module.js"></script>
   
   
     <script src="/build/app/users/users.module.js"></script>
   
   
-    <script src="/build/app/widgets/widgets.module.js"></script>
+    <script src="/build/app/layout/layout.module.js"></script>
+  
+  
+    <script src="/build/app/common/router/router.module.js"></script>
   
   
     <script src="/build/app/common/exception/exception.module.js"></script>
   
   
     <script src="/build/app/common/logger/logger.module.js"></script>
-  
-  
-    <script src="/build/app/common/router/router.module.js"></script>
   
   
     <script src="/build/app/core/config.js"></script>
@@ -134,16 +134,7 @@
     <script src="/build/app/users/users.routes.js"></script>
   
   
-    <script src="/build/app/common/exception/exception-handler.service.js"></script>
-  
-  
-    <script src="/build/app/common/exception/exception.service.js"></script>
-  
-  
     <script src="/build/app/common/httpq/httpQ.service.js"></script>
-  
-  
-    <script src="/build/app/common/logger/logger.service.js"></script>
   
   
     <script src="/build/app/common/router/RouteSettings.js"></script>
@@ -152,10 +143,10 @@
     <script src="/build/app/common/router/router-helper.service.js"></script>
   
   
-    <script src="/build/app/core/httpInterceptors/auth.service.js"></script>
+    <script src="/build/app/common/exception/exception-handler.service.js"></script>
   
   
-    <script src="/build/app/core/httpInterceptors/log-http.service.js"></script>
+    <script src="/build/app/common/exception/exception.service.js"></script>
   
   
     <script src="/build/app/layout/aa-top-nav/aa-top-nav.controller.js"></script>
@@ -164,7 +155,16 @@
     <script src="/build/app/layout/aa-top-nav/aa-top-nav.directive.js"></script>
   
   
-    <script src="/build/app/layout/shell/shell.controller.js"></script>
+    <script src="/build/app/common/logger/logger.service.js"></script>
+  
+  
+    <script src="/build/app/core/httpInterceptors/auth.service.js"></script>
+  
+  
+    <script src="/build/app/core/httpInterceptors/log-http.service.js"></script>
+  
+  
+    <script src="/build/app/widgets/header/aa-widget-header.directive.js"></script>
   
   
     <script src="/build/app/layout/sidebar/aa-sidebar-directive.js"></script>
@@ -173,7 +173,7 @@
     <script src="/build/app/layout/sidebar/sidebar.controller.js"></script>
   
   
-    <script src="/build/app/widgets/header/aa-widget-header.directive.js"></script>
+    <script src="/build/app/layout/shell/shell.controller.js"></script>
   
   
     <!-- endinject -->
@@ -230,19 +230,11 @@
     
    
     
-    <script src="/src/specs/common/logger/logger.service.specs.js"></script>
+    <script src="/src/specs/layout/shell/shell.controller.specs.js"></script>
     
    
     
     <script src="/src/specs/core/httpInterceptors/http-interceptors.specs.js"></script>
-    
-   
-    
-    <script src="/src/specs/layout/aa-top_nav/aa-top-nav.controller.specs.js"></script>
-    
-   
-    
-    <script src="/src/specs/layout/shell/shell.controller.specs.js"></script>
     
    
     
@@ -251,6 +243,14 @@
    
     
     <script src="/src/specs/layout/sidebar/sidebar.controller.specs.js"></script>
+    
+   
+    
+    <script src="/src/specs/common/logger/logger.service.specs.js"></script>
+    
+   
+    
+    <script src="/src/specs/layout/aa-top_nav/aa-top-nav.controller.specs.js"></script>
     
    
     
