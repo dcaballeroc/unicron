@@ -14,18 +14,14 @@
   "scripts": {
     "init": "npm install",
     "install": "tsd reinstall --save --overwrite && bower install",
-    "start": "node src/server/app.js"
   },
   "dependencies": {
     "body-parser": "^1.8.2",
     "compression": "^1.1.0",
     "cors": "^2.2.0",
-    "express": "^4.9.3",
-    "morgan": "^1.1.1",
     "serve-favicon": "^2.0.1"
   },
   "devDependencies": {
-    "blanket": "^1.1.6",
     "browser-sync": "^2.2.1",
     "chai": "^2.0.0",
     "del": "^1.1.1",
