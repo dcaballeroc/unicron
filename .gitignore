@@ -21,7 +21,7 @@ src/Unicron.Web/Client/src/app/**/*.js
 src/Unicron.Web/Client/src/specs/**/*.specs.js
 /src/Unicron.Web/Client/src/report/coverage/**/*.*
 /src/Unicron.Web/Client/tmp/**/*.*
-Client/tmp/*.*
+/src/Client/tmp/*.*
 
 #OS junk files
 [Tt]humbs.db
