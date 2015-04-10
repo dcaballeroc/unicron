@@ -19,6 +19,8 @@ Active demo: [http://unicron-starter.azurewebsites.net/](http://unicron-starter.
     - open command prompt as administrator
         - type `choco install nodejs`
         - type `choco install nodejs.install`
+- Install Python 2.7
+    `choco install python -version 2.7.2`
 - Open terminal
 - Type `npm install -g node-inspector bower gulp typescript tsd`
 
