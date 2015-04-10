@@ -13,7 +13,7 @@
   },
   "scripts": {
     "init": "npm install",
-    "install": "tsd reinstall --save --overwrite && bower install",
+    "install": "tsd reinstall --save --overwrite && bower install"
   },
   "dependencies": {
     "body-parser": "^1.8.2",
