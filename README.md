@@ -23,7 +23,8 @@ Active demo: [http://unicron-starter.azurewebsites.net/](http://unicron-starter.
 - Type `npm install -g node-inspector bower gulp`
 
 ## Quick Start
-Prior to start, clone this repo and run the content locally
+Prior to start, clone this repo and navigate to `src/Unicron.Web/Client` and run the following commands:
+
 ```bash
 $ npm install
 $ bower install
