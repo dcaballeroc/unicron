@@ -8,7 +8,6 @@ class AATopNav implements ng.IDirective {
       controller: string = 'aa-TopNavController';
       restrict: string = 'EA';
       scope: any = {
-                tagline: '=',
                 title:  '='
             };
      templateUrl: string = 'app/layout/aa-top-nav/aa-top-nav.html';
