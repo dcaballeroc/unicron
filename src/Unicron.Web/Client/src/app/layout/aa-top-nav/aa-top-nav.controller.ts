@@ -9,8 +9,7 @@ interface IAATopNav {
 }
 class AATopNavController implements IAATopNav {
 
-    title: string;
-    tagline: any;
+    static title: string;
     static $inject: any = ['$scope', 'userLogoutService'];
     /*@ngInject*/
     constructor(private $scope: IAATopNavScope, private userLogoutService: IUserLogoutService ) {
@@ -20,6 +19,4 @@ class AATopNavController implements IAATopNav {
         this.userLogoutService.Logout();
     }
 }
-appLayout.controller('aa-TopNavController',
-['$scope', 'userLogoutService', ($scope: IAATopNavScope,
-    userLogoutService: IUserLogoutService) => new AATopNavController($scope, userLogoutService)]);
+appLayout.controller('aa-TopNavController', AATopNavController);

@@ -23,7 +23,7 @@ interface Iconfig {
 }
 var config: Iconfig = {
     appErrorPrefix: '[A/A Error] ', // Configure the exceptionHandler decorator
-    appTitle: 'Unicron: ',
+    appTitle: 'Unicron ',
     version: '1.0.0',
     imageBasePath: '' // NOT YET USED
 };
