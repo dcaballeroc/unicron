@@ -1281,6 +1281,9 @@ small {
 .fa-asterisk-inline {
   padding: 0 4px 0 0;
 }
+.xerror {
+  color: #a94442;
+}
 .progress,
 .page-progress-bar {
   margin: 30px 10% !important;
