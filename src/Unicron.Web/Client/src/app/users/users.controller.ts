@@ -36,6 +36,4 @@ class Users implements IUsers {
 }
 
 // Update the app1 variable name to be that of your module variable
-appUsers.controller(Users.controllerId(), ['$scope', 'logger', ($scope: IUsersScope, logger: ILogger) =>
-    new Users($scope, logger)
-]);
+appUsers.controller(Users.controllerId(), Users);
