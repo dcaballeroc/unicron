@@ -39,6 +39,7 @@ class Shell implements IShell {
         this.logger = logger;
         this.setValues();
         this.activate();
+        console.log(this.title);
     }
     activate(): void {
         this.logger.success(config.appTitle, config.appTitle + ' loaded!', null);
@@ -53,7 +54,6 @@ class Shell implements IShell {
         return 'Shell';
     }
     private setValues(): void {
-        this.title = this.config.appTitle;
         this.busyMessage = 'Please wait...';
         this.isBusy = true;
         this.showSplash = true;

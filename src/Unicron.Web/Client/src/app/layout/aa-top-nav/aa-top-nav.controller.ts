@@ -9,6 +9,8 @@ interface IAATopNav {
 }
 class AATopNavController implements IAATopNav {
 
+    title: string;
+    tagline: any;
     static $inject: any = ['$scope', 'userLogoutService'];
     /*@ngInject*/
     constructor(private $scope: IAATopNavScope, private userLogoutService: IUserLogoutService ) {
