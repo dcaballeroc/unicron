@@ -14,20 +14,18 @@ Active demo: [http://unicron-starter.azurewebsites.net/](http://unicron-starter.
 ## Requirements
 
 - Install Node
-	- on Windows install [chocolatey](https://chocolatey.org/) 
+    - on Windows install [chocolatey](https://chocolatey.org/)
     - Read here for some [tips on Windows](http://jpapa.me/winnode)
     - open command prompt as administrator
         - type `choco install nodejs`
         - type `choco install nodejs.install`
 - Open terminal
-- Type `npm install -g node-inspector bower gulp`
+- Type `npm install -g node-inspector bower gulp typescript tsd`
 
 ## Quick Start
 Prior to start, clone this repo and navigate to `src/Unicron.Web/Client` and run the following commands:
 
 ```bash
-$ npm install -g typescript
-$ npm install -g tsd
 $ npm install
 $ bower install
 $ npm start
