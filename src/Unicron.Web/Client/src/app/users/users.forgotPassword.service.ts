@@ -3,10 +3,10 @@
 interface IUserForgotPasswordRequest {
     email: string;
 }
-interface IUserForgotPassword {
+interface IUserForgotPasswordService {
     ResetPassword(email: string): ng.IPromise<boolean>;
 };
-class UserForgotPassword implements IUserForgotPassword {
+class UserForgotPasswordService implements IUserForgotPasswordService {
 
     static $inject: any = ['httpq'];
 
@@ -20,4 +20,4 @@ class UserForgotPassword implements IUserForgotPassword {
     }
 }
 
-appUsers.service('forgotPasswordservice', UserForgotPassword);
+appUsers.service('forgotPasswordservice', UserForgotPasswordService);

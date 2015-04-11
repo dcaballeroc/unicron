@@ -7,14 +7,14 @@
 /* tslint:disable:typedef */
 describe('users.forgotPassword.service', () => {
 
-    var forgotPasswordService: IUserForgotPassword;
+    var forgotPasswordService: IUserForgotPasswordService;
     var $httpBackend: ng.IHttpBackendService;
     var emailSent: IUserForgotPasswordRequest = {
         email: 'test@test.com'
     };
 
     beforeEach(module('app.users'));
-    beforeEach(inject(function(_forgotPasswordservice_: IUserForgotPassword,
+    beforeEach(inject(function(_forgotPasswordservice_: IUserForgotPasswordService,
             _$httpBackend_: ng.IHttpBackendService) {
         forgotPasswordService = _forgotPasswordservice_;
         $httpBackend = _$httpBackend_;
@@ -39,7 +39,7 @@ describe('users.forgotPassword.service', () => {
         chai.expect(result).to.be.true;
 
     });
-    it('Should return fasle if backend respond with error', function() {
+    it('Should return false if backend respond with error', function() {
         $httpBackend.whenPOST('/password/reset/', emailSent).respond(405, false);
 
         var promise = forgotPasswordService.ResetPassword('test@test.com');
