@@ -23,6 +23,4 @@ class Home implements IHome {
 }
 
 // Update the app1 variable name to be that of your module variable
-appUsers.controller(Home.controllerId(), ['$scope', 'logger', ($scope: IHomeScope, logger: ILogger) =>
-    new Home($scope, logger)
-]);
+appUsers.controller(Home.controllerId(), Home);

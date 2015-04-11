@@ -47,9 +47,4 @@ class UsersLogin implements IUsersLogin {
     }
 }
 // Update the app1 variable name to be that of your module variable
-appUsers.controller(UsersLogin.controllerId(),
-        ['$scope', 'logger', 'loginUsersService', 'currentUser', '$state',
-            ($scope: IUsersLoginScope, logger: ILogger,
-                loginUserService: ILoginUsersService, currentUser: ICurrentUserManager, $state: any) =>
-    new UsersLogin($scope, logger, loginUserService, currentUser, $state)
-]);
+appUsers.controller(UsersLogin.controllerId(), UsersLogin);

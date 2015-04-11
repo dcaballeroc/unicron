@@ -5,7 +5,7 @@
 class AATopNav implements ng.IDirective {
       bindToController: boolean = true;
       controllerAs: string = 'vm';
-      controller: string = AATopNavController;
+      controller: any = AATopNavController;
       restrict: string = 'EA';
       scope: any = {
                 title:  '='
