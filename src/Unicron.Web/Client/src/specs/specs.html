@@ -74,6 +74,8 @@
     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/lodash/lodash.js"></script>
     <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="/bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
     <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="/bower_components/sinon/index.js"></script>
     <script src="/bower_components/bardjs/dist/bard.js"></script>
@@ -116,28 +118,13 @@
     <script src="/build/app/core/current-user.factory.js"></script>
   
   
-    <script src="/build/app/users/users.controller.js"></script>
-  
-  
-    <script src="/build/app/users/users.forgotPassword.controller.js"></script>
-  
-  
-    <script src="/build/app/users/users.forgotPassword.service.js"></script>
-  
-  
-    <script src="/build/app/users/users.home.controller.js"></script>
-  
-  
-    <script src="/build/app/users/users.login.controller.js"></script>
-  
-  
-    <script src="/build/app/users/users.login.service.js"></script>
-  
-  
-    <script src="/build/app/users/users.logout.service.js"></script>
-  
-  
     <script src="/build/app/users/users.routes.js"></script>
+  
+  
+    <script src="/build/app/core/httpInterceptors/auth.service.js"></script>
+  
+  
+    <script src="/build/app/core/httpInterceptors/log-http.service.js"></script>
   
   
     <script src="/build/app/common/exception/exception-handler.service.js"></script>
@@ -158,12 +145,6 @@
     <script src="/build/app/common/router/router-helper.service.js"></script>
   
   
-    <script src="/build/app/core/httpInterceptors/auth.service.js"></script>
-  
-  
-    <script src="/build/app/core/httpInterceptors/log-http.service.js"></script>
-  
-  
     <script src="/build/app/layout/aa-top-nav/aa-top-nav.controller.js"></script>
   
   
@@ -177,6 +158,27 @@
   
   
     <script src="/build/app/layout/sidebar/sidebar.controller.js"></script>
+  
+  
+    <script src="/build/app/users/forgotPassword/users.forgotPassword.controller.js"></script>
+  
+  
+    <script src="/build/app/users/forgotPassword/users.forgotPassword.service.js"></script>
+  
+  
+    <script src="/build/app/users/home/users.home.controller.js"></script>
+  
+  
+    <script src="/build/app/users/login/users.login.controller.js"></script>
+  
+  
+    <script src="/build/app/users/login/users.login.service.js"></script>
+  
+  
+    <script src="/build/app/users/logout/users.logout.service.js"></script>
+  
+  
+    <script src="/build/app/users/users/users.controller.js"></script>
   
   
     <script src="/build/app/widgets/header/aa-widget-header.directive.js"></script>
@@ -240,11 +242,11 @@
     
    
     
-    <script src="/src/specs/common/logger/logger.service.specs.js"></script>
+    <script src="/src/specs/common/httpq/httpQ.service.specs.js"></script>
     
    
     
-    <script src="/src/specs/common/httpq/httpQ.service.specs.js"></script>
+    <script src="/src/specs/common/logger/logger.service.specs.js"></script>
     
    
     

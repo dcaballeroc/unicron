@@ -3,7 +3,7 @@
 /// <reference path="../../../typings/chai/chai.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../typings/angularjs/angular-mocks.d.ts" />
-/// <reference path="../../app/users/users.controller.ts"/>
+/// <reference path="../../app/users/users/users.controller.ts"/>
 /* tslint:disable:typedef */
 /**
  * Module dependencies.

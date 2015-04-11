@@ -13,7 +13,7 @@ class UserRoutes implements IProvideRoutes {
                     state: 'home',
                     config: {
                         url: '/home',
-                        templateUrl: 'app/users/users.home.html',
+                        templateUrl: 'app/users/home/users.home.html',
                         controller: 'users.home.controller',
                         controllerAs: 'vm',
                         title: 'Home',
@@ -27,7 +27,7 @@ class UserRoutes implements IProvideRoutes {
                     state: 'users',
                     config: {
                         url: '/users',
-                        templateUrl: 'app/users/users.html',
+                        templateUrl: 'app/users/users/users.html',
                         controller: 'users.controller',
                         controllerAs: 'vm',
                         title: 'users',
@@ -41,7 +41,7 @@ class UserRoutes implements IProvideRoutes {
                     state: 'login',
                     config: {
                         url: '/login',
-                        templateUrl: 'app/users/users.login.html',
+                        templateUrl: 'app/users/login/users.login.html',
                         controller: 'users.login.controller',
                         controllerAs: 'vm',
                         title: 'Login',

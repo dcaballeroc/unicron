@@ -1,7 +1,7 @@
-/// <reference path="../../../typings/angularjs/angular-resource.d.ts" />
-/// <reference path="../../../typings/angularjs/angular.d.ts" />
-/// <reference path="../common/logger/logger.service.ts" />
-/// <reference path="../common/logger/logger.service.ts" />
+/// <reference path="../../../../typings/angularjs/angular-resource.d.ts" />
+/// <reference path="../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../common/logger/logger.service.ts" />
+/// <reference path="../../common/logger/logger.service.ts" />
 
 interface IUserForgotPasswordScope extends ng.IScope {
     vm: UserForgotPassword;

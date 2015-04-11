@@ -1,5 +1,5 @@
-/// <reference path="../../../typings/angularjs/angular.d.ts" />
-/// <reference path="users.module.ts" />
+/// <reference path="../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../users.module.ts" />
 interface IUserForgotPasswordRequest {
     email: string;
 }

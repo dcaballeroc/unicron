@@ -4,7 +4,7 @@
 /// <reference path="../../../typings/sinon-chai/sinon-chai.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../typings/angularjs/angular-mocks.d.ts" />
-/// <reference path="../../app/users/users.home.controller.ts"/>
+/// <reference path="../../app/users/home/users.home.controller.ts"/>
 /* tslint:disable:typedef */
 describe('users.home.controller', () => {
 

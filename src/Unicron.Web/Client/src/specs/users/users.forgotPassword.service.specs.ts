@@ -2,7 +2,7 @@
 /// <reference path="../../../typings/chai/chai.d.ts" />
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../typings/angularjs/angular-mocks.d.ts" />
-/// <reference path="../../app/users/users.forgotPassword.service.ts"/>
+/// <reference path="../../app/users/forgotPassword/users.forgotPassword.service.ts"/>
 /// <reference path="../../app/common/httpq/httpQ.service.ts"/>
 /* tslint:disable:typedef */
 describe('users.forgotPassword.service', () => {
