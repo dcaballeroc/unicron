@@ -16,8 +16,15 @@ describe('users.forgotPassword.controller', () => {
     var userForgotController: IUserForgotPassword;
     var successResponse: ng.IPromise<boolean>;
     var stubForgotPasswordService: any;
+    var spyModalProvider: any;
 
     beforeEach(module('app.users'));
+
+    beforeEach(module(function($provide: any) {
+        spyModalProvider = sinon.spy();
+        $provide.value('$modal', spyModalProvider);
+    }));
+
 
     beforeEach(inject(function($controller: ng.IControllerService, _$rootScope_: ng.IRootScopeService,
                     _$q_: ng.IQService, _forgotPasswordservice_: IUserForgotPasswordService, _logger_: ILogger) {
