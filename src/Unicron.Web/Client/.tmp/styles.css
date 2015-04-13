@@ -67,6 +67,9 @@ input[type="radio"] {
 .btn.btn-mini {
   font-size: 11px !important;
 }
+.btn.as-link {
+  padding-left: 0px !important;
+}
 body {
   font-size: 13px;
   line-height: 23px;
