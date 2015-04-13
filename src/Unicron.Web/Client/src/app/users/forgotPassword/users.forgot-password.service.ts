@@ -16,7 +16,7 @@ class UserForgotPasswordService implements IUserForgotPasswordService {
         var request: IUserForgotPasswordRequest = {
             email: email
         };
-        return this.httpq.Post<IUserForgotPasswordRequest, boolean>('/password/reset/', request);
+            return this.httpq.Post<IUserForgotPasswordRequest, boolean>('/password/requestReset/', request);
     }
 }
 

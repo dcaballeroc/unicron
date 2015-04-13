@@ -4,8 +4,8 @@
 /// <reference path="../../../../typings/sinon-chai/sinon-chai.d.ts" />
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../../typings/angularjs/angular-mocks.d.ts" />
-/// <reference path="../../../app/users/forgotPassword/users.forgotPassword.service.ts"/>
-/// <reference path="../../../app/users/forgotPassword/users.forgotPassword.controller.ts"/>
+/// <reference path="../../../app/users/forgotPassword/users.forgot-password.service.ts"/>
+/// <reference path="../../../app/users/forgotPassword/users.forgot-password.controller.ts"/>
 
 
 /* tslint:disable:typedef */
@@ -30,7 +30,7 @@ describe('users.forgotPassword.controller', () => {
                     _$q_: ng.IQService, _forgotPasswordservice_: IUserForgotPasswordService, _logger_: ILogger) {
         $rootScope = _$rootScope_;
         scope = <IUserForgotPasswordScope>$rootScope.$new();
-        userForgotController = $controller('user.forgotPassword.controller', {$scope: scope});
+        userForgotController = $controller('userForgotPasswordController', {$scope: scope});
         successResponse = getSuccessPromise(_$q_);
         stubForgotPasswordService = sinon.stub(_forgotPasswordservice_, 'ResetPassword');
 

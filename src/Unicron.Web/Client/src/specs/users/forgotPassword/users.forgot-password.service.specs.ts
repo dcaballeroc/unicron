@@ -2,7 +2,7 @@
 /// <reference path="../../../../typings/chai/chai.d.ts" />
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../../typings/angularjs/angular-mocks.d.ts" />
-/// <reference path="../../../app/users/forgotPassword/users.forgotPassword.service.ts"/>
+/// <reference path="../../../app/users/forgotPassword/users.forgot-password.service.ts"/>
 /// <reference path="../../../app/common/httpq/httpQ.service.ts"/>
 /* tslint:disable:typedef */
 describe('users.forgotPassword.service', () => {
@@ -28,7 +28,7 @@ describe('users.forgotPassword.service', () => {
         chai.expect(forgotPasswordService).to.not.be.undefined;
     });
     it('Should return true if backend respond without error', function() {
-        $httpBackend.whenPOST('/password/reset/', emailSent).respond(true);
+        $httpBackend.whenPOST('/password/requestReset/', emailSent).respond(true);
 
         var promise = forgotPasswordService.ResetPassword('test@test.com');
         var result: any;
@@ -40,7 +40,7 @@ describe('users.forgotPassword.service', () => {
 
     });
     it('Should return false if backend respond with error', function() {
-        $httpBackend.whenPOST('/password/reset/', emailSent).respond(405, false);
+        $httpBackend.whenPOST('/password/requestReset/', emailSent).respond(405, false);
 
         var promise = forgotPasswordService.ResetPassword('test@test.com');
         var result: any;
