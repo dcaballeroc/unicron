@@ -1,9 +1,9 @@
-/// <reference path="../../../typings/mocha/mocha.d.ts" />
-/// <reference path="../../../typings/chai/chai.d.ts" />
-/// <reference path="../../../typings/angularjs/angular.d.ts" />
-/// <reference path="../../../typings/angularjs/angular-mocks.d.ts" />
-/// <reference path="../../app/users/users.login.service.ts"/>
-/// <reference path="../../app/common/httpq/httpQ.service.ts"/>
+/// <reference path="../../../../typings/mocha/mocha.d.ts" />
+/// <reference path="../../../../typings/chai/chai.d.ts" />
+/// <reference path="../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../../typings/angularjs/angular-mocks.d.ts" />
+/// <reference path="../../../app/users/login/users.login.service.ts"/>
+/// <reference path="../../../app/common/httpq/httpQ.service.ts"/>
 /* tslint:disable:typedef */
 
 describe('users.login.service', () => {

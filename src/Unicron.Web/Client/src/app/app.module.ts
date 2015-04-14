@@ -18,7 +18,10 @@ var app: Iapp = angular.module('app', [
 // Custom modules
     'app.core',
     'app.users',
-    'app.layout'
+    'app.layout',
+
+// Third Party Modules
+    'mgcrea.ngStrap'   // instead of angular.ui
 ]);
 
 // Handle routing errors and success events

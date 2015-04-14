@@ -21,7 +21,23 @@ input, select {
     padding: 4px !important;
     display: inline-block !important;
 }
-
+// Angular Strape Animation
+.modal-backdrop.am-fade {
+    opacity: .5;
+    transition: opacity .15s linear;
+    &.ng-enter {
+        opacity: 0;
+        &.ng-enter-active {
+            opacity: .5;
+        }
+    }
+    &.ng-leave {
+        opacity: .5;
+        &.ng-leave-active {
+            opacity: 0;
+        }
+    }
+}
 
 .navbar * {
     background-image: none !important;
@@ -62,7 +78,10 @@ input[type="radio"] {
     .btn.btn-mini {
         font-size: 11px !important;
     }
+.btn.as-link {
 
+    padding-left: 0px !important;
+}
 body {
     font-size: 13px;
     line-height: 23px;
@@ -368,6 +387,11 @@ form {
     margin-left: 15px;
 }
 
+.form-horizontal .form-group .for-form-forgot-password {
+    margin-right: inherit;
+    margin-left: auto;
+    vertical-align: super;
+}
 .form-horizontal .controls {
     margin-left: 110px;
 }

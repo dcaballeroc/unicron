@@ -1,8 +1,8 @@
-/// <reference path="../../../typings/angularjs/angular-resource.d.ts" />
-/// <reference path="../../../typings/angularjs/angular.d.ts" />
-/// <reference path="../../../typings/angularjs/angular.d.ts" />
-/// <reference path="../common/logger/logger.service.ts" />
-
+/// <reference path="../../../../typings/angularjs/angular-resource.d.ts" />
+/// <reference path="../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../common/logger/logger.service.ts" />
+/// <reference path="../users.module.ts" />
 interface IUsersLoginScope extends ng.IScope {
     vm: UsersLogin;
 }
@@ -47,9 +47,4 @@ class UsersLogin implements IUsersLogin {
     }
 }
 // Update the app1 variable name to be that of your module variable
-appUsers.controller(UsersLogin.controllerId(),
-        ['$scope', 'logger', 'loginUsersService', 'currentUser', '$state',
-            ($scope: IUsersLoginScope, logger: ILogger,
-                loginUserService: ILoginUsersService, currentUser: ICurrentUserManager, $state: any) =>
-    new UsersLogin($scope, logger, loginUserService, currentUser, $state)
-]);
+appUsers.controller(UsersLogin.controllerId(), UsersLogin);

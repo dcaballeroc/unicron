@@ -1,7 +1,7 @@
-/// <reference path="../../../typings/angularjs/angular-resource.d.ts" />
-/// <reference path="../../../typings/angularjs/angular.d.ts" />
-/// <reference path="../common/logger/logger.service.ts" />
-
+/// <reference path="../../../../typings/angularjs/angular-resource.d.ts" />
+/// <reference path="../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../common/logger/logger.service.ts" />
+/// <reference path="../users.module.ts" />
 interface IHomeScope extends ng.IScope {
     vm: Home;
 }
@@ -23,6 +23,4 @@ class Home implements IHome {
 }
 
 // Update the app1 variable name to be that of your module variable
-appUsers.controller(Home.controllerId(), ['$scope', 'logger', ($scope: IHomeScope, logger: ILogger) =>
-    new Home($scope, logger)
-]);
+appUsers.controller(Home.controllerId(), Home);

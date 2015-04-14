@@ -37,7 +37,8 @@ describe('Sidebar', () => {
         )
     );
     beforeEach(inject(function($templateCache) {
-        $templateCache.put('app/users/users.html', '');
+        $templateCache.put('app/users/users/users.html', '');
+        $templateCache.put('app/users/login/users.login.html', '');
     }));
     it('Should have isCurrent() for /login to return `current`', function() {
        $location.path('/login');
@@ -65,7 +66,7 @@ it('Should not showSideBar() if route is configured for that', function() {
                 state: 'users',
                 config: {
                     url: '/users',
-                    templateUrl: 'app/users/users.html',
+                    templateUrl: 'app/users/users/users.html',
                     controller: 'users.controller',
                     controllerAs: 'vm',
                     title: 'users',
@@ -81,7 +82,7 @@ it('Should not showSideBar() if route is configured for that', function() {
                 state: 'login',
                 config: {
                     url: '/login',
-                    templateUrl: 'app/users/users.login.html',
+                    templateUrl: 'app/users/login/users.login.html',
                     controller: 'users.login.controller',
                     controllerAs: 'vm',
                     title: 'users',
