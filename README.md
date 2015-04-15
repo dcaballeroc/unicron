@@ -29,8 +29,6 @@ Prior to start, clone this repo and navigate to `src/Unicron.Web/Client` and run
 
 ```bash
 $ npm install
-$ bower install
-$ npm start
 ```
 
 ![Unicron](https://static.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/51ce618ee4b0d911b44980fe/1355765265947/1000w/unicron121212145556.jpeg)
