@@ -6,7 +6,7 @@
            <div class="sidebar-dropdown"><a href="#">Menu</a></div>
            <div class="sidebar-inner">
                <div class="sidebar-widget"></div>
-               <ul class="navi">
+               <ul class="navi" ng-if="vm.isUserLogged()">
                    <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)"
                        ng-repeat="r in vm.navRoutes">
                        <a ui-sref="{{r.name}}"

@@ -10,29 +10,48 @@ interface ISidebarScope extends ng.IScope {
 }
 
 interface ISidebar {
+    navRoutes: any;
     activate(): void;
     isCurrent(route: any): any;
+    isUserLogged(): boolean;
     showSideBar(): boolean;
 }
 
 class Sidebar implements ISidebar {
-    private navRoutes: any;
-    private states: any;
-    static $inject: any = ['$scope', '$state', 'routeHelper'];
-    constructor(private $scope: ISidebarScope, private $state: angular.ui.IStateService, private routeHelper: any) {
+    navRoutes: any;
+    states: any;
+    static $inject: any = ['$scope', '$state', 'routeHelper', 'currentUser', '_'];
+    constructor(private $scope: ISidebarScope, private $state: angular.ui.IStateService,
+            private routeHelper: any, private currentUser: ICurrentUserManager, private _: _.LoDashStatic) {
         $scope.vm = this;
         this.states = routeHelper.getStates();
-        this.activate();
     }
      getNavRoutes(): void {
-        this.navRoutes = this.states.filter(function(r: any): any {
+        var routes: RouteSettings.IAcklenAvenueRoute[] = this.states.filter(function(r: any): any {
             return r.settings && r.settings.nav && !r.settings.notShowInMenu;
         }).sort(function(r1: any, r2: any): any {
             return r1.settings.nav - r2.settings.nav;
         });
+         var user: ICurrentUser = this.currentUser.GetUser();
+         if (user) {
+            var userRoutes: RouteSettings.IAcklenAvenueRoute [] = _.filter(routes,
+            function(route: any): boolean {
+                var routeClaim: string = route.settings.claim;
+                    return _.contains(user.claims, routeClaim);
+            });
+            this.navRoutes = userRoutes;
+         }
     }
     activate(): void {
        this.getNavRoutes();
+    }
+    isUserLogged(): boolean {
+        var user: ICurrentUser = this.currentUser.GetUser();
+        if (user) {
+            this.activate();
+            return true;
+        }
+        return false;
     }
     showSideBar(): boolean {
         var settings: any = this.$state.current.settings;
@@ -52,9 +71,6 @@ class Sidebar implements ISidebar {
     }
 }
 // Update the app1 variable name to be that of your module variable
-appLayout.controller('Sidebar',
-    ['$scope', '$state', 'routeHelper', ($scope: ISidebarScope, $state: angular.ui.IStateService, routeHelper: any) =>
-    new Sidebar($scope, $state, routeHelper)
-]);
+appLayout.controller('Sidebar', Sidebar);
 
 
