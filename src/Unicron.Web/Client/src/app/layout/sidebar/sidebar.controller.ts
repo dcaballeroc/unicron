@@ -3,6 +3,7 @@
 /// <reference path="../../../../typings/angular-ui-router/angular-ui-router.d.ts" />
 /// <reference path="../layout.module.ts" />
 /// <reference path="../../common/logger/logger.service.ts" />
+/// <reference path="../../common/router/RouteSettings.ts" />
 /// <reference path="../../core/config.ts" />
 
 interface ISidebarScope extends ng.IScope {
@@ -54,20 +55,30 @@ class Sidebar implements ISidebar {
         return false;
     }
     showSideBar(): boolean {
-        var settings: any = this.$state.current.settings;
-        if (settings) {
+        if (this.$state.current.url !== '^') {
+            var current: RouteSettings.IAcklenAvenueRouteConfig = <RouteSettings.IAcklenAvenueRouteConfig>this.$state.current;
+            var settings: RouteSettings.IAcklenAvenueRouteSettings = current.settings;
+            if (settings) {
                 if (settings.notShowSideBar) {
-                    return false;
+                        return false;
                 }
+            }
+            return true;
+
         }
-       return true;
+        return true;
+
     }
-    isCurrent(route: any): string {
-        if (!route.title || !this.$state.current || !this.$state.current.title) {
+
+    isCurrent(route: RouteSettings.IAcklenAvenueRouteConfig): string {
+        var current: RouteSettings.IAcklenAvenueRouteConfig = <RouteSettings.IAcklenAvenueRouteConfig>this.$state.current;
+        if (!route.title
+            || !this.$state.current
+            || !current.title) {
                 return '';
         }
         var menuName: string = route.title;
-        return this.$state.current.title.substr(0, menuName.length) === menuName ? 'current' : '';
+        return current.title.substr(0, menuName.length) === menuName ? 'current' : '';
     }
 }
 // Update the app1 variable name to be that of your module variable
