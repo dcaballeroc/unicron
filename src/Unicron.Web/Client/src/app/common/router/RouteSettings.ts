@@ -5,6 +5,8 @@ module RouteSettings {
         content: string;
         notShowInMenu?: boolean;
         notShowSideBar?: boolean;
+        isPublic?: boolean;
+        claim?: string;
     }
 
    export  interface IAcklenAvenueRouteConfig extends ng.route.IRoute {

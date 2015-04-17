@@ -4,12 +4,13 @@ interface ICurrentUser {
     email: string;
     name: string;
     token: string;
-    expires: string
+    expires: string;
+    claims?: string[];
 }
 interface ICurrentUserManager {
     GetUser(): ICurrentUser;
-    SetUserLocal (email: string, name: string,  token: string, expires: Date): void;
-    SetUserOnSession (email: string, name: string,  token: string, expires: Date): void;
+    SetUserLocal (email: string, name: string,  token: string, expires: Date, claims?: string[]): void;
+    SetUserOnSession (email: string, name: string,  token: string, expires: Date, claims?: string[]): void;
     RemoveUser(): void;
 }
 class CurrentUserManager implements ICurrentUserManager {
@@ -40,23 +41,24 @@ class CurrentUserManager implements ICurrentUserManager {
         }
         return user;
     }
-    SetUserLocal(email: string, name: string, token: string, expires: Date): void {
-        this.SetUser(email, name, token, expires);
+    SetUserLocal(email: string, name: string, token: string, expires: Date, claims?: string[]): void {
+        this.SetUser(email, name, token, expires, claims);
         var userString: string = JSON.stringify(this.currentUser);
         this.$window.localStorage.setItem(this.windowsKey, userString);
     }
-    private SetUser(email: string, name: string, token: string, expires: Date): void {
-         this.currentUser = {
+    private SetUser(email: string, name: string, token: string, expires: Date, claims?: string[]): void {
+        this.currentUser = {
             email : email,
             name : name,
             token : token,
+            claims: claims,
             expires : JSON.stringify(expires)
         };
     }
-     SetUserOnSession(email: string, name: string, token: string, expires: Date): void {
-         this.SetUser(email, name, token, expires);
-         var userString: string = JSON.stringify(this.currentUser);
-         this.$window.sessionStorage.setItem(this.windowsKey, userString);
+    SetUserOnSession(email: string, name: string, token: string, expires: Date, claims?: string[]): void {
+        this.SetUser(email, name, token, expires, claims);
+        var userString: string = JSON.stringify(this.currentUser);
+        this.$window.sessionStorage.setItem(this.windowsKey, userString);
      }
     RemoveUser(): void {
         this.$window.sessionStorage.removeItem(this.windowsKey);

@@ -19,7 +19,8 @@ class UserRoutes implements IProvideRoutes {
                         title: 'Home',
                         settings: {
                             nav: 1,
-                            content: '<i class="fa fa-home"></i> Home'
+                            content: '<i class="fa fa-home"></i> Home',
+                            claim: 'Home'
                         }
                     }
                 },
@@ -33,7 +34,8 @@ class UserRoutes implements IProvideRoutes {
                         title: 'users',
                         settings: {
                             nav: 2,
-                            content: '<i class="fa fa-group"></i> Users'
+                            content: '<i class="fa fa-group"></i> Users',
+                            claim: 'ActivateDeactivateUsers'
                         }
                     }
                 },
@@ -49,7 +51,8 @@ class UserRoutes implements IProvideRoutes {
                             nav: 0,
                             content: '<i></i> Login',
                             notShowInMenu: true,
-                            notShowSideBar: true
+                            notShowSideBar: true,
+                            isPublic: true
                         }
                     }
                 },

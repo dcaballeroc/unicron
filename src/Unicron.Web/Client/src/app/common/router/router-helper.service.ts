@@ -21,10 +21,10 @@
         };
 
         this.$get = RouterHelper;
-        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger', 'currentUser'];
+        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger', 'currentUser', '_'];
         /* @ngInject */
         function RouterHelper($location: any, $rootScope: any,
-            $state: any, logger: any, currentUser: ICurrentUserManager) {
+            $state: any, logger: any, currentUser: ICurrentUserManager, _: _.LoDashStatic) {
             var handlingStateChangeError = false;
             var hasOtherwise = false;
             var stateCounts = {
@@ -89,9 +89,16 @@
                     function(event: any, toState: any, toParams: any, fromState: any, fromParams: any){
                         var user = currentUser.GetUser();
                         if (!user) {
-                            if(toState.url !== '/login') {
-                                event.preventDefault();
-                                $location.path('/login');
+                            if(toState.url !== '/') {
+                                if(toState.settings){
+                                    var routeSettings: RouteSettings.IAcklenAvenueRouteSettings = toState.settings;
+                                    if(!routeSettings.isPublic){
+                                        var userValidClaims = user.claims || [] ;
+
+                                        event.preventDefault();
+                                        $location.path('/login');
+                                    }
+                                }
                             }
                         }
                     }
