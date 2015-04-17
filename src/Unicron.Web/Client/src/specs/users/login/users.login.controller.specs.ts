@@ -16,7 +16,8 @@ describe('users.login.controller', () => {
     var userLoggedData: IUserResponse = {
         name: 'User Test',
         expires: JSON.stringify(new Date()),
-        token: 'token'
+        token: 'token',
+        claims: ['test']
     };
     var email = 'test@test.com';
     var password = 'password';

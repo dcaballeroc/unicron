@@ -23,22 +23,26 @@ namespace DatabaseDeployer
 
             var admiRole = new Role(Guid.NewGuid(), "Administrator");
             var basicRole = new Role(Guid.NewGuid(), "Basic");
-            var userEmailLogin = new UserEmailLogin("Test User", "test@test.com", encryptor.Encrypt("password"), "615-555-1212");
-            userEmailLogin.AddRol(basicRole);
+            var basicUser = new UserEmailLogin("Test User", "test@test.com", encryptor.Encrypt("password"), "615-555-1212");
+            basicUser.AddRol(basicRole);
             var administratorUser = new UserEmailLogin("Admin User", "admin@test.com", encryptor.Encrypt("password"),
                 "123");
             administratorUser.AddRol(admiRole);
             administratorUser.AddRol(basicRole);
 
-            var userAbility = new UserAbility("Developer");
-            _session.Save(userAbility);
-            userEmailLogin.AddAbility(userAbility);
+            var userAbilityDev = new UserAbility("Developer");
+            _session.Save(userAbilityDev);
+            basicUser.AddAbility(userAbilityDev);
+
+            var userAbilityAdmin = new UserAbility("Administrator");
+            _session.Save(userAbilityAdmin);
+            administratorUser.AddAbility(userAbilityAdmin);
 
             _session.Save(admiRole);
             _session.Save(basicRole);
 
 
-            _session.Save(userEmailLogin);
+            _session.Save(basicUser);
             _session.Save(administratorUser);
 
 

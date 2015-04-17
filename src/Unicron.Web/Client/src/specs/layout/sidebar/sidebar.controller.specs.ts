@@ -6,6 +6,7 @@
 /// <reference path="../../../../typings/sinon/sinon.d.ts" />
 /// <reference path="../../../../typings/sinon-chai/sinon-chai.d.ts" />
 /// <reference path="../../../app/layout/sidebar/sidebar.controller.ts"/>
+/// <reference path="../../../app/core/current-user.factory.ts"/>
 
 /* tslint:disable:typedef */
 var expect: any = chai.expect;
@@ -17,25 +18,46 @@ describe('Sidebar', () => {
     var $location: ng.ILocationService;
     var routeHelper: any;
     var $rootScope: ng.IRootScopeService;
-
+    var user: ICurrentUser = {
+        name: 'userTest',
+        email: 'user@user',
+        token: 'token',
+        expires: 'expires',
+        claims: ['test']
+    };
+    var stubGetUser: any;
+    var currentUser: ICurrentUserManager;
     beforeEach(angular.mock.module('app.layout'));
+
     beforeEach(inject(function($controller: ng.IControllerService,
                 _$rootScope_: ng.IRootScopeService,
                 _$state_: angular.ui.IStateService,
                 _$location_: ng.ILocationService,
-                _routeHelper_: any, _$httpBackend_: ng.IHttpBackendService) {
+                _routeHelper_: any, _$httpBackend_: ng.IHttpBackendService, _currentUser_: ICurrentUserManager) {
                     scope = <ISidebarScope>_$rootScope_.$new();
                     $rootScope = _$rootScope_;
                     routeHelper = _routeHelper_;
                     routeHelper.configureStates(getMockStates(), '/');
-                    controller = $controller('Sidebar', {$scope: scope, $state: _$state_, routeHelper: _routeHelper_ });
+                    currentUser = _currentUser_;
+                    stubGetUser = sinon.stub(currentUser, 'GetUser');
+                    stubGetUser.returns(user);
+                    controller = $controller('Sidebar',
+                                {
+                                    $scope: scope, $state: _$state_,
+                                    routeHelper: _routeHelper_, currentUser: currentUser
+                                });
                     $state = _$state_;
                     $location = _$location_;
+
                     $rootScope.$apply();
 
             }
         )
     );
+
+    afterEach(function() {
+       stubGetUser.restore();
+    });
     beforeEach(inject(function($templateCache) {
         $templateCache.put('app/users/users/users.html', '');
         $templateCache.put('app/users/login/users.login.html', '');
@@ -55,11 +77,28 @@ describe('Sidebar', () => {
         $rootScope.$apply();
         chai.expect(controller.showSideBar()).to.be.true;
     });
-it('Should not showSideBar() if route is configured for that', function() {
-    $location.path('/login');
-    $rootScope.$apply();
-    chai.expect(controller.showSideBar()).to.be.false;
+    it('Should not showSideBar() if route is configured for that', function() {
+        $location.path('/login');
+        $rootScope.$apply();
+        chai.expect(controller.showSideBar()).to.be.false;
     });
+    it('Should return user allowed routes', function() {
+        var isUserLogged = controller.isUserLogged();
+        var userRoutes = controller.navRoutes;
+        chai.expect(isUserLogged).to.be.true;
+        chai.expect(userRoutes.length).to.be.equal(1);
+        chai.expect(userRoutes[0].name).to.be.equal('test');
+    });
+    it('Should return true isUserLogged if the user is logged', function() {
+        var isUserLogged = controller.isUserLogged();
+        chai.expect(isUserLogged).to.be.true;
+    });
+    it('Should return false isUserLogged if the user is not logged', function() {
+        stubGetUser.returns(undefined);
+        var isUserLogged = controller.isUserLogged();
+        chai.expect(isUserLogged).to.be.false;
+    });
+
      function getMockStates(): any {
         return [
             {
@@ -74,8 +113,24 @@ it('Should not showSideBar() if route is configured for that', function() {
                             nav: 1,
                             content: '<i></i> Dashboard',
                             notShowInMenu: false,
-                            notShowSideBar: false
+                            notShowSideBar: false,
+                            claim: 'noTest'
                         }
+                }
+            },
+            {
+                state: 'test',
+                config: {
+                    url: '/home',
+                    templateUrl: 'app/users/home/users.home.html',
+                    controller: 'users.home.controller',
+                    controllerAs: 'vm',
+                    title: 'Home',
+                    settings: {
+                        nav: 1,
+                        content: '<i class="fa fa-home"></i> Home',
+                        claim: 'test'
+                    }
                 }
             },
             {
@@ -90,7 +145,8 @@ it('Should not showSideBar() if route is configured for that', function() {
                         nav: 1,
                         content: '<i></i> Dashboard',
                         notShowInMenu: true,
-                        notShowSideBar: true
+                        notShowSideBar: true,
+                        isPublic: true
                     }
                 }
             }

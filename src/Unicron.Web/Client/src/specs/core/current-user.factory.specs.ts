@@ -20,7 +20,8 @@ describe('current-user factory', () => {
         email : 'email',
         name : 'name',
         token : 'token',
-        expires : getExpireDate()
+        expires : getExpireDate(),
+        claims: ['home', 'testing']
     };
     function getExpireDate(): string {
         'use strict';
@@ -50,12 +51,14 @@ describe('current-user factory', () => {
     });
     it('should save the user on local storage', () => {
         var testDate = new Date();
-        currentUserManager.SetUserLocal('email', 'name', 'token', testDate);
+        var claims: string[] = ['home'];
+        currentUserManager.SetUserLocal('email', 'name', 'token', testDate, claims);
         chai.expect(spyLocalStorage).to.have.been.called;
     });
     it('should save the user on session storage', () => {
-         var testDate = new Date();
-        currentUserManager.SetUserOnSession('email', 'name', 'token', testDate);
+        var testDate = new Date();
+        var claims: string[] = ['home'];
+        currentUserManager.SetUserOnSession('email', 'name', 'token', testDate, claims);
         chai.expect(spySessionStorage).to.have.been.called;
     });
     it('should get the user from the local storage', () => {

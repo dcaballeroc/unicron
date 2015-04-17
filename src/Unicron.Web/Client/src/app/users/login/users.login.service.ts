@@ -8,6 +8,7 @@ interface IUserResponse {
     name: string;
     token: string;
     expires: string;
+    claims?: string [];
 }
 interface ILoginUsersService {
     Login(email: string, password: string): ng.IPromise<IUserResponse>;

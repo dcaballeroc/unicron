@@ -21,10 +21,10 @@
         };
 
         this.$get = RouterHelper;
-        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger', 'currentUser'];
+        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger', 'currentUser', '_'];
         /* @ngInject */
         function RouterHelper($location: any, $rootScope: any,
-            $state: any, logger: any, currentUser: ICurrentUserManager) {
+            $state: any, logger: any, currentUser: ICurrentUserManager, _: _.LoDashStatic) {
             var handlingStateChangeError = false;
             var hasOtherwise = false;
             var stateCounts = {
@@ -88,10 +88,28 @@
                 $rootScope.$on('$stateChangeStart',
                     function(event: any, toState: any, toParams: any, fromState: any, fromParams: any){
                         var user = currentUser.GetUser();
+                        var routeSettings: RouteSettings.IAcklenAvenueRouteSettings = toState.settings;
                         if (!user) {
                             if(toState.url !== '/login') {
-                                event.preventDefault();
-                                $location.path('/login');
+                                if(routeSettings){
+                                    if(!routeSettings.isPublic){
+                                        event.preventDefault();
+                                        $location.path('/login');
+                                    }
+                                }
+                            }
+                        } else {
+                            var validClaims = user.claims || [];
+                            if(routeSettings){
+                                var routeClaim = routeSettings.claim;
+                                var isValidRouteForUser: boolean = _.contains(validClaims, routeClaim);
+                                if(!routeSettings.isPublic){
+                                    if(!isValidRouteForUser) {
+                                        event.preventDefault();
+                                        $location.path('/home');
+                                    }
+                                }
+
                             }
                         }
                     }

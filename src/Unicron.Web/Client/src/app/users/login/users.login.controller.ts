@@ -40,9 +40,9 @@ class UsersLogin implements IUsersLogin {
     private SaveUser(data: IUserResponse): void {
         var expireDate: Date = new Date(Date.parse(data.expires));
         if (this.rememberMe) {
-            this.currentUser.SetUserLocal(this.email, data.name, data.token, expireDate);
+            this.currentUser.SetUserLocal(this.email, data.name, data.token, expireDate, data.claims);
         } else {
-            this.currentUser.SetUserOnSession(this.email, data.name, data.token, expireDate);
+            this.currentUser.SetUserOnSession(this.email, data.name, data.token, expireDate, data.claims);
         }
     }
 }
