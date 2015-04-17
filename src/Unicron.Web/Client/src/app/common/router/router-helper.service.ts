@@ -88,17 +88,28 @@
                 $rootScope.$on('$stateChangeStart',
                     function(event: any, toState: any, toParams: any, fromState: any, fromParams: any){
                         var user = currentUser.GetUser();
+                        var routeSettings: RouteSettings.IAcklenAvenueRouteSettings = toState.settings;
                         if (!user) {
-                            if(toState.url !== '/') {
-                                if(toState.settings){
-                                    var routeSettings: RouteSettings.IAcklenAvenueRouteSettings = toState.settings;
+                            if(toState.url !== '/login') {
+                                if(routeSettings){
                                     if(!routeSettings.isPublic){
-                                        var userValidClaims = user.claims || [] ;
-
                                         event.preventDefault();
                                         $location.path('/login');
                                     }
                                 }
+                            }
+                        } else {
+                            var validClaims = user.claims || [];
+                            if(routeSettings){
+                                var routeClaim = routeSettings.claim;
+                                var isValidRouteForUser: boolean = _.contains(validClaims, routeClaim);
+                                if(!routeSettings.isPublic){
+                                    if(!isValidRouteForUser) {
+                                        event.preventDefault();
+                                        $location.path('/home');
+                                    }
+                                }
+
                             }
                         }
                     }

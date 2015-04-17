@@ -90,7 +90,8 @@ it('Should not showSideBar() if route is configured for that', function() {
                         nav: 1,
                         content: '<i></i> Dashboard',
                         notShowInMenu: true,
-                        notShowSideBar: true
+                        notShowSideBar: true,
+                        isPublic: true
                     }
                 }
             }
