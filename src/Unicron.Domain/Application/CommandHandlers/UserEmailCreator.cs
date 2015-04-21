@@ -27,6 +27,8 @@ namespace Unicron.Users.Domain.Application.CommandHandlers
 
             command.abilities.ToList().ForEach(x => userCreated.AddAbility(_readOnlyRepository.GetById<UserAbility>(x.Id)));
 
+            var basicRole = _readOnlyRepository.FirstOrDefault<Role>(x => x.Description == "Basic");
+            userCreated.AddRol(basicRole);
             var userSaved = _writeableRepository.Create(userCreated);
 
             NotifyObservers(new UserEmailCreated(userSaved.Id, command.Email, command.Name, command.PhoneNumber));
