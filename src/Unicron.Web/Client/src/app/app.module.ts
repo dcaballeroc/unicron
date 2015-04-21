@@ -17,6 +17,7 @@ var app: Iapp = angular.module('app', [
     'ngMessages',
 // Custom modules
     'app.core',
+    'app.widgets',
     'app.users',
     'app.layout',
 

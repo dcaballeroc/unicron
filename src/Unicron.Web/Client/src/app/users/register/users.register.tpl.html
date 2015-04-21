@@ -62,10 +62,11 @@
                     <div class="form-group"
                          ng-class="{ 'has-error has-feedback' : userRegister.confirmpassword.$invalid && !userRegister.confirmpassword.$pristine }">
                         <div>
-                            <input type="password" name="confirmpassword" class="form-control" ng-model="vm.ConfirmPassword" placeholder="Confirm Password" required ng-minlength="8" ng-maxlength="30"/>
+                            <input type="password" name="confirmpassword" class="form-control" ng-model="vm.ConfirmPassword" placeholder="Confirm Password"  compare-to="vm.Password" ng-minlength="8" ng-maxlength="30" required/>
                             <label class="fa xerror"
                                    ng-class="{ 'fa-exclamation-circle' : userRegister.confirmpassword.$invalid && !userRegister.confirmpassword.$pristine }"></label>
                             <div class="help-block" ng-messages="userRegister.confirmpassword.$error">
+                                <div ng-message="compareTo">Passwords must match</div>
                                 <div ng-message="required">You must confirm your password</div>
                                 <div ng-message="maxlength">Your password cannot be longer than 30 characters</div>
                                 <div ng-message="minlength">Your password is required to be at least 8 characters</div>

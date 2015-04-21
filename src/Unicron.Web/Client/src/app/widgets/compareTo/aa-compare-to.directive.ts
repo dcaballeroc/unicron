@@ -1,17 +1,23 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../widgets.module.ts" />
 
-'use strict';
-class AACompareTo implements ng.IDirective {
-    require: string =  'ngModel';
-    scope: any = {
-        otherModelValue: '=compareTo'
-    };
-    restric: string = 'AE';
-    link: ng.IDirectiveLinkFn = (scope: ng.IScope, element: ng.IAugmentedJQuery,
-                                attrs: ng.IAttributes, ngModel: any) => {
+var compareTo: any = function(): ng.IDirective {
+return {
+        require: 'ngModel',
+        scope: {
+                otherModelValue: '=compareTo'
+        },
+        link: function(scope: any, element: any, attributes: any, ngModel: any): any {
 
+            ngModel.$validators.compareTo = function(modelValue: any): any {
+                    return modelValue === scope.otherModelValue;
+            };
 
+            scope.$watch('otherModelValue', function(): any {
+                ngModel.$validate();
+            });
+        }
     };
-}
-appWidget.directive('aaCompareTo', [() => new AACompareTo()]);
+};
+
+appWidget.directive('compareTo', compareTo);
