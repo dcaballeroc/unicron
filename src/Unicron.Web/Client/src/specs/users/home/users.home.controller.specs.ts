@@ -9,11 +9,11 @@
 describe('users.home.controller', () => {
 
     var homeController: IHome;
-    var $rootScope: ng.IRootScopeService;
+    var $rootScope: angular.IRootScopeService;
     var scope: IHomeScope;
 
     beforeEach(module('app.users'));
-    beforeEach(inject(function($controller: ng.IControllerService, _$rootScope_: ng.IRootScopeService) {
+    beforeEach(inject(function($controller: angular.IControllerService, _$rootScope_: angular.IRootScopeService) {
         $rootScope = _$rootScope_;
         scope = <IHomeScope>$rootScope.$new();
         homeController = $controller('users.home.controller', {$scope: scope});

@@ -22,7 +22,7 @@ describe('users.login.controller', () => {
     var email = 'test@test.com';
     var password = 'password';
     var errorMessage = 'Invalid email address or password. Please try again.';
-    var userLoggedPromise: angular.IPromise<IUserResponse>;
+    var userLoggedPromise: angular.IPromise<IUserLoginResponse>;
     var failedUserPromise: angular.IPromise<any>;
     var loginUsersService: ILoginUsersService;
     var currentUser: ICurrentUserManager;
@@ -106,13 +106,13 @@ describe('users.login.controller', () => {
         chai.expect($state.go).to.have.been.calledWith('home');
     }));
 
-    function getUserPromise($q: ng.IQService): ng.IPromise<IUserResponse> {
-        var deferred = $q.defer<IUserResponse>();
+    function getUserPromise($q: angular.IQService): angular.IPromise<IUserLoginResponse> {
+        var deferred = $q.defer<IUserLoginResponse>();
         deferred.resolve(userLoggedData);
         return deferred.promise;
     }
 
-    function getUserFailedPromise($q: ng.IQService): ng.IPromise<any> {
+    function getUserFailedPromise($q: angular.IQService): angular.IPromise<any> {
         var deferred = $q.defer();
         deferred.reject('Invalid email address or password. Please try again.');
         return deferred.promise;

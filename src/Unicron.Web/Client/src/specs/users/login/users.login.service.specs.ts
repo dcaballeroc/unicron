@@ -7,15 +7,15 @@
 /* tslint:disable:typedef */
 
 describe('users.login.service', () => {
-    var $httpBackend: ng.IHttpBackendService;
-    var userResponse: IUserResponse = {
+    var $httpBackend: angular.IHttpBackendService;
+    var userResponse: IUserLoginResponse = {
         name: 'User Test',
         token: 'User Token',
         expires: 'Expire Time'
     };
     var loginService: ILoginUsersService;
     beforeEach(module('app.users'));
-    beforeEach(inject(function(_$httpBackend_: ng.IHttpBackendService,
+    beforeEach(inject(function(_$httpBackend_: angular.IHttpBackendService,
         _loginUsersService_: ILoginUsersService) {
       $httpBackend = _$httpBackend_;
         loginService = _loginUsersService_;

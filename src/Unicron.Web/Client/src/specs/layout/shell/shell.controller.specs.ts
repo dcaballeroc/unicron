@@ -12,10 +12,10 @@ var expect: any = chai.expect;
 describe('Shell', () => {
     var controller: IShell;
     var scope: IShellScope;
-    var $timeout: ng.ITimeoutService;
+    var $timeout: angular.ITimeoutService;
     beforeEach(angular.mock.module('app.layout'));
-    beforeEach(inject(function($controller: ng.IControllerService,
-        $rootScope: ng.IRootScopeService, _$timeout_: ng.ITimeoutService) {
+    beforeEach(inject(function($controller: angular.IControllerService,
+        $rootScope: angular.IRootScopeService, _$timeout_: angular.ITimeoutService) {
                 scope = <IShellScope>$rootScope.$new();
                 controller = $controller('Shell', {$scope: scope});
                 $timeout = _$timeout_;

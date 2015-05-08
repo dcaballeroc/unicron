@@ -11,10 +11,10 @@
 /* tslint:disable:typedef */
 
 describe('users.forgotPassword.controller', () => {
-    var $rootScope: ng.IRootScopeService;
+    var $rootScope: angular.IRootScopeService;
     var scope: IUserForgotPasswordScope;
     var userForgotController: IUserForgotPassword;
-    var successResponse: ng.IPromise<boolean>;
+    var successResponse: angular.IPromise<boolean>;
     var stubForgotPasswordService: any;
     var spyModalProvider: any;
 
@@ -26,8 +26,8 @@ describe('users.forgotPassword.controller', () => {
     }));
 
 
-    beforeEach(inject(function($controller: ng.IControllerService, _$rootScope_: ng.IRootScopeService,
-                    _$q_: ng.IQService, _forgotPasswordservice_: IUserForgotPasswordService, _logger_: ILogger) {
+    beforeEach(inject(function($controller: angular.IControllerService, _$rootScope_: angular.IRootScopeService,
+                    _$q_: angular.IQService, _forgotPasswordservice_: IUserForgotPasswordService, _logger_: ILogger) {
         $rootScope = _$rootScope_;
         scope = <IUserForgotPasswordScope>$rootScope.$new();
         userForgotController = $controller('userForgotPasswordController', {$scope: scope});
@@ -58,7 +58,7 @@ describe('users.forgotPassword.controller', () => {
         chai.expect(stubForgotPasswordService).to.have.been.calledWith('test@test.com');
     });
 
-    function getSuccessPromise($q: ng.IQService): ng.IPromise<boolean> {
+    function getSuccessPromise($q: angular.IQService): angular.IPromise<boolean> {
         var deferred = $q.defer<boolean>();
         deferred.resolve(true);
         return deferred.promise;

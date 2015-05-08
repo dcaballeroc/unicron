@@ -13,11 +13,11 @@ describe('aaSidebar directive ', () => {
     var e1: any;
     var innerElement: any;
     var isOpenClass = 'dropy';
-    var $compile: ng.ICompileService;
-    var $rootScope: ng.IRootScopeService;
+    var $compile: angular.ICompileService;
+    var $rootScope: angular.IRootScopeService;
 
     beforeEach(module('app.layout'));
-    beforeEach(inject(function(_$compile_: ng.ICompileService, _$rootScope_: ng.IRootScopeService) {
+    beforeEach(inject(function(_$compile_: angular.ICompileService, _$rootScope_: angular.IRootScopeService) {
         $compile = _$compile_;
         $rootScope = _$rootScope_;
         e1 = angular.element('<aa-sidebar whenDoneAnimating="vm.sidebarReady(42)" > \
