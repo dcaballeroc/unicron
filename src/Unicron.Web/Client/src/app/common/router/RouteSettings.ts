@@ -9,7 +9,7 @@ module RouteSettings {
         claim?: string;
     }
 
-   export  interface IAcklenAvenueRouteConfig extends ng.route.IRoute {
+   export  interface IAcklenAvenueRouteConfig extends angular.route.IRoute {
         url: string;
         templateUrl: string;
         controller: string;

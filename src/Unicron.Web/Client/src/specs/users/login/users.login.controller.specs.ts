@@ -11,9 +11,9 @@
 /* tslint:disable:typedef */
 
 describe('users.login.controller', () => {
-    var userLoginController: IUsersLogin;
+    var userLoginController: IUsersLoginContoller;
     var scope: IUsersLoginScope;
-    var userLoggedData: IUserResponse = {
+    var userLoggedData: IUserLoginResponse = {
         name: 'User Test',
         expires: JSON.stringify(new Date()),
         token: 'token',
@@ -22,20 +22,20 @@ describe('users.login.controller', () => {
     var email = 'test@test.com';
     var password = 'password';
     var errorMessage = 'Invalid email address or password. Please try again.';
-    var userLoggedPromise: ng.IPromise<IUserResponse>;
-    var failedUserPromise: ng.IPromise<any>;
+    var userLoggedPromise: angular.IPromise<IUserResponse>;
+    var failedUserPromise: angular.IPromise<any>;
     var loginUsersService: ILoginUsersService;
     var currentUser: ICurrentUserManager;
     var stubLoginUserService: any;
     var spyCurrentUserManagerLocal: any;
     var spyCurrentUserManagerSession: any;
     var spyLogService: any;
-    var $rootScope: ng.IRootScopeService;
+    var $rootScope: angular.IRootScopeService;
     var logger: ILogger;
 
     beforeEach(module('app.users'));
-    beforeEach(inject(function($controller: ng.IControllerService, _$rootScope_: ng.IRootScopeService,
-        _$q_: ng.IQService, _loginUsersService_: ILoginUsersService,
+    beforeEach(inject(function($controller: angular.IControllerService, _$rootScope_: angular.IRootScopeService,
+        _$q_: angular.IQService, _loginUsersService_: ILoginUsersService,
         _currentUser_: ICurrentUserManager, _logger_: ILogger) {
         $rootScope = _$rootScope_;
         scope = <IUsersLoginScope>$rootScope.$new();

@@ -2,7 +2,7 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../common/logger/logger.service.ts" />
 /// <reference path="../users.module.ts" />
-interface IHomeScope extends ng.IScope {
+interface IHomeScope extends angular.IScope {
     vm: Home;
 }
 

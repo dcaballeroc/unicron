@@ -8,7 +8,7 @@ interface IUserRegisterRequest {
 
 }
 interface IUserRegisterService {
-    Register(request: IUserRegisterRequest): ng.IPromise<boolean>;
+    Register(request: IUserRegisterRequest): angular.IPromise<boolean>;
 }
 
 class UserRegisterService implements IUserRegisterService {
@@ -17,7 +17,7 @@ class UserRegisterService implements IUserRegisterService {
     /*@ngInject*/
     constructor(private httpQ: IHttpQ) {
     }
-    Register(request: IUserRegisterRequest): ng.IPromise<boolean> {
+    Register(request: IUserRegisterRequest): angular.IPromise<boolean> {
         return this.httpQ.Post<IUserRegisterRequest, boolean>('/register', request);
     }
 }

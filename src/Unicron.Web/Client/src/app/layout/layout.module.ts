@@ -2,13 +2,13 @@
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 
 
-interface IAppLayout extends ng.IModule { }
+interface IAppLayout extends angular.IModule { }
 
 // Create the module and define its dependencies.
 var appLayout: IAppLayout = angular.module('app.layout', [
-    // Angular modules 
+    // Angular modules
 
-    // Custom modules 
+    // Custom modules
     'app.core'
     // 3rd Party Modules
 

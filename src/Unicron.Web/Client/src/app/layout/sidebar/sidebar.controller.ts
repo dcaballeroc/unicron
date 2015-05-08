@@ -6,7 +6,7 @@
 /// <reference path="../../common/router/RouteSettings.ts" />
 /// <reference path="../../core/config.ts" />
 
-interface ISidebarScope extends ng.IScope {
+interface ISidebarScope extends angular.IScope {
     vm: Sidebar;
 }
 
@@ -83,5 +83,3 @@ class Sidebar implements ISidebar {
 }
 // Update the app1 variable name to be that of your module variable
 appLayout.controller('Sidebar', Sidebar);
-
-

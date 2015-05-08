@@ -2,7 +2,7 @@
 /// <reference path="../layout.module.ts" />
 
 'use strict';
-class AATopNav implements ng.IDirective {
+class AATopNav implements angular.IDirective {
       bindToController: boolean = true;
       controllerAs: string = 'vm';
       controller: any = AATopNavController;

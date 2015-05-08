@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../layout.module.ts" />
 
-interface IAATopNavScope extends ng.IScope {
+interface IAATopNavScope extends angular.IScope {
     vm: AATopNavController;
 }
 interface IAATopNav {

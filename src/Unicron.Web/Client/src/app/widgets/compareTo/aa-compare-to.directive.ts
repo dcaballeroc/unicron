@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../widgets.module.ts" />
 
-var compareTo: any = function(): ng.IDirective {
+var compareTo: any = function(): angular.IDirective {
 return {
         require: 'ngModel',
         scope: {

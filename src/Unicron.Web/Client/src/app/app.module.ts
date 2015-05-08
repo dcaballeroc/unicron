@@ -5,7 +5,7 @@
 
 'use strict';
 
-interface Iapp extends ng.IModule { }
+interface Iapp extends angular.IModule { }
 
 // Create the module and define its dependencies.
 var app: Iapp = angular.module('app', [

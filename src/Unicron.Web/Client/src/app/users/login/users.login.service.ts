@@ -4,14 +4,14 @@ interface IUserLoginRequest {
    email: string;
    password: string;
 }
-interface IUserResponse {
+interface IUserLoginResponse {
     name: string;
     token: string;
     expires: string;
     claims?: string [];
 }
 interface ILoginUsersService {
-    Login(email: string, password: string): ng.IPromise<IUserResponse>;
+    Login(email: string, password: string): angular.IPromise<IUserLoginResponse>;
 }
 
 class LoginUsersService implements ILoginUsersService {
@@ -20,14 +20,13 @@ class LoginUsersService implements ILoginUsersService {
     /*@ngInject*/
     constructor(private httpq: IHttpQ) {
     }
-    Login(email: string, password: string): ng.IPromise<IUserResponse> {
+    Login(email: string, password: string): angular.IPromise<IUserLoginResponse> {
         var request: IUserLoginRequest = {
             email: email,
             password: password
         };
-        var response: ng.IPromise<IUserResponse> = this.httpq.Post<IUserLoginRequest, IUserResponse>('/login', request);
+        var response: angular.IPromise<IUserLoginResponse> = this.httpq.Post<IUserLoginRequest, IUserLoginResponse>('/login', request);
         return response;
     }
 }
 appUsers.factory('loginUsersService', ['httpq', (httpq: IHttpQ) => new LoginUsersService(httpq)]);
-

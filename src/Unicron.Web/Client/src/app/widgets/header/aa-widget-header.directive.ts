@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../widgets.module.ts" />
 'use strict';
-class AAWidgetHeader implements ng.IDirective {
+class AAWidgetHeader implements angular.IDirective {
          scope: any = {
                 'title': '@',
                 'subtitle': '@',
@@ -12,5 +12,3 @@ class AAWidgetHeader implements ng.IDirective {
             restrict: string = 'EA';
 }
 appWidget.directive('aaWidgetHeader', [() => new AAWidgetHeader()]);
-
-

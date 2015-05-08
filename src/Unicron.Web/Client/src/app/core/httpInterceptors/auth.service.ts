@@ -4,10 +4,10 @@
 class AuthorizationService {
     static $inject: any = ['$q', 'currentUser'];
     /*@ngInject*/
-    constructor(private $q: ng.IQService, private currentUser: ICurrentUserManager,
-            private $injector: ng.auto.IInjectorService) {
+    constructor(private $q: angular.IQService, private currentUser: ICurrentUserManager,
+            private $injector: angular.auto.IInjectorService) {
     }
-    request: any = (config: ng.IRequestConfig): any => {
+    request: any = (config: angular.IRequestConfig): any => {
         var user: ICurrentUser = this.currentUser.GetUser();
         if (user) {
             config.headers.Authorization = 'Bearer ' + user.token;
@@ -27,10 +27,9 @@ class AuthorizationService {
     };
 }
 appCore.factory('authorizationService', ['$q', 'currentUser', '$injector',
-    ($q: ng.IQService, currentUser: ICurrentUserManager, $injector: ng.auto.IInjectorService)
-        => new AuthorizationService($q, currentUser, $injector)]);
+    ($q: angular.IQService, currentUser: ICurrentUserManager, $injector: angular.auto.IInjectorService) =>
+    new AuthorizationService($q, currentUser, $injector)]);
 
-appCore.config(['$httpProvider', function($httpProvider: ng.IHttpProvider): void {
+appCore.config(['$httpProvider', function($httpProvider: angular.IHttpProvider): void {
     $httpProvider.interceptors.push('authorizationService');
 }]);
-

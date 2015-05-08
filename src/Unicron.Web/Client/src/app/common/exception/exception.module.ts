@@ -1,10 +1,10 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
-interface ICommonException extends ng.IModule { }
+interface ICommonException extends angular.IModule { }
 
 // Create the module and define its dependencies.
 var commonException: ICommonException = angular.module('common.exception', [
-    // Angular modules 
-    // Custom modules 
+    // Angular modules
+    // Custom modules
     'common.logger'
     // 3rd Party Modules
 ]);

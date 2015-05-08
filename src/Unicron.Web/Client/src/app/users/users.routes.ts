@@ -68,4 +68,3 @@ appUsers.constant('userRoutes', new UserRoutes() );
 appUsers.run(['userRoutes', 'routeHelper', (userRoutes: UserRoutes, routeHelper: any) => {
      routeHelper.configureStates(userRoutes.getRoutes(), '/');
 } ]);
-
