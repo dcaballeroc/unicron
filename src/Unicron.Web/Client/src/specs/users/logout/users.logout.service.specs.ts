@@ -12,7 +12,7 @@ describe('users.logout.service', () => {
     var userLogoutService: IUserLogoutService;
     var currentUser: ICurrentUserManager;
     var $state: any;
-    beforeEach(module('app.users'));
+    beforeEach(angular.mock.module('app.users'));
 
     beforeEach(inject(function(_currentUser_: ICurrentUserManager,
             _userLogoutService_: IUserLogoutService, _$state_: any) {

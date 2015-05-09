@@ -17,7 +17,7 @@ describe('common.exception', () => {
         prefix: '[TEST]'
     };
     var exceptionHandler: any;
-    beforeEach( module(function($provide: any) {
+    beforeEach( angular.mock.module(function($provide: any) {
         logger = <Logger><any>sinon.createStubInstance(Logger);
         toastr = sinon.stub();
        $provide.value('logger', logger);
@@ -26,7 +26,7 @@ describe('common.exception', () => {
     );
 
      beforeEach(function() {
-         module('common.exception');
+         angular.mock.module('common.exception');
      });
 
      beforeEach(inject(function(_exceptionHandler_) {

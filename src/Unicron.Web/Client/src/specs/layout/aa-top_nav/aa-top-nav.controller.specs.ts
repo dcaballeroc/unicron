@@ -16,8 +16,8 @@ describe('aa-top-nav.controller', () => {
     var userLogoutService: IUserLogoutService;
     var spyLogoutService: any;
 
-    beforeEach(module('app.users'));
-    beforeEach(module('app.layout'));
+    beforeEach(angular.mock.module('app.users'));
+    beforeEach(angular.mock.module('app.layout'));
     beforeEach(inject(function($controller: angular.IControllerService,
         _$rootScope_: angular.IRootScopeService, _userLogoutService_: IUserLogoutService) {
         $rootScope = _$rootScope_;

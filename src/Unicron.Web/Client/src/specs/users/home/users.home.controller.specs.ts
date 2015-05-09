@@ -12,7 +12,7 @@ describe('users.home.controller', () => {
     var $rootScope: angular.IRootScopeService;
     var scope: IHomeScope;
 
-    beforeEach(module('app.users'));
+    beforeEach(angular.mock.module('app.users'));
     beforeEach(inject(function($controller: angular.IControllerService, _$rootScope_: angular.IRootScopeService) {
         $rootScope = _$rootScope_;
         scope = <IHomeScope>$rootScope.$new();

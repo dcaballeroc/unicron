@@ -14,7 +14,7 @@ describe('users.login.service', () => {
         expires: 'Expire Time'
     };
     var loginService: ILoginUsersService;
-    beforeEach(module('app.users'));
+    beforeEach(angular.mock.module('app.users'));
     beforeEach(inject(function(_$httpBackend_: angular.IHttpBackendService,
         _loginUsersService_: ILoginUsersService) {
       $httpBackend = _$httpBackend_;

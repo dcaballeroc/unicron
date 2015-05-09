@@ -13,11 +13,11 @@ describe('users.routes', () => {
         login: 'app/users/users.login.html'
     };
     var $state: any;
-    var $templateCache: ng.ITemplateCacheService;
-    var $rootScope: ng.IRootScopeService;
-    beforeEach(module('app.users'));
+    var $templateCache: angular.ITemplateCacheService;
+    var $rootScope: angular.IRootScopeService;
+    beforeEach(angular.mock.module('app.users'));
     beforeEach(inject(function(_$state_: any,
-        _$templateCache_: ng.ITemplateCacheService, _$rootScope_: ng.IRootScopeService) {
+        _$templateCache_: angular.ITemplateCacheService, _$rootScope_: angular.IRootScopeService) {
         $state = _$state_;
         $rootScope = _$rootScope_;
         $templateCache = _$templateCache_;
@@ -37,4 +37,3 @@ describe('users.routes', () => {
         chai.expect($state.href('login', {})).to.equal('#/login');
     });
 });
-

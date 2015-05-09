@@ -10,15 +10,15 @@
 describe('user.register.controller', () => {
 
     var userRegisterController: IUserRegister;
-    var $rootScope: ng.IRootScopeService;
+    var $rootScope: angular.IRootScopeService;
     var scope: IUserRegisterScope;
-    var successResponse: ng.IPromise<boolean>;
+    var successResponse: angular.IPromise<boolean>;
     var stubRegisterService: any;
 
-    beforeEach(module('app.users'));
-    beforeEach(inject(function($controller: ng.IControllerService,
-                            _$rootScope_: ng.IRootScopeService,
-                            _$q_: ng.IQService,
+    beforeEach(angular.mock.module('app.users'));
+    beforeEach(inject(function($controller: angular.IControllerService,
+                            _$rootScope_: angular.IRootScopeService,
+                            _$q_: angular.IQService,
                             _registerUsersService_: IUserRegisterService) {
         $rootScope = _$rootScope_;
         scope = <IUserRegisterScope>$rootScope.$new();
@@ -63,7 +63,7 @@ describe('user.register.controller', () => {
 
     });
 
-    function getSuccessPromise($q: ng.IQService): ng.IPromise<boolean> {
+    function getSuccessPromise($q: angular.IQService): angular.IPromise<boolean> {
         var deferred = $q.defer<boolean>();
         deferred.resolve(true);
         return deferred.promise;

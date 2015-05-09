@@ -33,7 +33,7 @@ describe('users.login.controller', () => {
     var $rootScope: angular.IRootScopeService;
     var logger: ILogger;
 
-    beforeEach(module('app.users'));
+    beforeEach(angular.mock.module('app.users'));
     beforeEach(inject(function($controller: angular.IControllerService, _$rootScope_: angular.IRootScopeService,
         _$q_: angular.IQService, _loginUsersService_: ILoginUsersService,
         _currentUser_: ICurrentUserManager, _logger_: ILogger) {

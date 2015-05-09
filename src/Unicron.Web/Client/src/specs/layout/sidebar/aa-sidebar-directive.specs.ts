@@ -16,7 +16,7 @@ describe('aaSidebar directive ', () => {
     var $compile: angular.ICompileService;
     var $rootScope: angular.IRootScopeService;
 
-    beforeEach(module('app.layout'));
+    beforeEach(angular.mock.module('app.layout'));
     beforeEach(inject(function(_$compile_: angular.ICompileService, _$rootScope_: angular.IRootScopeService) {
         $compile = _$compile_;
         $rootScope = _$rootScope_;

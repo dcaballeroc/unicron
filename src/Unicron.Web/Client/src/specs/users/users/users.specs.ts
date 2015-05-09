@@ -19,7 +19,7 @@ describe('Users', () => {
     var controller: IUsers;
     var scope: IUsersScope;
     beforeEach(angular.mock.module('app.users'));
-    beforeEach(angular.mock.inject(function($controller: ng.IControllerService, $rootScope: ng.IRootScopeService) {
+    beforeEach(angular.mock.inject(function($controller: angular.IControllerService, $rootScope: angular.IRootScopeService) {
                 scope = <IUsersScope>$rootScope.$new();
                 controller = $controller('users.controller', {$scope: scope});
             }

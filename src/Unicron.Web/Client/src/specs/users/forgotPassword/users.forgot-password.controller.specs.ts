@@ -18,9 +18,9 @@ describe('users.forgotPassword.controller', () => {
     var stubForgotPasswordService: any;
     var spyModalProvider: any;
 
-    beforeEach(module('app.users'));
+    beforeEach(angular.mock.module('app.users'));
 
-    beforeEach(module(function($provide: any) {
+    beforeEach(angular.mock.module(function($provide: any) {
         spyModalProvider = sinon.spy();
         $provide.value('$modal', spyModalProvider);
     }));
