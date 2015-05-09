@@ -8,7 +8,7 @@ class AAWidgetHeader implements angular.IDirective {
                 'rightText': '@',
                 'allowCollapse': '@'
             };
-            templateUrl: string = 'app/widgets/header/widget-header.html';
+            templateUrl: string = 'app/widgets/header/aa-widget-header.html';
             restrict: string = 'EA';
 }
 appWidget.directive('aaWidgetHeader', [() => new AAWidgetHeader()]);
