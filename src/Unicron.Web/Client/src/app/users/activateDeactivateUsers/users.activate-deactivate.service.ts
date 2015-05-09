@@ -5,8 +5,8 @@ interface IActivateDeactivateUserRequest {
     enable: boolean;
 }
 interface IActivateDeactivateUsersService {
-    enableUser(id: string): void;
-    disableUser(id: string): void;
+    enableUser(id: string): angular.IPromise<boolean>;
+    disableUser(id: string): angular.IPromise<boolean>;
 }
 
 class ActivateDeactivateUsersService implements IActivateDeactivateUsersService {
@@ -14,12 +14,20 @@ class ActivateDeactivateUsersService implements IActivateDeactivateUsersService 
     /*@ngInject*/
     constructor(private httpq: IHttpQ) {
     }
-    enableUser(id: string): void {
-
+    enableUser(id: string): angular.IPromise<boolean> {
+        var payload: IActivateDeactivateUserRequest = {
+            id: id,
+            enable: true
+        };
+        return this.httpq.Post('/users/enable', payload);
     }
-    disableUser(id: string): void {
-
+    disableUser(id: string): angular.IPromise<boolean> {
+      var payload: IActivateDeactivateUserRequest = {
+          id: id,
+          enable: false
+      };
+      return this.httpq.Post('/users/enable', payload);
     }
 }
 
-appUsers.factory('usersActivateDeactivateService', ['httpq', (httpq: IHttpQ) => new UsersService(httpq)]);
+appUsers.factory('usersActivateDeactivateService', ['httpq', (httpq: IHttpQ) => new ActivateDeactivateUsersService(httpq)]);
