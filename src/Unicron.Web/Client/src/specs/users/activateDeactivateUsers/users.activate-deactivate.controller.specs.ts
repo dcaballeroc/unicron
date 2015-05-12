@@ -19,6 +19,7 @@ describe('users.activate-deactivate.controller', () => {
     var usersPromise: angular.IPromise<IUserResponse[]>;
     var userServiceMock: IUsersService;
     var userStubService: SinonStub;
+    var usersActivateDeactivateService: IActivateDeactivateUsersService;
     var users: IUserResponse[] = [
         {
             id: 'id1', name: 'user1', email: 'email1'
@@ -45,6 +46,7 @@ describe('users.activate-deactivate.controller', () => {
         $q = _$q_;
         usersPromise = getUsersPromise($q);
         userStubService = sinon.stub(userServiceMock, 'getPagedUsers');
+        usersActivateDeactivateService = _usersActivateDeactivateService_;
         userStubService.returns(usersPromise);
         $rootScope = _$rootScope_;
         $scope = <IUsersActivateDeactivateScope>$rootScope.$new();
@@ -125,6 +127,30 @@ describe('users.activate-deactivate.controller', () => {
             chai.expect(userStubService).to.have.been.calledWith(expectedRequest);
         });
     });
+    describe('EnableUser', () => {
+        var activateUsersSpy: SinonSpy;
+        var disableUsersSpy: SinonSpy;
+
+        beforeEach(function() {
+            activateUsersSpy = sinon.spy(usersActivateDeactivateService, 'enableUser');
+            disableUsersSpy = sinon.spy(usersActivateDeactivateService, 'disableUser');
+        });
+        it('Should enable user', () => {
+            var enable = true;
+            var id = 'id';
+            usersActivateDeactivateUsersController.enableUser(id, enable);
+            chai.expect(activateUsersSpy).to.have.been.calledWith(id);
+            chai.expect(disableUsersSpy).to.not.have.been.called;
+        });
+        it('Should enable user', () => {
+            var enable = false;
+            var id = 'id';
+            usersActivateDeactivateUsersController.enableUser(id, enable);
+            chai.expect(disableUsersSpy).to.have.been.calledWith(id);
+            chai.expect(activateUsersSpy).to.not.have.been.called;
+        });
+
+    })
     function getUsersPromise($q: angular.IQService): angular.IPromise<IUserResponse[]> {
         var deferred = $q.defer<IUserResponse[]>();
         deferred.resolve(users);

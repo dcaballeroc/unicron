@@ -38,12 +38,12 @@ class UsersActivateDeactivateController implements IUsersActivateDeactivateConto
         this.getUsersSortByName();
     }
     back(): void {
-      this.pageNumber -= 1;
-      this.getUsersPage();
+        this.pageNumber -= 1;
+        this.getUsersPage();
     }
     next(): void {
-      this.pageNumber += 1;
-      this.getUsersPage();
+        this.pageNumber += 1;
+        this.getUsersPage();
     }
 
     getUsersSortByName(): void {
@@ -61,7 +61,11 @@ class UsersActivateDeactivateController implements IUsersActivateDeactivateConto
         this.getUsers(request);
     }
     enableUser(id: string, enableUser: boolean): void {
-
+        if (enableUser) {
+            this.usersActivateDeactivateService.enableUser(id);
+        } else {
+            this.usersActivateDeactivateService.disableUser(id);
+        }
     }
     private getUsersPage(): void {
         if (this.orderedByName) {
