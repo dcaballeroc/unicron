@@ -38,23 +38,37 @@ class UsersActivateDeactivateController implements IUsersActivateDeactivateConto
         this.getUsersSortByName();
     }
     back(): void {
-
+      this.pageNumber -= 1;
+      this.getUsersPage();
     }
     next(): void {
-
+      this.pageNumber += 1;
+      this.getUsersPage();
     }
 
     getUsersSortByName(): void {
+        this.orderedByName = true;
         var request: IUserPagedRequest = {
             pageSize: this.pageSize, pageNumber: this.pageNumber, field: 'Name'
         };
         this.getUsers(request);
     }
     getUsersSortByEmail(): void {
-
+        this.orderedByEmail = true;
+        var request: IUserPagedRequest = {
+            pageSize: this.pageSize, pageNumber: this.pageNumber, field: 'Email'
+        };
+        this.getUsers(request);
     }
     enableUser(id: string, enableUser: boolean): void {
 
+    }
+    private getUsersPage(): void {
+        if (this.orderedByName) {
+            this.getUsersSortByName();
+        } else {
+            this.getUsersSortByEmail();
+        }
     }
     private getUsers(paginationRequest: IUserPagedRequest): void {
         this.usersService.getPagedUsers(paginationRequest).then(
@@ -63,6 +77,7 @@ class UsersActivateDeactivateController implements IUsersActivateDeactivateConto
             }
             );
     }
+
     static controllerId(): string {
         return 'users.activate-deactivate.controller';
     }

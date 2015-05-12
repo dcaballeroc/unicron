@@ -17,8 +17,8 @@ describe('users.activate-deactivate.controller', () => {
     var $rootScope: angular.IRootScopeService;
     var $q: angular.IQService;
     var usersPromise: angular.IPromise<IUserResponse[]>;
-    var $httpBackend: angular.IHttpBackendService;
     var userServiceMock: IUsersService;
+    var userStubService: SinonStub;
     var users: IUserResponse[] = [
         {
             id: 'id1', name: 'user1', email: 'email1'
@@ -44,7 +44,8 @@ describe('users.activate-deactivate.controller', () => {
         _usersActivateDeactivateService_: IActivateDeactivateUsersService) {
         $q = _$q_;
         usersPromise = getUsersPromise($q);
-        sinon.stub(userServiceMock, 'getPagedUsers').returns(usersPromise);
+        userStubService = sinon.stub(userServiceMock, 'getPagedUsers');
+        userStubService.returns(usersPromise);
         $rootScope = _$rootScope_;
         $scope = <IUsersActivateDeactivateScope>$rootScope.$new();
         usersActivateDeactivateUsersController = $controller('users.activate-deactivate.controller'
@@ -71,6 +72,57 @@ describe('users.activate-deactivate.controller', () => {
             var usersRetrived = usersActivateDeactivateUsersController.users;
             chai.expect(usersRetrived).to.not.be.undefined;
             chai.expect(usersRetrived).to.be.deep.equal(users);
+        });
+    });
+    describe('GetUsersSortByEmail', () => {
+        it('Should get users ordered by email', () => {
+            var expectedRequest: IUserPagedRequest = {
+                pageNumber: usersActivateDeactivateUsersController.pageNumber,
+                pageSize: usersActivateDeactivateUsersController.pageSize,
+                field: 'Email'
+            };
+            usersActivateDeactivateUsersController.getUsersSortByEmail();
+            $rootScope.$apply();
+            chai.expect(userStubService).to.have.been.calledWith(expectedRequest);
+            chai.expect(usersActivateDeactivateUsersController.orderedByEmail).to.be.true;
+        });
+    });
+    describe('GetUsersSortByName', () => {
+        it('Should get users ordered by name', () => {
+            var expectedRequest: IUserPagedRequest = {
+                pageNumber: usersActivateDeactivateUsersController.pageNumber,
+                pageSize: usersActivateDeactivateUsersController.pageSize,
+                field: 'Name'
+            };
+            usersActivateDeactivateUsersController.getUsersSortByName();
+            chai.expect(userStubService).to.have.been.calledWith(expectedRequest);
+            chai.expect(usersActivateDeactivateUsersController.orderedByName).to.be.true;
+        });
+    });
+    describe('Back', () => {
+
+        it('Should get the previus page of users', () => {
+            usersActivateDeactivateUsersController.pageNumber = 3;
+            var expectedRequest: IUserPagedRequest = {
+                pageNumber: 2,
+                pageSize: usersActivateDeactivateUsersController.pageSize,
+                field: 'Name'
+            };
+            usersActivateDeactivateUsersController.back();
+            chai.expect(userStubService).to.have.been.calledWith(expectedRequest);
+        });
+    });
+    describe('Next', () => {
+
+        it('Should get the next page of users', () => {
+            usersActivateDeactivateUsersController.pageNumber = 4;
+            var expectedRequest: IUserPagedRequest = {
+                pageNumber: 5,
+                pageSize: usersActivateDeactivateUsersController.pageSize,
+                field: 'Name'
+            };
+            usersActivateDeactivateUsersController.next();
+            chai.expect(userStubService).to.have.been.calledWith(expectedRequest);
         });
     });
     function getUsersPromise($q: angular.IQService): angular.IPromise<IUserResponse[]> {
