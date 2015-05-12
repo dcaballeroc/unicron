@@ -18,7 +18,7 @@ class CurrentUserManager implements ICurrentUserManager {
     windowsKey: string;
     static $inject: any = ['$window'];
     /*@ngInject*/
-    constructor(private $window: ng.IWindowService) {
+    constructor(private $window: angular.IWindowService) {
         this.currentUser = undefined;
         this.windowsKey = 'user';
     }
@@ -66,4 +66,4 @@ class CurrentUserManager implements ICurrentUserManager {
     }
 }
 
-appCore.factory('currentUser', ['$window', ($window: ng.IWindowService) => new CurrentUserManager($window) ]);
+appCore.factory('currentUser', ['$window', ($window: angular.IWindowService) => new CurrentUserManager($window) ]);

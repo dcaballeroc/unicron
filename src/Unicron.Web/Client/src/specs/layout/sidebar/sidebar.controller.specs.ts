@@ -15,9 +15,9 @@ describe('Sidebar', () => {
     var controller: ISidebar;
     var scope: ISidebarScope;
     var $state: angular.ui.IStateService;
-    var $location: ng.ILocationService;
+    var $location: angular.ILocationService;
     var routeHelper: any;
-    var $rootScope: ng.IRootScopeService;
+    var $rootScope: angular.IRootScopeService;
     var user: ICurrentUser = {
         name: 'userTest',
         email: 'user@user',
@@ -29,11 +29,11 @@ describe('Sidebar', () => {
     var currentUser: ICurrentUserManager;
     beforeEach(angular.mock.module('app.layout'));
 
-    beforeEach(inject(function($controller: ng.IControllerService,
-                _$rootScope_: ng.IRootScopeService,
+    beforeEach(inject(function($controller: angular.IControllerService,
+                _$rootScope_: angular.IRootScopeService,
                 _$state_: angular.ui.IStateService,
-                _$location_: ng.ILocationService,
-                _routeHelper_: any, _$httpBackend_: ng.IHttpBackendService, _currentUser_: ICurrentUserManager) {
+                _$location_: angular.ILocationService,
+                _routeHelper_: any, _$httpBackend_: angular.IHttpBackendService, _currentUser_: ICurrentUserManager) {
                     scope = <ISidebarScope>_$rootScope_.$new();
                     $rootScope = _$rootScope_;
                     routeHelper = _routeHelper_;

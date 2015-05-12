@@ -11,11 +11,11 @@ interface ILogger {
 }
 
 class Logger implements ILogger {
-    log: ng.ILogService;
+    log: angular.ILogService;
     toastr: Toastr;
     static $inject: any = ['$log', 'toastr'];
     /*@ngInject*/
-    constructor (log: ng.ILogService, toastr: Toastr) {
+    constructor (log: angular.ILogService, toastr: Toastr) {
         this.log = log;
         this.toastr = toastr;
     }
@@ -38,6 +38,5 @@ class Logger implements ILogger {
         this.log.info('Warning: ' + message, data);
     }
 }
-commonLogger.factory('logger', ['$log', 'toastr', ($log: ng.ILogService, toastr: Toastr) => new Logger($log, toastr)]
+commonLogger.factory('logger', ['$log', 'toastr', ($log: angular.ILogService, toastr: Toastr) => new Logger($log, toastr)]
 );
-

@@ -10,7 +10,7 @@
 /// <reference path="../../app/core/core.constants.ts"/>
 
 describe('core.constants', () => {
-    beforeEach(module('app.core'));
+    beforeEach(angular.mock.module('app.core'));
 
     it('Should toastr be defined', inject(function(toastr: Toastr) {
         chai.expect(toastr).to.be.not.undefined;

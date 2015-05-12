@@ -3,7 +3,7 @@
 class LogHttpService {
     static $inject: any = ['$q', 'logger'];
     /*@ngInject*/
-    constructor(private $q: ng.IQService, private logger: ILogger) {
+    constructor(private $q: angular.IQService, private logger: ILogger) {
     }
     responseError: any = (rejection: any): any =>  {
         this.logError(rejection);
@@ -27,9 +27,9 @@ class LogHttpService {
         + errorData.status + ' in ' + errorData.method + ' URL = ' + errorData.url , errorData, true);
     }
 }
-appCore.factory('logHttpService', ['$q', 'logger', ($q: ng.IQService, logger: ILogger)
-        => new LogHttpService($q, logger)]);
+appCore.factory('logHttpService', ['$q', 'logger', ($q: angular.IQService, logger: ILogger) =>
+  new LogHttpService($q, logger)]);
 
-appCore.config(['$httpProvider', function($httpProvider: ng.IHttpProvider): void {
+appCore.config(['$httpProvider', function($httpProvider: angular.IHttpProvider): void {
     $httpProvider.interceptors.push('logHttpService');
 }]);

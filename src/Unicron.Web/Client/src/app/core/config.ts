@@ -15,26 +15,26 @@ function toastrConfig(toastr: Toastr) {
         toastr.options.positionClass = 'toast-bottom-right';
 }
 
-interface Iconfig {
+interface IAppConfig {
     appErrorPrefix: string;
     appTitle: string;
     imageBasePath: string;
     version: string;
 }
-var config: Iconfig = {
+var appConfig: IAppConfig = {
     appErrorPrefix: '[A/A Error] ', // Configure the exceptionHandler decorator
     appTitle: 'Unicron ',
     version: '1.0.0',
     imageBasePath: '' // NOT YET USED
 };
 
-core.value('config', config);
+core.value('config', appConfig);
 core.config(configureRouterAndException);
 
 configureRouterAndException.$inject = ['$compileProvider', '$logProvider',
                          'routeHelperProvider', 'exceptionHandlerProvider'];
 /* @ngInject */
-function configureRouterAndException ($compileProvider: ng.ICompileProvider, $logProvider: ng.ILogProvider,
+function configureRouterAndException ($compileProvider: angular.ICompileProvider, $logProvider: angular.ILogProvider,
                          routerHelperProvider: any , exceptionHandlerProvider: any) {
         'use strict';
     $compileProvider.debugInfoEnabled(false);
@@ -42,7 +42,7 @@ function configureRouterAndException ($compileProvider: ng.ICompileProvider, $lo
     if ($logProvider.debugEnabled) {
             $logProvider.debugEnabled(true);
     }
-    exceptionHandlerProvider.$get().getConfig().configure(config.appErrorPrefix);
+    exceptionHandlerProvider.$get().getConfig().configure(appConfig.appErrorPrefix);
     configureStateHelper();
     function configureStateHelper() {
         'use strict';

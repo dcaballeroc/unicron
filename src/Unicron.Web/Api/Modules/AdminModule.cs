@@ -37,10 +37,10 @@ namespace Unicron.Web.Api.Modules
 
                         IQueryable<User> pagedUsers = orderedUsers.Skip(request.PageSize * (request.PageNumber - 1)).Take(request.PageSize);
 
-                        List<AdminUserResponse> mappedItems = mappingEngine
+                        List<AdminUserResponse> usersList = mappingEngine
                             .Map<IQueryable<User>, IEnumerable<AdminUserResponse>>(pagedUsers).ToList();
 
-                        return new AdminUsersListResponse(mappedItems);
+                        return  usersList;
                     };
 
             Post["/users/enable"] =

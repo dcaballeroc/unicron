@@ -1,21 +1,19 @@
 /// <reference path="../../../../typings/angularjs/angular-resource.d.ts" />
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
-/// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../common/logger/logger.service.ts" />
 /// <reference path="../users.module.ts" />
-interface IUsersLoginScope extends ng.IScope {
-    vm: UsersLogin;
+interface IUsersLoginScope extends angular.IScope {
+    vm: IUsersLoginContoller;
 }
 
-interface IUsersLogin {
-
+interface IUsersLoginContoller {
     email: string;
     password: string;
     rememberMe: boolean;
     login(): void;
 }
 
-class UsersLogin implements IUsersLogin {
+class UsersLogin implements IUsersLoginContoller {
 
     email: string;
     password: string;
@@ -30,14 +28,14 @@ class UsersLogin implements IUsersLogin {
         return 'users.login.controller';
     }
     login(): void {
-        this.loginUserService.Login(this.email, this.password).then((data: IUserResponse) =>  {
+        this.loginUserService.Login(this.email, this.password).then((data: IUserLoginResponse) =>  {
             this.SaveUser(data);
             this.$state.go('home');
         }).catch((error: any) => {
             this.logger.error('Error', error, null);
         });
     }
-    private SaveUser(data: IUserResponse): void {
+    private SaveUser(data: IUserLoginResponse): void {
         var expireDate: Date = new Date(Date.parse(data.expires));
         if (this.rememberMe) {
             this.currentUser.SetUserLocal(this.email, data.name, data.token, expireDate, data.claims);

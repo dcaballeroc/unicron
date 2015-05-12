@@ -12,9 +12,9 @@
 /* tslint:disable:typedef */
 describe('HttpInterceptors', () => {
 
-    var $httpProvider: ng.IHttpProvider;
-    var $httpBackend: ng.IHttpBackendService;
-    var $http: ng.IHttpService;
+    var $httpProvider: angular.IHttpProvider;
+    var $httpBackend: angular.IHttpBackendService;
+    var $http: angular.IHttpService;
 
     var userMock: ICurrentUser = {
         email : 'email',
@@ -23,11 +23,11 @@ describe('HttpInterceptors', () => {
         expires : JSON.stringify(new Date())
     };
 
-    beforeEach(angular.mock.module('app.core', function(_$httpProvider_: ng.IHttpProvider) {
+    beforeEach(angular.mock.module('app.core', function(_$httpProvider_: angular.IHttpProvider) {
         $httpProvider = _$httpProvider_;
     }));
-    beforeEach(inject(function(_$httpBackend_: ng.IHttpBackendService,
-                            _$http_: ng.IHttpService) {
+    beforeEach(inject(function(_$httpBackend_: angular.IHttpBackendService,
+                            _$http_: angular.IHttpService) {
 
 
         $httpBackend = _$httpBackend_;
@@ -99,11 +99,11 @@ describe('HttpInterceptors', () => {
     });
    describe('Logger Interceptor', () => {
        var logHttpService: LogHttpService;
-       var $q: ng.IQService;
+       var $q: angular.IQService;
        var logger: ILogger;
        var spyLogger: any;
 
-       beforeEach(inject(function(_logHttpService_: LogHttpService, _$q_: ng.IQService, _logger_: ILogger) {
+       beforeEach(inject(function(_logHttpService_: LogHttpService, _$q_: angular.IQService, _logger_: ILogger) {
            logHttpService = _logHttpService_;
            $q = _$q_;
            logger = _logger_;

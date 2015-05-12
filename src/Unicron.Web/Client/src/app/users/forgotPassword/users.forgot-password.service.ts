@@ -4,7 +4,7 @@ interface IUserForgotPasswordRequest {
     email: string;
 }
 interface IUserForgotPasswordService {
-    ResetPassword(email: string): ng.IPromise<boolean>;
+    ResetPassword(email: string): angular.IPromise<boolean>;
 };
 class UserForgotPasswordService implements IUserForgotPasswordService {
 
@@ -12,7 +12,7 @@ class UserForgotPasswordService implements IUserForgotPasswordService {
 
     constructor (private httpq: IHttpQ) {
     }
-    ResetPassword(email: string): ng.IPromise<boolean> {
+    ResetPassword(email: string): angular.IPromise<boolean> {
         var request: IUserForgotPasswordRequest = {
             email: email
         };

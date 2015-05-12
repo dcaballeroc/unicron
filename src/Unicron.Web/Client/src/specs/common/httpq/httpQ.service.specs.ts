@@ -12,15 +12,15 @@ interface IDataMock {
     name: string;
 }
 describe('httpq', () => {
-    var $httpBackend: ng.IHttpBackendService;
-    var $q: ng.IQService;
+    var $httpBackend: angular.IHttpBackendService;
+    var $q: angular.IQService;
     var httpq: HttpQ;
     var dataMock: IDataMock = {
         name: 'mocked'
     };
     beforeEach(angular.mock.module('app.core'));
-    beforeEach(inject(function(_$httpBackend_: ng.IHttpBackendService
-                                , _$q_: ng.IQService
+    beforeEach(inject(function(_$httpBackend_: angular.IHttpBackendService
+                                , _$q_: angular.IQService
                                 , _httpq_: HttpQ
                                ) {
         $httpBackend = _$httpBackend_;
@@ -113,4 +113,3 @@ describe('httpq', () => {
 
 
 });
-

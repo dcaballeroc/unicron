@@ -3,7 +3,7 @@
 /// <reference path="../users.module.ts" />
 /// <reference path="../../common/logger/logger.service.ts" />
 
-interface IUsersScope extends ng.IScope {
+interface IUsersScope extends angular.IScope {
     vm: Users;
 }
 

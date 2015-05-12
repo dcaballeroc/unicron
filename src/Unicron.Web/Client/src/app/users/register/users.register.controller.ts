@@ -4,7 +4,7 @@
 /// <reference path="../users.module.ts" />>
 
 
-interface IUserRegisterScope extends ng.IScope {
+interface IUserRegisterScope extends angular.IScope {
     vm: UserRegister;
 }
 

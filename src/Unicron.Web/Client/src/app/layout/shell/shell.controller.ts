@@ -4,7 +4,7 @@
 /// <reference path="../../common/logger/logger.service.ts" />
 /// <reference path="../../core/config.ts" />
 
-interface IShellScope extends ng.IScope {
+interface IShellScope extends angular.IScope {
     vm: Shell;
 }
 interface ITagLine {
@@ -27,12 +27,12 @@ class Shell implements IShell {
     isBusy: boolean;
     showSplash: boolean;
     tagline: ITagLine;
-    private $timeOut: ng.ITimeoutService;
-    private config: Iconfig;
+    private $timeOut: angular.ITimeoutService;
+    private config: IAppConfig;
     private logger: ILogger;
     static $inject: any = ['$scope', '$timeout', 'config', 'logger'];
     /*@ngInject*/
-    constructor($scope: IShellScope, $timeOut: ng.ITimeoutService, config: Iconfig, logger: ILogger) {
+    constructor($scope: IShellScope, $timeOut: angular.ITimeoutService, config: IAppConfig, logger: ILogger) {
         $scope.vm = this;
         this.$timeOut = $timeOut;
         this.config = config;
@@ -41,7 +41,7 @@ class Shell implements IShell {
         this.activate();
     }
     activate(): void {
-        this.logger.success(config.appTitle, config.appTitle + ' loaded!', null);
+        this.logger.success(appConfig.appTitle, appConfig.appTitle + ' loaded!', null);
         this.hideSplash();
     }
     hideSplash(): void {
@@ -65,6 +65,7 @@ class Shell implements IShell {
 }
 // Update the app1 variable name to be that of your module variable
 appLayout.controller('Shell',
-    ['$scope', '$timeout', 'config', 'logger', ($scope: IShellScope, $timeOut: ng.ITimeoutService, config: Iconfig, logger: ILogger) =>
+    ['$scope', '$timeout', 'config', 'logger',
+    ($scope: IShellScope, $timeOut: angular.ITimeoutService, config: IAppConfig, logger: ILogger) =>
     new Shell($scope, $timeOut, config, logger)
 ]);

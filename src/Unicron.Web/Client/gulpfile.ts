@@ -80,7 +80,7 @@ gulp.task('build-specs-html', ['serve-dev', 'fonts', 'images'], function() {
     if (args.startServers) {
         specs = [].concat(specs, config.serverIntegrationSpecs);
     }
-    
+
 
     return gulp
         .src(config.specRunner)
@@ -177,7 +177,7 @@ gulp.task('vet', function() {
             .pipe(plugins.tslint())
             .pipe(plugins.tslint.report('verbose'));
     return stream;
-    
+
     }
 );
 gulp.task('styles', ['clean-styles'], function() {
@@ -213,7 +213,7 @@ gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
         .src(config.buildIndex)
         .pipe(plugins.inject(gulp.src(config.css)))
         .pipe(gulp.dest(config.build));
-    
+
     return stream;
 });
 
@@ -224,7 +224,7 @@ gulp.task('clean-code', function(done: () => any) {
         clean(files, done);
         console.log('***Finishing to Clean Code***');
     }
-  
+
 );
 
 gulp.task('optimize', ['serve-release'], function() {
@@ -313,7 +313,7 @@ gulp.task('clean-images', function(done: () => any) {
 gulp.task('clean-specs', function(done: () => any) {
    var specs = [].concat(config.compiledSpecs);
    clean(specs, done);
-    
+
 });
 function serve(isDev: boolean, isSpecRunner ?: boolean): void {
     'use strict';
@@ -377,14 +377,14 @@ function startBrowserSync(isDev: boolean, isSpecRunner: boolean): void{
         options.startPath = config.specRunnerFile;
     }
      browserSync(options);
-   
+
 }
 function startTests(singleRun: boolean, done: any) {
     'use strict';
     var karma = require('karma').server;
     var excludeFiles = [];
     var serverSpecs = config.serverIntegrationSpecs;
-    
+
     excludeFiles = serverSpecs;
 
     karma.start({
@@ -447,7 +447,7 @@ function notifyBuilding(title: string, subtittle: string, message: string) {
         subtitle: subtittle,
         message: message
     };
-   
+
     console.log(msg);
     notify(msg);
 }

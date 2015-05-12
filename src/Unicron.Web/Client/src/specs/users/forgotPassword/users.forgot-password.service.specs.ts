@@ -8,14 +8,14 @@
 describe('users.forgotPassword.service', () => {
 
     var forgotPasswordService: IUserForgotPasswordService;
-    var $httpBackend: ng.IHttpBackendService;
+    var $httpBackend: angular.IHttpBackendService;
     var emailSent: IUserForgotPasswordRequest = {
         email: 'test@test.com'
     };
 
-    beforeEach(module('app.users'));
+    beforeEach(angular.mock.module('app.users'));
     beforeEach(inject(function(_forgotPasswordservice_: IUserForgotPasswordService,
-            _$httpBackend_: ng.IHttpBackendService) {
+            _$httpBackend_: angular.IHttpBackendService) {
         forgotPasswordService = _forgotPasswordservice_;
         $httpBackend = _$httpBackend_;
     }));

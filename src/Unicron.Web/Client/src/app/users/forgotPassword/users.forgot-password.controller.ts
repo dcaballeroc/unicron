@@ -3,7 +3,7 @@
 /// <reference path="../../common/logger/logger.service.ts" />
 /// <reference path="../../common/logger/logger.service.ts" />
 
-interface IUserForgotPasswordScope extends ng.IScope {
+interface IUserForgotPasswordScope extends angular.IScope {
     vm: UserForgotPassword;
 }
 

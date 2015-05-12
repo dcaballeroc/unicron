@@ -11,11 +11,11 @@
 describe('Logger', () => {
     var logger: ILogger;
     var toastrService: Toastr;
-    beforeEach(module(function($provide: any) {
+    beforeEach(angular.mock.module(function($provide: any) {
 
         $provide.value('toastr', toastr);
     }));
-    beforeEach(module('common.logger'));
+    beforeEach(angular.mock.module('common.logger'));
 
     beforeEach(inject(function(_logger_: ILogger, _toastr_: Toastr) {
         logger = _logger_;

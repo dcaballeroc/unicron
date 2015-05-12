@@ -22,7 +22,7 @@ class ConfigureExceptionHandlerProvider implements IConfigureExceptionHandlerPro
     }
 }
 
-class ExceptionHandlerProvider implements ng.IServiceProvider {
+class ExceptionHandlerProvider implements angular.IServiceProvider {
     config: IConfigureExceptionHandlerProvider;
     constructor(config: IConfigureExceptionHandlerProvider) {
         this.config = config;

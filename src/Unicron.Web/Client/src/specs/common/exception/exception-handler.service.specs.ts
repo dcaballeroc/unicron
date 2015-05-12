@@ -17,33 +17,33 @@ describe('common.exception', () => {
         prefix: '[TEST]'
     };
     var exceptionHandler: any;
-    beforeEach( module(function($provide: any) {
+    beforeEach( angular.mock.module(function($provide: any) {
         logger = <Logger><any>sinon.createStubInstance(Logger);
         toastr = sinon.stub();
        $provide.value('logger', logger);
        $provide.value('toastr', toastr);
         })
     );
- 
+
      beforeEach(function() {
-         module('common.exception');
+         angular.mock.module('common.exception');
      });
-    
+
      beforeEach(inject(function(_exceptionHandler_) {
           exceptionHandler = _exceptionHandler_.getConfig();
-          
+
          })
     );
-     
+
     describe('$exceptionHandler', () => {
         it('should be defined', inject(function($exceptionHandler) {
             expect($exceptionHandler).to.be.defined;
-        
+
         }));
         it('should have configuration', inject(function($exceptionHandler) {
             expect($exceptionHandler.config).to.be.defined;
         }));
-        
+
         describe('with appErrorPrefix', () => {
             var $rootScope: any;
             beforeEach(function () {
@@ -71,8 +71,8 @@ describe('common.exception', () => {
                    expect(ex.message).to.equal(mocks.prefix + mocks.errorMessage);
                 }
             });
-            
-           
+
+
         });
     });
 
@@ -80,6 +80,6 @@ describe('common.exception', () => {
          'use strict';
         throw new Error(mocks.errorMessage);
     }
-    
-    
+
+
 });

@@ -7,12 +7,12 @@
 /* tslint:disable:typedef */
 describe('user.register.service', () => {
     var userRegisterService: IUserRegisterService;
-    var $httpBackend: ng.IHttpBackendService;
+    var $httpBackend: angular.IHttpBackendService;
 
-    beforeEach(module('app.users'));
+    beforeEach(angular.mock.module('app.users'));
     beforeEach(inject(function(
     _registerUsersService_: IUserRegisterService,
-    _$httpBackend_: ng.IHttpBackendService) {
+    _$httpBackend_: angular.IHttpBackendService) {
         $httpBackend = _$httpBackend_;
         userRegisterService = _registerUsersService_;
     }));
