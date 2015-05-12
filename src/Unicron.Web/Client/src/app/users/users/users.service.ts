@@ -11,6 +11,7 @@ interface IUserResponse {
     id: string;
     name: string;
     email: string;
+    isActive: boolean;
 }
 
 interface IUsersService {

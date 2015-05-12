@@ -9,7 +9,7 @@ describe('users.routes', () => {
 
     var views: any = {
         home: 'app/users/users.home.html',
-        users: 'app/users/users.html',
+        users: 'app/users/users.activate-deactivate.html',
         login: 'app/users/users.login.html'
     };
     var $state: any;

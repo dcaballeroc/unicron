@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+  <section class="mainbar">
+    <section class="matter">
+      <div class="container">
+        <div class="row">
+          <div class="widget wblue">
+            <div aa-widget-header title="{{vm.title}}"></div>
+            <div class="widget-content user">
+              <section id="ActivateDeactivateUsers">
+                <ul class="pager">
+                  <li class="previous"><a ng-click="vm.back()">&larr; Back</a></li>
+                  <li class="next"><a ng-click="vm.next()">Next &rarr;</a></li>
+                </ul>
+                <table class="table table-striped">
+                  <thead>
+                    <th ng-click="vm.getUsersSortByName()"> Name <i ng-if="vm.orderedByName" class="fa fa-sort-asc"></i> </th>
+                    <th ng-click="vm.getUsersSortByEmail()"> Email <i ng-if="vm.orderedByEmail" class="fa fa-sort-asc"></i></th>
+                    <th> Status </th>
+                    <th></th>
+                    <th></th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="user in vm.users">
+                      <td>{{user.name}}</td>
+                      <td>{{user.email}}</td>
+                      <td ng-if="user.isActive"> Active </td>
+                      <td ng-if="!user.isActive"> Not Active </td>
+                      <td>
+                       <button class="btn btn-info btn-sm" ng-click="vm.enableUser(user.id, !user.isActive)"> Activate / Deactivate </button>
+                     </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</body>
+
+</html>

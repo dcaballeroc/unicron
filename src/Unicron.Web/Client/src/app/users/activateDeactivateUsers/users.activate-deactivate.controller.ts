@@ -22,13 +22,13 @@ interface IUsersActivateDeactivateContoller {
 }
 
 class UsersActivateDeactivateController implements IUsersActivateDeactivateContoller {
-    users: IUserResponse[];
+    users: IUserResponse[] = [];
     orderedByName: boolean;
     orderedByEmail: boolean;
     pageNumber: number;
     pageSize: number;
     static $inject: any = ['$scope', 'usersService', 'usersActivateDeactivateService'];
-    constructor($scope: IUsersActivateDeactivateScope, private usersService: IUsersService,
+    constructor(private $scope: IUsersActivateDeactivateScope, private usersService: IUsersService,
         private usersActivateDeactivateService: IActivateDeactivateUsersService) {
         $scope.vm = this;
         this.orderedByName = true;
@@ -48,16 +48,20 @@ class UsersActivateDeactivateController implements IUsersActivateDeactivateConto
 
     getUsersSortByName(): void {
         this.orderedByName = true;
+        this.orderedByEmail = false;
         var request: IUserPagedRequest = {
             pageSize: this.pageSize, pageNumber: this.pageNumber, field: 'Name'
         };
         this.getUsers(request);
+
     }
     getUsersSortByEmail(): void {
         this.orderedByEmail = true;
+        this.orderedByName = false;
         var request: IUserPagedRequest = {
             pageSize: this.pageSize, pageNumber: this.pageNumber, field: 'Email'
         };
+
         this.getUsers(request);
     }
     enableUser(id: string, enableUser: boolean): void {
@@ -66,6 +70,7 @@ class UsersActivateDeactivateController implements IUsersActivateDeactivateConto
         } else {
             this.usersActivateDeactivateService.disableUser(id);
         }
+        this.getUsersPage();
     }
     private getUsersPage(): void {
         if (this.orderedByName) {
@@ -75,11 +80,11 @@ class UsersActivateDeactivateController implements IUsersActivateDeactivateConto
         }
     }
     private getUsers(paginationRequest: IUserPagedRequest): void {
-        this.usersService.getPagedUsers(paginationRequest).then(
-            (data: IUserResponse[]) => {
+
+        this.usersService.getPagedUsers(paginationRequest)
+            .then((data: IUserResponse[]): void => {
                 this.users = data;
-            }
-            );
+            });
     }
 
     static controllerId(): string {

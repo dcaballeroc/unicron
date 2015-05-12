@@ -28,10 +28,10 @@ class UserRoutes implements IProvideRoutes {
                     state: 'users',
                     config: {
                         url: '/users',
-                        templateUrl: 'app/users/users/users.html',
-                        controller: 'users.controller',
+                        templateUrl: 'app/users/activateDeactivateUsers/users.activate-deactivate.html',
+                        controller: 'users.activate-deactivate.controller',
                         controllerAs: 'vm',
-                        title: 'users',
+                        title: 'Users Managment',
                         settings: {
                             nav: 2,
                             content: '<i class="fa fa-group"></i> Users',

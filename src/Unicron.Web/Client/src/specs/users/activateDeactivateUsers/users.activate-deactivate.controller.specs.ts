@@ -22,10 +22,10 @@ describe('users.activate-deactivate.controller', () => {
     var usersActivateDeactivateService: IActivateDeactivateUsersService;
     var users: IUserResponse[] = [
         {
-            id: 'id1', name: 'user1', email: 'email1'
+            id: 'id1', name: 'user1', email: 'email1', isActive: true
         },
         {
-            id: 'id2', name: 'user2', email: 'email2'
+            id: 'id2', name: 'user2', email: 'email2', isActive: true
         }
     ];
     beforeEach(function() {
@@ -87,6 +87,7 @@ describe('users.activate-deactivate.controller', () => {
             $rootScope.$apply();
             chai.expect(userStubService).to.have.been.calledWith(expectedRequest);
             chai.expect(usersActivateDeactivateUsersController.orderedByEmail).to.be.true;
+            chai.expect(usersActivateDeactivateUsersController.orderedByName).to.be.false;
         });
     });
     describe('GetUsersSortByName', () => {
@@ -99,6 +100,7 @@ describe('users.activate-deactivate.controller', () => {
             usersActivateDeactivateUsersController.getUsersSortByName();
             chai.expect(userStubService).to.have.been.calledWith(expectedRequest);
             chai.expect(usersActivateDeactivateUsersController.orderedByName).to.be.true;
+            chai.expect(usersActivateDeactivateUsersController.orderedByEmail).to.be.false;
         });
     });
     describe('Back', () => {
@@ -142,12 +144,18 @@ describe('users.activate-deactivate.controller', () => {
             chai.expect(activateUsersSpy).to.have.been.calledWith(id);
             chai.expect(disableUsersSpy).to.not.have.been.called;
         });
-        it('Should enable user', () => {
+        it('Should disable user', () => {
             var enable = false;
             var id = 'id';
             usersActivateDeactivateUsersController.enableUser(id, enable);
             chai.expect(disableUsersSpy).to.have.been.calledWith(id);
             chai.expect(activateUsersSpy).to.not.have.been.called;
+        });
+        it('Should reload the users', () => {
+          var enable = true;
+          var id = 'id';
+          usersActivateDeactivateUsersController.enableUser(id, enable);
+          chai.expect(userStubService).to.have.been.called;
         });
 
     })

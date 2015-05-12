@@ -29,7 +29,8 @@ describe('users.service', () => {
         var userResponse: IUserResponse = {
             id: 'id',
             name: 'user name',
-            email: 'user email'
+            email: 'user email',
+            isActive: true
         }
         it('Should return the expected user by his Id', () => {
             var id = 'id';
@@ -46,10 +47,10 @@ describe('users.service', () => {
     describe('GetPagedUsers', () => {
         var usersPagedResponse: IUserResponse[] = [
             {
-                id: 'id1', name: 'user name 1', email: 'user email'
+                id: 'id1', name: 'user name 1', email: 'user email', isActive: true
             },
             {
-                id: 'id2', name: 'user name 2', email: 'user email 2'
+                id: 'id2', name: 'user name 2', email: 'user email 2', isActive: true
             }
         ];
         var usersPagedRequest: IUserPagedRequest = {
