@@ -20,12 +20,13 @@
                   <li class="next"><a ng-click="vm.next()">Next &rarr;</a></li>
                 </ul>
                 <div class="table-responsive">
-                  <table class="table table-hover">
+                  <table class="table table-hover table-condensed">
                     <thead>
-                      <th ng-click="vm.getUsersSortByName()"> Name <i ng-if="vm.orderedByName" class="fa fa-sort-asc"></i> </th>
-                      <th ng-click="vm.getUsersSortByEmail()"> Email <i ng-if="vm.orderedByEmail" class="fa fa-sort-asc"></i></th>
-                      <th> Status </th>
-                      <th></th>
+                      <th class="col-md-3" ng-click="vm.getUsersSortByName()"> Name <i ng-if="vm.orderedByName" class="fa fa-sort-asc"></i> </th>
+                      <th class="col-md-5" ng-click="vm.getUsersSortByEmail()"> Email <i ng-if="vm.orderedByEmail" class="fa fa-sort-asc"></i></th>
+                      <th class="col-md-3"> Status </th>
+                      <th class="col-md-1"> Action </th>
+
                     </thead>
                     <tbody>
                       <tr ng-repeat="user in vm.users">
@@ -34,10 +35,10 @@
                         <td ng-if="user.isActive"> Active </td>
                         <td ng-if="!user.isActive"> Not Active </td>
                         <td ng-if="user.isActive">
-                          <button class="btn btn-info btn-sm" ng-click="vm.enableUser(user.id, !user.isActive)"> Deactivate </button>
+                          <button class="btn btn-info btn-sm btn-block" ng-click="vm.enableUser(user.id, !user.isActive)"> Deactivate </button>
                         </td>
                         <td ng-if="!user.isActive">
-                          <button class="btn btn-info btn-sm" ng-click="vm.enableUser(user.id, !user.isActive)">  Activate  </button>
+                          <button class="btn btn-info btn-sm btn-block" ng-click="vm.enableUser(user.id, !user.isActive)">  Activate  </button>
                         </td>
                       </tr>
                     </tbody>
