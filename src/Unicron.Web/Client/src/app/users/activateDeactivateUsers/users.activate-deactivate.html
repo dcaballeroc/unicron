@@ -19,26 +19,31 @@
                   <li class="previous"><a ng-click="vm.back()">&larr; Back</a></li>
                   <li class="next"><a ng-click="vm.next()">Next &rarr;</a></li>
                 </ul>
-                <table class="table table-striped">
-                  <thead>
-                    <th ng-click="vm.getUsersSortByName()"> Name <i ng-if="vm.orderedByName" class="fa fa-sort-asc"></i> </th>
-                    <th ng-click="vm.getUsersSortByEmail()"> Email <i ng-if="vm.orderedByEmail" class="fa fa-sort-asc"></i></th>
-                    <th> Status </th>
-                    <th></th>
-                    <th></th>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat="user in vm.users">
-                      <td>{{user.name}}</td>
-                      <td>{{user.email}}</td>
-                      <td ng-if="user.isActive"> Active </td>
-                      <td ng-if="!user.isActive"> Not Active </td>
-                      <td>
-                       <button class="btn btn-info btn-sm" ng-click="vm.enableUser(user.id, !user.isActive)"> Activate / Deactivate </button>
-                     </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <th ng-click="vm.getUsersSortByName()"> Name <i ng-if="vm.orderedByName" class="fa fa-sort-asc"></i> </th>
+                      <th ng-click="vm.getUsersSortByEmail()"> Email <i ng-if="vm.orderedByEmail" class="fa fa-sort-asc"></i></th>
+                      <th> Status </th>
+                      <th></th>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="user in vm.users">
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td ng-if="user.isActive"> Active </td>
+                        <td ng-if="!user.isActive"> Not Active </td>
+                        <td ng-if="user.isActive">
+                          <button class="btn btn-info btn-sm" ng-click="vm.enableUser(user.id, !user.isActive)"> Deactivate </button>
+                        </td>
+                        <td ng-if="!user.isActive">
+                          <button class="btn btn-info btn-sm" ng-click="vm.enableUser(user.id, !user.isActive)">  Activate  </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
               </section>
             </div>
           </div>

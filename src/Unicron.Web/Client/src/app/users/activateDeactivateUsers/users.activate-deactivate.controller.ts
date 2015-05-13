@@ -66,11 +66,15 @@ class UsersActivateDeactivateController implements IUsersActivateDeactivateConto
     }
     enableUser(id: string, enableUser: boolean): void {
         if (enableUser) {
-            this.usersActivateDeactivateService.enableUser(id);
+            this.usersActivateDeactivateService.enableUser(id).then(() => {
+                this.getUsersPage();
+            });
         } else {
-            this.usersActivateDeactivateService.disableUser(id);
+            this.usersActivateDeactivateService.disableUser(id).then(() => {
+                this.getUsersPage();
+            });
         }
-        this.getUsersPage();
+
     }
     private getUsersPage(): void {
         if (this.orderedByName) {
