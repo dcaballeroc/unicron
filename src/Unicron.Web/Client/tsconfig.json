@@ -54,6 +54,7 @@
         "./src/app/users/users/users.service.ts",
         "./src/app/widgets/compareTo/aa-compare-to.directive.ts",
         "./src/app/widgets/header/aa-widget-header.directive.ts",
+        "./src/app/widgets/minimize/aa-widget-minimize.directive.ts",
         "./src/app/widgets/widgets.module.ts",
         "./src/specs/app/app.module.specs.ts",
         "./src/specs/common/exception/exception-handler.service.specs.ts",
