@@ -59,7 +59,7 @@ gulp.task('serve-release', function (callback: () => any) {
     }
 );
 gulp.task('compile-specs', function() {
-    compile_ts_with_maps(config.sourceSpecs, config.buildSpecs, true);
+  return  compile_ts_with_maps(config.sourceSpecs, config.buildSpecs, true);
     });
 gulp.task('test', ['build-dev', 'templatecache', 'compile-specs'], function(done: () => any) {
     startTests(true /* singleRun */, done);
@@ -117,6 +117,8 @@ gulp.task('release', ['optimize',  'fonts', 'images'], function() {
     serve(false);
      notifyBuilding('gulp build', 'Deployed as Release', 'Running `gulp release`');
     }
+);
+gulp.task('release-ci', ['optimize',  'fonts', 'images']
 );
 
 gulp.task('copyingTs', function() {

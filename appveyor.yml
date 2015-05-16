@@ -1,28 +1,35 @@
 # Reference: http://www.appveyor.com/docs/appveyor-yml
 
 environment:
-  environment: qa
+  environment: dev
   
 version: 1.0.{build}
 branches:
   only:
-    - master
-
+    - develop
 
 # Operating system (build VM template)
-os: Windows Server 2012
+#os: Windows Server 2012
 
 # scripts that are called at very beginning, before repo cloning
 init:
   - git config --global core.autocrlf input
+  - git config --global user.email "developers@acklenavenue.com"
+  - git config --global user.name "Developers"
 
+install:
+  - npm -g install npm@2
+  - cd ./src/Unicron.Web/Client
+  - set PATH=%APPDATA%\npm;%PATH%
+  - npm install -g node-inspector bower gulp typescript tsd phantomjs tslint karma karma-cli
+  - npm install
 # clone directory
 # clone_folder: c:\projects\myproject
 
 # enable service required for build/tests
-services:
-  - mssql2012sp1        # start SQL Server 2012 SP1 Express
-  - iis                 # start IIS
+#services:
+#  - mssql2012sp1        # start SQL Server 2012 SP1 Express
+#  - iis                 # start IIS
 
 # enable patching of AssemblyInfo.* files
 assembly_info:
@@ -41,12 +48,18 @@ before_build:
 
 # scripts to run after build
 after_build:
-  - rake createArtifact
+  - rake createArtifacts
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
+  - gulp release-ci
+  - cd ../../..
   - rake build
-
+  - cd src/Unicron.Web/Client
+  - gulp copy-build
+  - cd ../../..
+  - rake createArtifacts
+  
 # to run your custom scripts instead of automatic tests
 # test_script:
 
@@ -55,18 +68,11 @@ test:
     - build\*.Specs.dll
 
 artifacts:
-  - path: deploy\*.zip
-    name: appZip
+  - path: deploy\Unicron*.zip
+    name: bankPortal
+  - path: deploy\DatabaseDeployer*.zip
+    name: databasedeployer
 
-deploy:
-  - provider: WebDeploy
-    server: https://waws-prod-blu-017.publish.azurewebsites.windows.net:443/msdeploy.axd?site=unicron-starter
-    website: unicron-starter
-    username: $unicron-starter
-    password: kHbwofpzBaifjtSc7RcpTRon84SPvSABEWPtnBrKWu6QkcwdCmMFWLefaF6o
-    ntlm: false
-    artifact: appZip
-  
 # scripts to run before deployment
 before_deploy:
   - rake dbRebuild
@@ -75,7 +81,8 @@ after_deploy:
 
 # to run your custom scripts instead of provider deployments
 deploy_script:
-
+  - rake deployDev
+  
 # on successful build
 on_success:
   
@@ -84,4 +91,4 @@ on_failure:
   
 notifications:
   - provider: Webhook
-    url: http://appharborservicehookendpoint.apphb.com/build/appveyor/Unicron
+    url: http://appharborservicehookendpoint.apphb.com/build/appveyor/unicron

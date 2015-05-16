@@ -15,7 +15,7 @@
     ],
     "files": [
         "./bower_components/angular-ui-router/api/angular-ui-router.d.ts",
-        "./gulpfile.ts",
+        "./gulpfileTypescript.ts",
         "./src/app/app.module.ts",
         "./src/app/common/exception/exception-handler.service.ts",
         "./src/app/common/exception/exception.module.ts",
